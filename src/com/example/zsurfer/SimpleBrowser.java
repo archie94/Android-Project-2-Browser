@@ -1,9 +1,12 @@
 package com.example.zsurfer;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
+import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +30,15 @@ import android.widget.EditText;
         contentView.getSettings().setLoadWithOverviewMode(true);//web page completely zoomed down
         contentView.getSettings().setUseWideViewPort(true);//
         contentView.setWebViewClient(new ourViewClient());//overrides a method so that a link in any web page does not load up in default browser
-        
+        contentView.setDownloadListener(new DownloadListener()
+        {//enable downloading files through web view in my browser 
+        	public void onDownloadStart(String url, String userAgent,String contentDisposition, String mimetype,long contentLength)
+        	{
+        		Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+        	}
+        });
         try
         {
         	contentView.loadUrl("https://www.google.com");
