@@ -6,10 +6,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.view.Window;
 import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
 
 @SuppressLint("SetJavaScriptEnabled") public class SimpleBrowser extends Activity implements View.OnClickListener
 {
@@ -21,8 +24,13 @@ import android.widget.EditText;
     protected void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
+        // Add progress bar support 
+        this.getWindow().requestFeature(Window.FEATURE_PROGRESS);
+        // Set xml for the content view
         setContentView(R.layout.activity_simple_browser);
         
+        // make progress bar visible
+        getWindow().setFeatureInt(Window.FEATURE_PROGRESS, Window.PROGRESS_VISIBILITY_ON);
         contentView=(WebView)findViewById(R.id.WebView);
         
         
@@ -31,7 +39,7 @@ import android.widget.EditText;
         contentView.getSettings().setUseWideViewPort(true);//
         contentView.setWebViewClient(new ourViewClient());//overrides a method so that a link in any web page does not load up in default browser
         contentView.setDownloadListener(new DownloadListener()
-        {//enable downloading files through web view in my browser 
+        {//enable downloading files through web view in my browser
         	public void onDownloadStart(String url, String userAgent,String contentDisposition, String mimetype,long contentLength)
         	{
         		Intent i = new Intent(Intent.ACTION_VIEW);
@@ -39,6 +47,8 @@ import android.widget.EditText;
                 startActivity(i);
         	}
         });
+        
+        //will load google search page as the default page 
         try
         {
         	contentView.loadUrl("https://www.google.com");
@@ -58,6 +68,21 @@ import android.widget.EditText;
         Refresh.setOnClickListener(this);
         Home.setOnClickListener(this);
         
+        // set Chrome Client, and defines on ProgressChanged
+        // this updates the progress bar 
+        final Activity MyActivity = this;
+        contentView.setWebChromeClient(new WebChromeClient() {
+         public void onProgressChanged(WebView view, int progress)   
+         {
+          //Make the bar disappear after URL is loaded, and changes string to Loading...
+          MyActivity.setTitle("Loading...");
+          MyActivity.setProgress(progress * 100); //Make the bar disappear after URL is loaded
+  
+          // Return the app name after finish loading
+             if(progress == 100)
+                MyActivity.setTitle(R.string.app_name);
+           }
+         });
     }
 
 
@@ -83,25 +108,44 @@ import android.widget.EditText;
 		{
 		case R.id.bGO:
 			String address=url.getText().toString();
-			contentView.loadUrl(address);
+			//load the web page as given
+			try
+			{
+				contentView.loadUrl(address);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 			break;
 		case R.id.bBack:
-			if(contentView.canGoBack())
+			// go back a web page 
+			if(contentView.canGoBack())// check if we can go back 
 				contentView.goBack();
 			break;
 		case R.id.bForward:
-			if(contentView.canGoForward())
+			// go forward a web page 
+			if(contentView.canGoForward())//check if we can go forward 
 				contentView.goForward();
 			break;
-		case R.id.bHome://our home page is google 
-			contentView.loadUrl("http://www.google.com");
+		case R.id.bHome:
+			//our home page is google 
+			try
+			{
+				contentView.loadUrl("http://www.google.com");
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 			break;
 		case R.id.bRefresh:
+			//refresh the page 
 			contentView.reload();
 			break;
 		
 		}
-	}
+	}// end of onClick()
 
 
     
