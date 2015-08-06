@@ -63,7 +63,8 @@
         	android:layout_height="wrap_content"
         	android:ems="10"
         	android:layout_weight="95"
-        	android:hint="Enter URL" >
+        	android:hint="Enter URL"
+        	android:singleLine="true" >
 
         	<requestFocus />
    		 </EditText>

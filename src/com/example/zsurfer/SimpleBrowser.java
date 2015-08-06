@@ -18,6 +18,7 @@ import android.webkit.WebView;
 {
 	WebView contentView;
 	EditText url;
+	String currentUrl;
 	Button Go,Back,Forward,Refresh,Home;
 
     @Override
@@ -52,6 +53,7 @@ import android.webkit.WebView;
         try
         {
         	contentView.loadUrl("https://www.google.com");
+        	currentUrl=contentView.getUrl();
         }
         catch(Exception e)
         {
@@ -68,10 +70,13 @@ import android.webkit.WebView;
         Refresh.setOnClickListener(this);
         Home.setOnClickListener(this);
         
+        currentUrl=contentView.getUrl();
+        url.setText(currentUrl);
         // set Chrome Client, and defines on ProgressChanged
         // this updates the progress bar 
         final Activity MyActivity = this;
-        contentView.setWebChromeClient(new WebChromeClient() {
+        contentView.setWebChromeClient(new WebChromeClient() 
+        {
          public void onProgressChanged(WebView view, int progress)   
          {
           //Make the bar disappear after URL is loaded, and changes string to Loading...
@@ -81,8 +86,12 @@ import android.webkit.WebView;
           // Return the app name after finish loading
              if(progress == 100)
                 MyActivity.setTitle(R.string.app_name);
-           }
-         });
+             
+             // get current url as the web page loads  and set the url in the edit text 
+             currentUrl=contentView.getUrl();
+     		 url.setText(currentUrl);
+         }
+        });
     }
 
 
@@ -91,6 +100,8 @@ import android.webkit.WebView;
 		// TODO Auto-generated method stub
 		// Initialize all buttons edit texts etc  ... 
 		//note web view is defined earlier 
+		
+		
 		url=(EditText)findViewById(R.id.editText1);
 		Go=(Button)findViewById(R.id.bGO);
 		Back=(Button)findViewById(R.id.bBack);
@@ -104,6 +115,7 @@ import android.webkit.WebView;
 	public void onClick(View arg0) 
 	{
 		// TODO Auto-generated method stub
+		
 		switch(arg0.getId())
 		{
 		case R.id.bGO:
