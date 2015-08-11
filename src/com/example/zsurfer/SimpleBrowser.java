@@ -19,7 +19,7 @@ import android.webkit.WebView;
 	WebView contentView;
 	EditText url;
 	String currentUrl;
-	Button Go,Back,Forward,Refresh,Home;
+	Button Go,Back,Forward,Refresh,Home,addBookmark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -69,6 +69,7 @@ import android.webkit.WebView;
         Forward.setOnClickListener(this);
         Refresh.setOnClickListener(this);
         Home.setOnClickListener(this);
+        addBookmark.setOnClickListener(this);
         
         currentUrl=contentView.getUrl();
         url.setText(currentUrl);
@@ -80,7 +81,7 @@ import android.webkit.WebView;
          public void onProgressChanged(WebView view, int progress)   
          {
           //Make the bar disappear after URL is loaded, and changes string to Loading...
-          MyActivity.setTitle("Loading...");
+          MyActivity.setTitle("Surfing...");
           MyActivity.setProgress(progress * 100); //Make the bar disappear after URL is loaded
   
           // Return the app name after finish loading
@@ -108,6 +109,7 @@ import android.webkit.WebView;
 		Forward=(Button)findViewById(R.id.bForward);
 		Refresh=(Button)findViewById(R.id.bRefresh);
 		Home=(Button)findViewById(R.id.bHome);
+		addBookmark=(Button)findViewById(R.id.bBKMRK);
 	}
 
 
@@ -154,6 +156,8 @@ import android.webkit.WebView;
 		case R.id.bRefresh:
 			//refresh the page 
 			contentView.reload();
+			break;
+		case R.id.bBKMRK:
 			break;
 		
 		}

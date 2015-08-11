@@ -47,6 +47,7 @@
             android:text="Home"
             android:layout_weight="25" />
         
+        
     </LinearLayout>
     
     <LinearLayout
@@ -69,6 +70,7 @@
         	<requestFocus />
    		 </EditText>
 
+    	
     	<Button
     	    android:id="@+id/bGO"
     	    style="?android:attr/buttonStyleSmall"
@@ -76,6 +78,15 @@
     	    android:layout_height="wrap_content"
     	    android:text="Go"
     	    android:layout_weight="5" />
+    	<Button
+    	    android:id="@+id/bBKMRK"
+    	    style="?android:attr/buttonStyleSmall"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:text="BkMrk"
+    	    android:layout_weight="10" />
+    	
+    	
 
     </LinearLayout>
 
