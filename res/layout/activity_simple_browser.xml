@@ -26,8 +26,10 @@
             android:id="@+id/bBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back"
-            android:layout_weight="25" />
+			android:layout_weight="25"
+            android:text="Back" />
+
+        "
         <Button
             android:id="@+id/bForward"
             android:layout_width="wrap_content"
@@ -65,7 +67,8 @@
         	android:ems="10"
         	android:layout_weight="95"
         	android:hint="Enter URL"
-        	android:singleLine="true" >
+        	android:singleLine="true"
+        	android:selectAllOnFocus="true" >
 
         	<requestFocus />
    		 </EditText>
