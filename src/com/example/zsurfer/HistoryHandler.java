@@ -41,5 +41,18 @@ public class HistoryHandler extends SQLiteOpenHelper
 		db.execSQL("DROP TABLE IF EXISTS "+TABLE);
 		onCreate(db);
 	}
+	
+	public void addHistory(History h)
+	{
+		
+	}
+	public void deleteHistory(String s)
+	{
+		
+	}
+	public void databaseToString()
+	{
+		
+	}
 
 }
