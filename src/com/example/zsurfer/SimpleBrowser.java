@@ -12,7 +12,6 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.webkit.WebChromeClient;
-import android.webkit.WebView;
 
 @SuppressLint("SetJavaScriptEnabled") public class SimpleBrowser extends Activity implements View.OnClickListener
 {

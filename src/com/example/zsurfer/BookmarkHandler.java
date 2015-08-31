@@ -61,7 +61,7 @@ public class BookmarkHandler extends SQLiteOpenHelper
 		{
 			if(c.getString(c.getColumnIndex("bookmarks"))!=null)
 			{
-				dbString+=c.getString(c.getColumnIndex("todo"));
+				dbString+=c.getString(c.getColumnIndex("bookmarks"));
 				dbString+="\n";
 			}
 			c.moveToNext();

@@ -1,6 +1,8 @@
 package com.example.zsurfer;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -22,7 +24,7 @@ public class HistoryHandler extends SQLiteOpenHelper
 	
 	public HistoryHandler(Context context, String name, CursorFactory factory,int version) 
 	{
-		super(context, name, factory, version);
+		super(context, DATABASE_NAME, factory, DATABASE_VERSION);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -44,14 +46,37 @@ public class HistoryHandler extends SQLiteOpenHelper
 	
 	public void addHistory(History h)
 	{
+		ContentValues values=new ContentValues();
+		values.put(COLUMN_PG,h.getHistory());
+		SQLiteDatabase db=getWritableDatabase();
+		db.insert(TABLE, null, values);
+		db.close();
 		
 	}
 	public void deleteHistory(String s)
 	{
+		SQLiteDatabase db=getWritableDatabase();
+		db.execSQL("DELETE FROM "+TABLE+" WHERE "+COLUMN_PG+"=\""+s+"\";");
 		
 	}
-	public void databaseToString()
+	public String databaseToString()
 	{
+		SQLiteDatabase db=getWritableDatabase();
+		String dbString="";
+		String query="SELECT * FROM "+TABLE+" WHERE 1";
+		Cursor c=db.rawQuery(query, null);
+		c.moveToFirst();
+		while(!c.isAfterLast())
+		{
+			if(c.getString(c.getColumnIndex("pages"))!=null)
+			{
+				dbString+=c.getString(c.getColumnIndex("pages"));
+				dbString+="\n";
+			}
+			c.moveToNext();
+		}
+		db.close();
+		return dbString;
 		
 	}
 
