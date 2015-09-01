@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.webkit.DownloadListener;
@@ -109,6 +110,20 @@ import android.webkit.WebChromeClient;
 		Refresh=(Button)findViewById(R.id.bRefresh);
 		Home=(Button)findViewById(R.id.bHome);
 		addBookmark=(Button)findViewById(R.id.bBKMRK);
+	}
+
+
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) 
+	{
+		// TODO Auto-generated method stub
+		if(keyCode==KeyEvent.KEYCODE_BACK && contentView.canGoBack())
+		{
+			//On pressing the back button reload the previous page 
+			contentView.goBack();
+			return true;
+		}
+		return super.onKeyUp(keyCode, event); // if no previous page close application 
 	}
 
 
