@@ -1,9 +1,12 @@
 package com.example.zsurfer;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.webkit.WebChromeClient;
 
 @SuppressLint("SetJavaScriptEnabled") public class SimpleBrowser extends Activity implements View.OnClickListener
@@ -48,6 +52,16 @@ import android.webkit.WebChromeClient;
                 startActivity(i);
         	}
         });
+        
+        
+        if(isNetworkAvailable()==false)//check if network is available 
+        {
+        	Toast.makeText(getApplicationContext(), "No Internet Connection",Toast.LENGTH_LONG).show();
+        }
+        /*else
+        {
+        	Toast.makeText(getApplicationContext(), "Internet Connection",Toast.LENGTH_LONG).show();
+        }*/
         
         //will load google search page as the default page 
         try
@@ -94,6 +108,18 @@ import android.webkit.WebChromeClient;
          }
         });
     }
+    
+    
+    private boolean isNetworkAvailable() 
+    {
+		// TODO Auto-generated method stub
+    	//method to check if there is Internet connection 
+    	ConnectivityManager cm=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+    	NetworkInfo isActive=cm.getActiveNetworkInfo();
+		return (isActive!=null && isActive.isConnected());
+	}
+    
+    
 
 
 	private void initialise() 
