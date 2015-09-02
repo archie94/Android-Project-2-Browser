@@ -23,7 +23,8 @@ import android.webkit.WebChromeClient;
 	WebView contentView;
 	EditText url;
 	String currentUrl;
-	Button Go,Back,Forward,Refresh,Home,addBookmark;
+	Button Go,Back,Forward,Refresh,Home,addBookmark,vHistory;
+	HistoryHandler hHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -84,6 +85,9 @@ import android.webkit.WebChromeClient;
         Refresh.setOnClickListener(this);
         Home.setOnClickListener(this);
         addBookmark.setOnClickListener(this);
+        vHistory.setOnClickListener(this);
+        
+        
         
         currentUrl=contentView.getUrl();
         url.setText(currentUrl);
@@ -108,6 +112,8 @@ import android.webkit.WebChromeClient;
          }
         });
     }
+    
+    
     
     
     private boolean isNetworkAvailable() 
@@ -136,9 +142,14 @@ import android.webkit.WebChromeClient;
 		Refresh=(Button)findViewById(R.id.bRefresh);
 		Home=(Button)findViewById(R.id.bHome);
 		addBookmark=(Button)findViewById(R.id.bBKMRK);
+		hHandler=new HistoryHandler(this,null,null,1);
+		vHistory=(Button)findViewById(R.id.bHistory);
 	}
 
 
+	
+	
+	
 	@Override
 	public boolean onKeyUp(int keyCode, KeyEvent event) 
 	{
@@ -153,6 +164,9 @@ import android.webkit.WebChromeClient;
 	}
 
 
+	
+	
+	
 	@Override
 	public void onClick(View arg0) 
 	{
@@ -166,6 +180,8 @@ import android.webkit.WebChromeClient;
 			try
 			{
 				contentView.loadUrl(address);
+				History h=new History(address);
+				hHandler.addHistory(h);
 			}
 			catch(Exception e)
 			{
@@ -175,7 +191,9 @@ import android.webkit.WebChromeClient;
 		case R.id.bBack:
 			// go back a web page 
 			if(contentView.canGoBack())// check if we can go back 
+			{
 				contentView.goBack();
+			}
 			break;
 		case R.id.bForward:
 			// go forward a web page 
@@ -198,6 +216,8 @@ import android.webkit.WebChromeClient;
 			contentView.reload();
 			break;
 		case R.id.bBKMRK:
+			break;
+		case R.id.bHistory:
 			break;
 		
 		}
