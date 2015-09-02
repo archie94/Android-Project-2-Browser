@@ -6,13 +6,37 @@
     android:weightSum="100" >
     
 
+   
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:layout_weight="10" >
+
+        <Button
+            android:id="@+id/bHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:layout_weight="50"
+            android:text="History" />
+
+        
+        <Button
+            android:id="@+id/bShowBkMrk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bookmarks"
+            android:layout_weight="50" />
     
+        
+     </LinearLayout>
 
     <WebView
         android:id="@+id/WebView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="80" />
+        android:layout_weight="70" />
     
     
     <LinearLayout
