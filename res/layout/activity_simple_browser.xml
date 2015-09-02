@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="100"
-        android:layout_weight="10" >
+        android:layout_weight="5" >
 
         <Button
             android:id="@+id/bHistory"
@@ -36,7 +36,7 @@
         android:id="@+id/WebView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="70" />
+        android:layout_weight="80" />
     
     
     <LinearLayout

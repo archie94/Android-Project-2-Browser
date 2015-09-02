@@ -218,6 +218,9 @@ import android.webkit.WebChromeClient;
 		case R.id.bBKMRK:
 			break;
 		case R.id.bHistory:
+			Intent i=new Intent("com.example.zsurfer.VIEWHISTORY");
+			startActivity(i);
+			
 			break;
 		
 		}
