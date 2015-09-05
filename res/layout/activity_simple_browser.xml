@@ -16,6 +16,7 @@
 
         <Button
             android:id="@+id/bHistory"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 			android:layout_weight="50"
@@ -24,6 +25,7 @@
         
         <Button
             android:id="@+id/bShowBkMrk"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bookmarks"
@@ -48,6 +50,7 @@
 
         <Button
             android:id="@+id/bBack"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 			android:layout_weight="25"
@@ -56,18 +59,21 @@
         
         <Button
             android:id="@+id/bForward"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fwd"
             android:layout_weight="25" />
         <Button
             android:id="@+id/bRefresh"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Refresh"
             android:layout_weight="25" />
         <Button
             android:id="@+id/bHome"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Home"
