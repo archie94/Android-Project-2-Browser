@@ -1,10 +1,11 @@
 package com.example.zsurfer;
 
-// wip
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class ViewHistory extends Activity
 {
@@ -34,19 +35,19 @@ public class ViewHistory extends Activity
 			}
 		}
 		histories=new String[counter];//we have total no of present string 
-		counter=0;
+		//counter=0;
 		p=0;
 		for(i=0;i<dbString.length();i++)
 		{
 			if(dbString.charAt(i)=='\n')
 			{
-				histories[counter++]=dbString.substring(p, i);//store each individual memo into a string
+				histories[--counter]=dbString.substring(p, i);//store each individual memo into a string
 				p=i+1;
 			}
 		}
 		//create the list activity on the basis of the strings we have collected
 		l.setAdapter(new ArrayAdapter<String>(ViewHistory.this,android.R.layout.simple_list_item_1,histories));
-		
+		Toast.makeText(getApplicationContext(), ""+counter,Toast.LENGTH_LONG).show();
 	}
 	
 

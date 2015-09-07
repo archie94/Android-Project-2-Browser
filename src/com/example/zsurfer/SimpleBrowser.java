@@ -104,11 +104,18 @@ import android.webkit.WebChromeClient;
   
           // Return the app name after finish loading
              if(progress == 100)
-                MyActivity.setTitle(R.string.app_name);
+             {
+            	 MyActivity.setTitle(R.string.app_name);
+            	 // add to history 
+            	 History h=new History(contentView.getUrl());
+         		 hHandler.addHistory(h);
+         		 Toast.makeText(getApplicationContext(), "added ",Toast.LENGTH_LONG).show();
+             }
              
              // get current url as the web page loads  and set the url in the edit text 
              currentUrl=contentView.getUrl();
      		 url.setText(currentUrl);
+     		
          }
         });
     }
@@ -180,8 +187,6 @@ import android.webkit.WebChromeClient;
 			try
 			{
 				contentView.loadUrl(address);
-				History h=new History(address);
-				hHandler.addHistory(h);
 			}
 			catch(Exception e)
 			{
