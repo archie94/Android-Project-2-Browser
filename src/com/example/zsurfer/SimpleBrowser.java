@@ -25,6 +25,7 @@ import android.webkit.WebChromeClient;
 	String currentUrl;
 	Button Go,Back,Forward,Refresh,Home,addBookmark,vHistory;
 	HistoryHandler hHandler;
+	BookmarkHandler bHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -221,6 +222,12 @@ import android.webkit.WebChromeClient;
 			contentView.reload();
 			break;
 		case R.id.bBKMRK:
+			
+			BookMarks b=new BookMarks(contentView.getUrl());
+			bHandler.addDB(b);
+			Toast.makeText(getApplicationContext(), "Bookmark  added ",Toast.LENGTH_LONG).show();
+			
+			
 			break;
 		case R.id.bHistory:
 			Intent i=new Intent("com.example.zsurfer.VIEWHISTORY");
