@@ -9,9 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class HistoryHandler extends SQLiteOpenHelper 
 {
-	/*This class will handle the history of 
-	 * browsing 
-	 */
+	 /*
+	  * This class will handle the history of 
+	  * browsing 
+	  */
 
 	
 	private final static int DATABASE_VERSION=1;

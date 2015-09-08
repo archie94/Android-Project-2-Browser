@@ -14,7 +14,7 @@
     
     
     <ListView
-        android:id="@+id/listViewHistory"
+        android:id="@+id/listViewBookmarks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
