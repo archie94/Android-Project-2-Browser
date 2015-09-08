@@ -23,7 +23,7 @@ import android.webkit.WebChromeClient;
 	WebView contentView;
 	EditText url;
 	String currentUrl;
-	Button Go,Back,Forward,Refresh,Home,addBookmark,vHistory;
+	Button Go,Back,Forward,Refresh,Home,addBookmark,vHistory,vBookMark;
 	HistoryHandler hHandler;
 	BookmarkHandler bHandler;
 
@@ -87,6 +87,7 @@ import android.webkit.WebChromeClient;
         Home.setOnClickListener(this);
         addBookmark.setOnClickListener(this);
         vHistory.setOnClickListener(this);
+        vBookMark.setOnClickListener(this);
         
         
         
@@ -152,6 +153,8 @@ import android.webkit.WebChromeClient;
 		addBookmark=(Button)findViewById(R.id.bBKMRK);
 		hHandler=new HistoryHandler(this,null,null,1);
 		vHistory=(Button)findViewById(R.id.bHistory);
+		vBookMark=(Button)findViewById(R.id.bShowBkMrk);
+		
 	}
 
 
@@ -234,6 +237,10 @@ import android.webkit.WebChromeClient;
 			startActivity(i);
 			
 			break;
+			
+		case R.id.bShowBkMrk:
+			break;
+			
 		
 		}
 	}// end of onClick()
