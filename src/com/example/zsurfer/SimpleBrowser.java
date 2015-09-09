@@ -93,7 +93,7 @@ import android.webkit.WebChromeClient;
         
         currentUrl=contentView.getUrl();
         url.setText(currentUrl);
-        // set Chrome Client, and defines on ProgressChanged
+        // set ChromeClient, and defines on ProgressChanged
         // this updates the progress bar 
         final Activity MyActivity = this;
         contentView.setWebChromeClient(new WebChromeClient() 
