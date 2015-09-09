@@ -154,7 +154,7 @@ import android.webkit.WebChromeClient;
 		hHandler=new HistoryHandler(this,null,null,1);
 		vHistory=(Button)findViewById(R.id.bHistory);
 		vBookMark=(Button)findViewById(R.id.bShowBkMrk);
-		
+		bHandler=new BookmarkHandler(this,null,null,1);
 	}
 
 
