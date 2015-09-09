@@ -39,6 +39,22 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+        
+        <activity
+            android:name="com.example.zsurfer.ViewBookmark"
+            android:label="@string/app_name"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.example.zsurfer.VIEWBOOKMARK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        
+        
     </application>
 
 </manifest>
