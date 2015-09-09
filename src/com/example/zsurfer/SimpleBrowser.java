@@ -239,6 +239,9 @@ import android.webkit.WebChromeClient;
 			break;
 			
 		case R.id.bShowBkMrk:
+			Intent i2=new Intent("com.example.zsurfer.VIEWBOOKMARKS");
+			startActivity(i2);
+			
 			break;
 			
 		

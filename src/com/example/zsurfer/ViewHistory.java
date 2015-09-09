@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class ViewHistory extends Activity
 {
@@ -47,7 +46,6 @@ public class ViewHistory extends Activity
 		}
 		//create the list activity on the basis of the strings we have collected
 		l.setAdapter(new ArrayAdapter<String>(ViewHistory.this,android.R.layout.simple_list_item_1,histories));
-		Toast.makeText(getApplicationContext(), ""+counter,Toast.LENGTH_LONG).show();
 	}
 	
 

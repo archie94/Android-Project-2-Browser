@@ -42,12 +42,12 @@
         
         
         <activity
-            android:name="com.example.zsurfer.ViewBookmark"
+            android:name="com.example.zsurfer.ViewBookmarks"
             android:label="@string/app_name"
             android:configChanges="orientation"
             android:screenOrientation="portrait" >
             <intent-filter>
-                <action android:name="com.example.zsurfer.VIEWBOOKMARK" />
+                <action android:name="com.example.zsurfer.VIEWBOOKMARKS" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

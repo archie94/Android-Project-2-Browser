@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class ViewBookmarks extends Activity
 {
@@ -20,7 +19,7 @@ public class ViewBookmarks extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bookmarks);
 		
-		l=(ListView)findViewById(R.id.listViewHistory);
+		l=(ListView)findViewById(R.id.listViewBookmarks);
 		bHandler=new BookmarkHandler(this,null,null,1);
 		
 		
@@ -47,7 +46,6 @@ public class ViewBookmarks extends Activity
 		}
 		//create the list activity on the basis of the strings we have collected
 		l.setAdapter(new ArrayAdapter<String>(ViewBookmarks.this,android.R.layout.simple_list_item_1,bookmarks));
-		Toast.makeText(getApplicationContext(), ""+counter,Toast.LENGTH_LONG).show();
 		
 	}
 	
