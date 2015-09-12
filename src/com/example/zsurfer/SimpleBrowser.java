@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.webkit.DownloadListener;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -45,6 +46,30 @@ import android.webkit.WebChromeClient;
         contentView.getSettings().setLoadWithOverviewMode(true);//web page completely zoomed down
         contentView.getSettings().setUseWideViewPort(true);//
         contentView.setWebViewClient(new ourViewClient());//overrides a method so that a link in any web page does not load up in default browser
+        contentView.setWebViewClient(new WebViewClient()
+        {
+
+			@Override
+			public void onPageFinished(WebView view, String url) 
+			{
+				// TODO Auto-generated method stub
+				super.onPageFinished(view, url);
+				// add to history when page has finished loading 
+				History h=new History(contentView.getUrl());
+        		hHandler.addHistory(h);
+        	    Toast.makeText(getApplicationContext(), "added ",Toast.LENGTH_LONG).show();
+			}
+
+			@Override
+			public void onReceivedError(WebView view, int errorCode,String description, String failingUrl) 
+			{
+				// TODO Auto-generated method stub
+				super.onReceivedError(view, errorCode, description, failingUrl);
+				Toast.makeText(getApplicationContext(), "Failed to load page",Toast.LENGTH_LONG).show();
+			}
+        	
+        });
+        
         contentView.setDownloadListener(new DownloadListener()
         {//enable downloading files through web view in my browser
         	public void onDownloadStart(String url, String userAgent,String contentDisposition, String mimetype,long contentLength)
@@ -108,10 +133,6 @@ import android.webkit.WebChromeClient;
              if(progress == 100)
              {
             	 MyActivity.setTitle(R.string.app_name);
-            	 // add to history 
-            	 History h=new History(contentView.getUrl());
-         		 hHandler.addHistory(h);
-         		 Toast.makeText(getApplicationContext(), "added ",Toast.LENGTH_LONG).show();
              }
              
              // get current url as the web page loads  and set the url in the edit text 
