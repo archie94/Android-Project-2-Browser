@@ -1,7 +1,10 @@
 package com.example.zsurfer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -47,7 +50,25 @@ public class ViewBookmarks extends Activity
 		//create the list activity on the basis of the strings we have collected
 		l.setAdapter(new ArrayAdapter<String>(ViewBookmarks.this,android.R.layout.simple_list_item_1,bookmarks));
 		
+		
+		l.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) 
+			{
+				// TODO Auto-generated method stub
+				String msg=bookmarks[position];
+				Intent intent=new Intent(ViewBookmarks.this,SimpleBrowser.class);
+				intent.putExtra("msg", msg);
+				startActivity(intent);
+			}
+			
+		});
 	}
+
+	
+
+	
 	
 	
 

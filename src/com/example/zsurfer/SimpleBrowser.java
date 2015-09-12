@@ -90,18 +90,36 @@ import android.webkit.WebChromeClient;
         	Toast.makeText(getApplicationContext(), "Internet Connection",Toast.LENGTH_LONG).show();
         }*/
         
-        //will load google search page as the default page 
-        try
+        Bundle bundle=getIntent().getExtras();
+       
+        if(bundle==null)
         {
-        	contentView.loadUrl("https://www.google.com");
-        	currentUrl=contentView.getUrl();
+        	//will load google search page as the default page 
+        	try
+        	{
+        		contentView.loadUrl("https://www.google.com");
+        		currentUrl=contentView.getUrl();
+        	}
+        	catch(Exception e)
+        	{
+        		e.printStackTrace();
+        	}
         }
-        catch(Exception e)
+        else
         {
-        	e.printStackTrace();
+        	// will get the address from bundle 
+        	try
+        	{
+        		contentView.loadUrl(bundle.getString("msg"));
+        		currentUrl=contentView.getUrl();
+        	}
+        	catch(Exception e)
+        	{
+        		e.printStackTrace();
+        	}
         }
         
-        initialise();//initialise all other variable after completing the settings for WebView
+        initialise();//initialize all other variable after completing the settings for WebView
         
         //url.setOnClickListener(this);
         
