@@ -2,7 +2,10 @@ package com.example.zsurfer;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -46,6 +49,21 @@ public class ViewHistory extends Activity
 		}
 		//create the list activity on the basis of the strings we have collected
 		l.setAdapter(new ArrayAdapter<String>(ViewHistory.this,android.R.layout.simple_list_item_1,histories));
+		
+		l.setOnItemClickListener(new AdapterView.OnItemClickListener() 
+		{
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) 
+			{
+				// TODO Auto-generated method stub
+				String msg=histories[position];
+				Intent intent=new Intent(ViewHistory.this,SimpleBrowser.class);
+				intent.putExtra("msg", msg);
+				startActivity(intent);
+			}
+			
+		});
 	}
 	
 
