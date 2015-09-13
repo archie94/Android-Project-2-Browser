@@ -2,6 +2,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
+    android:id="@+id/mainLayout"
     android:padding="5dp"
     android:weightSum="100" >
     
@@ -54,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 			android:layout_weight="25"
-            android:text="Back" />
+            android:text="" />
 
         
         <Button
@@ -62,21 +63,21 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fwd"
+            android:text=""
             android:layout_weight="25" />
         <Button
             android:id="@+id/bRefresh"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Refresh"
+            android:text=""
             android:layout_weight="25" />
         <Button
             android:id="@+id/bHome"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Home"
+            android:text=""
             android:layout_weight="25" />
         
         

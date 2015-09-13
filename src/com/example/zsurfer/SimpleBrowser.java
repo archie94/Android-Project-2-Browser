@@ -8,14 +8,20 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.webkit.WebChromeClient;
 
@@ -27,6 +33,9 @@ import android.webkit.WebChromeClient;
 	Button Go,Back,Forward,Refresh,Home,addBookmark,vHistory,vBookMark;
 	HistoryHandler hHandler;
 	BookmarkHandler bHandler;
+	int dim;
+	LinearLayout mainLayout;
+	Bitmap back,forward,refresh,home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -119,7 +128,20 @@ import android.webkit.WebChromeClient;
         	}
         }
         
+        
+        
         initialise();//initialize all other variable after completing the settings for WebView
+        
+        mainLayout=(LinearLayout)findViewById(R.id.mainLayout);
+        ViewTreeObserver vto = mainLayout.getViewTreeObserver();
+        /*vto.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {  
+            @Override  
+            public void onGlobalLayout() {  
+                this.mainLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);  
+                dim=Back.getHeight();
+
+            }  
+        });*/
         
         //url.setOnClickListener(this);
         
@@ -194,6 +216,29 @@ import android.webkit.WebChromeClient;
 		vHistory=(Button)findViewById(R.id.bHistory);
 		vBookMark=(Button)findViewById(R.id.bShowBkMrk);
 		bHandler=new BookmarkHandler(this,null,null,1);
+		
+		dim=67;
+		back=BitmapFactory.decodeResource(getResources(), R.drawable.back);
+		back=Bitmap.createScaledBitmap(back, dim, dim, true);
+		Resources r1=getResources();
+		Back.setBackground(new BitmapDrawable(r1,back));
+		
+		forward=BitmapFactory.decodeResource(getResources(), R.drawable.forward);
+		forward=Bitmap.createScaledBitmap(forward, dim, dim, true);
+		Resources r2=getResources();
+		Forward.setBackground(new BitmapDrawable(r2,forward));
+		
+		refresh=BitmapFactory.decodeResource(getResources(), R.drawable.refresh);
+		refresh=Bitmap.createScaledBitmap(refresh, dim, dim, true);
+		Resources r3=getResources();
+		Refresh.setBackground(new BitmapDrawable(r3,refresh));
+		
+		home=BitmapFactory.decodeResource(getResources(), R.drawable.home);
+		home=Bitmap.createScaledBitmap(home, dim, dim, true);
+		Resources r4=getResources();
+		Home.setBackground(new BitmapDrawable(r4,home));
+		
+		
 	}
 
 
@@ -238,6 +283,8 @@ import android.webkit.WebChromeClient;
 			break;
 		case R.id.bBack:
 			// go back a web page 
+    	    Toast.makeText(getApplicationContext(), ""+Back.getHeight(),Toast.LENGTH_LONG).show();
+
 			if(contentView.canGoBack())// check if we can go back 
 			{
 				contentView.goBack();
