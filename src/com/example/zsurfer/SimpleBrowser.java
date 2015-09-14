@@ -15,11 +15,14 @@ import android.graphics.drawable.BitmapDrawable;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.EditorInfo;
 import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 import android.webkit.WebChromeClient;
 
@@ -143,7 +146,18 @@ import android.webkit.WebChromeClient;
         addBookmark.setOnClickListener(this);
         vHistory.setOnClickListener(this);
         vBookMark.setOnClickListener(this);
-        
+        url.setOnEditorActionListener(new OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) 
+                {
+                    //searchGoogle();
+                    handled = true;
+                }
+                return handled;
+            }
+        });
         
         
         currentUrl=contentView.getUrl();

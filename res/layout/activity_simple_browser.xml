@@ -91,6 +91,15 @@
         android:layout_weight="10" >
         
         
+         <!--   Dummy item to prevent Edit Text  from receiving focus -->
+        <LinearLayout
+    
+    		android:focusable="true" 
+    		android:focusableInTouchMode="true"
+    		android:layout_width="0px" 
+    		android:layout_height="0px"
+    	/>
+        
     	<EditText
         	android:id="@+id/editText1"
         	android:layout_width="wrap_content"
@@ -99,9 +108,14 @@
         	android:layout_weight="95"
         	android:hint="Enter URL"
         	android:singleLine="true"
-        	android:selectAllOnFocus="true" >
-
-        	<requestFocus />
+        	android:selectAllOnFocus="true"
+        	android:nextFocusUp="@id/editText1" 
+        	android:nextFocusLeft="@id/editText1"
+        	android:inputType="textUri"
+        	android:imeOptions="actionSearch"
+        	 >
+			<!-- Removed <requestFocus /> -->
+        	
    		 </EditText>
 
     	
