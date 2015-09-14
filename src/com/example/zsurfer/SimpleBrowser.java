@@ -14,14 +14,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.webkit.WebChromeClient;
 
@@ -33,8 +31,6 @@ import android.webkit.WebChromeClient;
 	Button Go,Back,Forward,Refresh,Home,addBookmark,vHistory,vBookMark;
 	HistoryHandler hHandler;
 	BookmarkHandler bHandler;
-	int dim;
-	LinearLayout mainLayout;
 	Bitmap back,forward,refresh,home;
 
     @Override
@@ -54,7 +50,9 @@ import android.webkit.WebChromeClient;
         contentView.getSettings().setJavaScriptEnabled(true);//enables javascript in our browser
         contentView.getSettings().setLoadWithOverviewMode(true);//web page completely zoomed down
         contentView.getSettings().setUseWideViewPort(true);//
-        contentView.setWebViewClient(new ourViewClient());//overrides a method so that a link in any web page does not load up in default browser
+        
+        //overrides a method so that a link in any web page does not load up in default browser
+        contentView.setWebViewClient(new ourViewClient());
         contentView.setWebViewClient(new WebViewClient()
         {
 
@@ -79,8 +77,9 @@ import android.webkit.WebChromeClient;
         	
         });
         
+      //enable downloading files through web view in my browser
         contentView.setDownloadListener(new DownloadListener()
-        {//enable downloading files through web view in my browser
+        {
         	public void onDownloadStart(String url, String userAgent,String contentDisposition, String mimetype,long contentLength)
         	{
         		Intent i = new Intent(Intent.ACTION_VIEW);
@@ -132,16 +131,7 @@ import android.webkit.WebChromeClient;
         
         initialise();//initialize all other variable after completing the settings for WebView
         
-        mainLayout=(LinearLayout)findViewById(R.id.mainLayout);
-        ViewTreeObserver vto = mainLayout.getViewTreeObserver();
-        /*vto.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {  
-            @Override  
-            public void onGlobalLayout() {  
-                this.mainLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);  
-                dim=Back.getHeight();
-
-            }  
-        });*/
+        
         
         //url.setOnClickListener(this);
         
@@ -191,8 +181,15 @@ import android.webkit.WebChromeClient;
     {
 		// TODO Auto-generated method stub
 		super.onWindowFocusChanged(hasFocus);
-		dim=Back.getHeight();
-		int dim2=Back.getWidth();
+		// will add the background to our buttons here  
+		
+		int dim=Back.getHeight(); // store height of each button 
+		int dim2=Back.getWidth(); // store width of each button 
+		
+		/* create a bitmap and then 
+		 * scale the bitmap according to 
+		 * our height and width 
+		 */
 		
 		back=BitmapFactory.decodeResource(getResources(), R.drawable.back);
 		back=Bitmap.createScaledBitmap(back, dim2, dim, true);
