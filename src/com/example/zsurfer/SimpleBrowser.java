@@ -152,11 +152,25 @@ import android.webkit.WebChromeClient;
                 boolean handled = false;
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) 
                 {
-                    //searchGoogle();
+                    searchGoogle();
                     handled = true;
                 }
                 return handled;
             }
+
+			private void searchGoogle() 
+			{
+				// TODO Auto-generated method stub
+				String address=url.getText().toString();// get text to be searched from edit text
+				try
+				{
+					contentView.loadUrl("https://www.google.com/search?q="+address);
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
         });
         
         
@@ -295,14 +309,29 @@ import android.webkit.WebChromeClient;
 		{
 		case R.id.bGO:
 			String address=url.getText().toString();
-			//load the web page as given
-			try
+			if(address.startsWith("http"))
 			{
-				contentView.loadUrl(address);
+				//load the web page as given
+				try
+				{
+					contentView.loadUrl(address);
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
-			catch(Exception e)
+			else
 			{
-				e.printStackTrace();
+				// treat the string as a text to be searched 
+				try
+				{
+					contentView.loadUrl("https://www.google.com/search?q="+address);
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 			break;
 		case R.id.bBack:
