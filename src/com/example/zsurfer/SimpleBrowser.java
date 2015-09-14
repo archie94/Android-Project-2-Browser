@@ -186,7 +186,41 @@ import android.webkit.WebChromeClient;
     
     
     
-    private boolean isNetworkAvailable() 
+    @Override
+	public void onWindowFocusChanged(boolean hasFocus) 
+    {
+		// TODO Auto-generated method stub
+		super.onWindowFocusChanged(hasFocus);
+		dim=Back.getHeight();
+		int dim2=Back.getWidth();
+		
+		back=BitmapFactory.decodeResource(getResources(), R.drawable.back);
+		back=Bitmap.createScaledBitmap(back, dim2, dim, true);
+		Resources r1=getResources();
+		Back.setBackground(new BitmapDrawable(r1,back));
+		
+		forward=BitmapFactory.decodeResource(getResources(), R.drawable.forward);
+		forward=Bitmap.createScaledBitmap(forward, dim2, dim, true);
+		Resources r2=getResources();
+		Forward.setBackground(new BitmapDrawable(r2,forward));
+		
+		refresh=BitmapFactory.decodeResource(getResources(), R.drawable.refresh);
+		refresh=Bitmap.createScaledBitmap(refresh, dim2, dim, true);
+		Resources r3=getResources();
+		Refresh.setBackground(new BitmapDrawable(r3,refresh));
+		
+		home=BitmapFactory.decodeResource(getResources(), R.drawable.home);
+		home=Bitmap.createScaledBitmap(home, dim2, dim, true);
+		Resources r4=getResources();
+		Home.setBackground(new BitmapDrawable(r4,home));
+		
+		
+	}
+
+
+
+
+	private boolean isNetworkAvailable() 
     {
 		// TODO Auto-generated method stub
     	//method to check if there is Internet connection 
@@ -216,27 +250,6 @@ import android.webkit.WebChromeClient;
 		vHistory=(Button)findViewById(R.id.bHistory);
 		vBookMark=(Button)findViewById(R.id.bShowBkMrk);
 		bHandler=new BookmarkHandler(this,null,null,1);
-		
-		dim=67;
-		back=BitmapFactory.decodeResource(getResources(), R.drawable.back);
-		back=Bitmap.createScaledBitmap(back, dim, dim, true);
-		Resources r1=getResources();
-		Back.setBackground(new BitmapDrawable(r1,back));
-		
-		forward=BitmapFactory.decodeResource(getResources(), R.drawable.forward);
-		forward=Bitmap.createScaledBitmap(forward, dim, dim, true);
-		Resources r2=getResources();
-		Forward.setBackground(new BitmapDrawable(r2,forward));
-		
-		refresh=BitmapFactory.decodeResource(getResources(), R.drawable.refresh);
-		refresh=Bitmap.createScaledBitmap(refresh, dim, dim, true);
-		Resources r3=getResources();
-		Refresh.setBackground(new BitmapDrawable(r3,refresh));
-		
-		home=BitmapFactory.decodeResource(getResources(), R.drawable.home);
-		home=Bitmap.createScaledBitmap(home, dim, dim, true);
-		Resources r4=getResources();
-		Home.setBackground(new BitmapDrawable(r4,home));
 		
 		
 	}
@@ -283,8 +296,6 @@ import android.webkit.WebChromeClient;
 			break;
 		case R.id.bBack:
 			// go back a web page 
-    	    Toast.makeText(getApplicationContext(), ""+Back.getHeight(),Toast.LENGTH_LONG).show();
-
 			if(contentView.canGoBack())// check if we can go back 
 			{
 				contentView.goBack();
