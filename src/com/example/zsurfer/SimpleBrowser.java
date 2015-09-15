@@ -64,10 +64,21 @@ import android.webkit.WebChromeClient;
 			{
 				// TODO Auto-generated method stub
 				super.onPageFinished(view, url);
-				// add to history when page has finished loading 
-				History h=new History(contentView.getUrl());
-        		hHandler.addHistory(h);
-        	    Toast.makeText(getApplicationContext(), "added ",Toast.LENGTH_LONG).show();
+				boolean willSave=true;
+				// add to history when page has finished loading
+				addToHistory(willSave);
+				
+			}
+
+			private void addToHistory(boolean willSave) 
+			{
+				// TODO Auto-generated method stub
+				if(willSave==true)
+				{
+					History h=new History(contentView.getUrl());
+					hHandler.addHistory(h);
+					Toast.makeText(getApplicationContext(), "added ",Toast.LENGTH_LONG).show();
+				}
 			}
 
 			@Override
@@ -76,6 +87,8 @@ import android.webkit.WebChromeClient;
 				// TODO Auto-generated method stub
 				super.onReceivedError(view, errorCode, description, failingUrl);
 				Toast.makeText(getApplicationContext(), "Failed to load page",Toast.LENGTH_LONG).show();
+				boolean willSave=false;
+				addToHistory(willSave);
 			}
         	
         });
@@ -146,7 +159,8 @@ import android.webkit.WebChromeClient;
         addBookmark.setOnClickListener(this);
         vHistory.setOnClickListener(this);
         vBookMark.setOnClickListener(this);
-        url.setOnEditorActionListener(new OnEditorActionListener() {
+        url.setOnEditorActionListener(new OnEditorActionListener() 
+        {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 boolean handled = false;
@@ -321,6 +335,29 @@ import android.webkit.WebChromeClient;
 					e.printStackTrace();
 				}
 			}
+			else if(address.startsWith("www."))
+			{
+				try
+				{
+					contentView.loadUrl("https://"+address);
+				}
+				catch(Exception e)
+				{
+					//e.printStackTrace();
+				}
+				finally
+				{
+					// if we cannot load page then try searching 
+					try
+					{
+						contentView.loadUrl("https://www.google.com/search?q="+address);
+					}
+					catch(Exception e2)
+					{
+						e2.printStackTrace();
+					}
+				}
+			}
 			else
 			{
 				// treat the string as a text to be searched 
@@ -350,7 +387,7 @@ import android.webkit.WebChromeClient;
 			//our home page is google 
 			try
 			{
-				contentView.loadUrl("http://www.google.com");
+				contentView.loadUrl("https://www.google.com");
 			}
 			catch(Exception e)
 			{
