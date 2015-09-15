@@ -121,7 +121,7 @@ import android.webkit.WebChromeClient;
         	// will get the address from bundle 
         	try
         	{
-        		contentView.loadUrl(bundle.getString("msg"));
+        		contentView.loadUrl(bundle.getString("link"));
         		currentUrl=contentView.getUrl();
         	}
         	catch(Exception e)
@@ -211,8 +211,8 @@ import android.webkit.WebChromeClient;
 		super.onWindowFocusChanged(hasFocus);
 		// will add the background to our buttons here  
 		
-		int dim=Back.getHeight(); // store height of each button 
-		int dim2=Back.getWidth(); // store width of each button 
+		int height=Back.getHeight(); // store height of each button 
+		int width=Back.getWidth(); // store width of each button 
 		
 		/* create a bitmap and then 
 		 * scale the bitmap according to 
@@ -220,22 +220,22 @@ import android.webkit.WebChromeClient;
 		 */
 		
 		back=BitmapFactory.decodeResource(getResources(), R.drawable.back);
-		back=Bitmap.createScaledBitmap(back, dim2, dim, true);
+		back=Bitmap.createScaledBitmap(back, width, height, true);
 		Resources r1=getResources();
 		Back.setBackground(new BitmapDrawable(r1,back));
 		
 		forward=BitmapFactory.decodeResource(getResources(), R.drawable.forward);
-		forward=Bitmap.createScaledBitmap(forward, dim2, dim, true);
+		forward=Bitmap.createScaledBitmap(forward, width, height, true);
 		Resources r2=getResources();
 		Forward.setBackground(new BitmapDrawable(r2,forward));
 		
 		refresh=BitmapFactory.decodeResource(getResources(), R.drawable.refresh);
-		refresh=Bitmap.createScaledBitmap(refresh, dim2, dim, true);
+		refresh=Bitmap.createScaledBitmap(refresh, width, height, true);
 		Resources r3=getResources();
 		Refresh.setBackground(new BitmapDrawable(r3,refresh));
 		
 		home=BitmapFactory.decodeResource(getResources(), R.drawable.home);
-		home=Bitmap.createScaledBitmap(home, dim2, dim, true);
+		home=Bitmap.createScaledBitmap(home, width, height, true);
 		Resources r4=getResources();
 		Home.setBackground(new BitmapDrawable(r4,home));
 		

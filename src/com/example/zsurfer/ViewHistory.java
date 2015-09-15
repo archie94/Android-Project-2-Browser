@@ -59,7 +59,7 @@ public class ViewHistory extends Activity
 				// TODO Auto-generated method stub
 				String msg=histories[position];
 				Intent intent=new Intent(ViewHistory.this,SimpleBrowser.class);
-				intent.putExtra("msg", msg);
+				intent.putExtra("link", msg);
 				startActivity(intent);
 			}
 			

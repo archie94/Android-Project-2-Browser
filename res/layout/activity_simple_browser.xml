@@ -106,7 +106,7 @@
         	android:layout_height="wrap_content"
         	android:ems="10"
         	android:layout_weight="95"
-        	android:hint="Enter URL"
+        	android:hint="Search / Url"
         	android:singleLine="true"
         	android:selectAllOnFocus="true"
         	android:nextFocusUp="@id/editText1" 

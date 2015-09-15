@@ -59,7 +59,7 @@ public class ViewBookmarks extends Activity
 				// TODO Auto-generated method stub
 				String msg=bookmarks[position];
 				Intent intent=new Intent(ViewBookmarks.this,SimpleBrowser.class);
-				intent.putExtra("msg", msg);
+				intent.putExtra("link", msg);
 				startActivity(intent);
 			}
 			
