@@ -58,19 +58,19 @@ import android.webkit.WebChromeClient;
         contentView.setWebViewClient(new ourViewClient());
         contentView.setWebViewClient(new WebViewClient()
         {
+        	boolean willSave=true; 
 
 			@Override
 			public void onPageFinished(WebView view, String url) 
 			{
 				// TODO Auto-generated method stub
 				super.onPageFinished(view, url);
-				boolean willSave=true;
-				// add to history when page has finished loading
-				addToHistory(willSave);
+				// add to history when page has finished loading and page has loaded successfully 
+				addToHistory();
 				
 			}
 
-			private void addToHistory(boolean willSave) 
+			private void addToHistory() 
 			{
 				// TODO Auto-generated method stub
 				if(willSave==true)
@@ -87,8 +87,8 @@ import android.webkit.WebChromeClient;
 				// TODO Auto-generated method stub
 				super.onReceivedError(view, errorCode, description, failingUrl);
 				Toast.makeText(getApplicationContext(), "Failed to load page",Toast.LENGTH_LONG).show();
-				boolean willSave=false;
-				addToHistory(willSave);
+				willSave=false;
+				addToHistory();
 			}
         	
         });
@@ -147,9 +147,6 @@ import android.webkit.WebChromeClient;
         
         initialise();//initialize all other variable after completing the settings for WebView
         
-        
-        
-        //url.setOnClickListener(this);
         
         Go.setOnClickListener(this);
         Back.setOnClickListener(this);
@@ -421,8 +418,5 @@ import android.webkit.WebChromeClient;
 		
 		}
 	}// end of onClick()
-
-
-    
-    
+	
 }

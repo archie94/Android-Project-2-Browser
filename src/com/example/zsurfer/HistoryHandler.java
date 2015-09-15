@@ -60,6 +60,11 @@ public class HistoryHandler extends SQLiteOpenHelper
 		db.execSQL("DELETE FROM "+TABLE+" WHERE "+COLUMN_PG+"=\""+s+"\";");
 		
 	}
+	public void deleteLatestHistory()
+	{
+		SQLiteDatabase db=getWritableDatabase();
+		db.execSQL("DELETE FROM "+TABLE+" WHERE "+COLUMN_ID+"=(SELECT MAX("+COLUMN_ID+") FROM "+TABLE+" )");
+	}
 	public String databaseToString()
 	{
 		SQLiteDatabase db=getWritableDatabase();
