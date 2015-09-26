@@ -54,6 +54,7 @@ public final class R {
         public static final int dialog_bkmk=0x7f030002;
         public static final int history=0x7f030003;
         public static final int homepage=0x7f030004;
+        public static final int homepage_grid=0x7f030005;
     }
     public static final class menu {
         public static final int simple_browser=0x7f070000;
