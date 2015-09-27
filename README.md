@@ -4,3 +4,9 @@ Attempt to create a simple browser.
 - download files from download link
 - save bookmarks 
 - view history  
+
+
+TODO
+- Download Manager
+- Browser Feed 
+- Homepage 
