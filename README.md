@@ -10,3 +10,4 @@ TODO
 - Download Manager
 - Browser Feed 
 - Homepage 
+- Sliding drawer
