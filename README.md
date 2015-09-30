@@ -11,3 +11,5 @@ TODO
 - Browser Feed 
 - Homepage 
 - Sliding drawer
+- Add Icon
+- 
