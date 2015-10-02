@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,11 +37,11 @@ public class Homepage extends Activity
 class WebPages
 {
 	String wbpg;
-	int wbpgnm;
-	WebPages(String wbpg,int wbpgnm)
+	Bitmap wbpgnm;
+	WebPages(String wbpg,Bitmap bitimg)
 	{
 		this.wbpg=wbpg;
-		this.wbpgnm=wbpgnm;
+		this.wbpgnm=bitimg;
 	}
 }
 
@@ -48,6 +51,7 @@ class HomeAdapter extends BaseAdapter
 
 	ArrayList<WebPages> list;
 	Context context;
+	Bitmap bitimg[];
 	HomeAdapter(Context context)
 	{
 		this.context=context;
@@ -55,10 +59,15 @@ class HomeAdapter extends BaseAdapter
 		list=new ArrayList<WebPages>();
 		String pages[]={"Gmail","Google","Facebook","Twitter","Youtube","Quora","Flipkart","AmazonIndia","Wikipedia","Yahoo"};
 		int pageNames[]={R.drawable.gmail,R.drawable.google,R.drawable.facebook,R.drawable.twitter,R.drawable.youtube,R.drawable.quora,R.drawable.flipkart,R.drawable.amazon,R.drawable.wikipedia,R.drawable.yahoo};
-		
+		bitimg=new Bitmap[pages.length];
+		for(int i=0;i<bitimg.length;i++)
+		{
+			bitimg[i]=BitmapFactory.decodeResource(context.getResources(),pageNames[i]);
+			bitimg[i]=Bitmap.createScaledBitmap(bitimg[i], 80, 80, true);
+		}
 		for(int i=0;i<pages.length;i++)
 		{
-			WebPages temp=new WebPages(pages[i],pageNames[i]); // create a new web page instance with image and name 
+			WebPages temp=new WebPages(pages[i],bitimg[i]); // create a new web page instance with image and name 
 			list.add(temp);// add a web page to the list 
 		}
 	}
@@ -98,6 +107,7 @@ class HomeAdapter extends BaseAdapter
 	}
 	
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public View getView(int i, View view, ViewGroup viewGroup) 
 	{
@@ -119,8 +129,8 @@ class HomeAdapter extends BaseAdapter
 			holder=(ViewHolder)row.getTag();// when we are recycling we are not calling the constructor to save resources 
 		}
 		WebPages temp = list.get(i);
-		holder.webPageImage.setImageResource(temp.wbpgnm);
-		holder.webPageName.setText(temp.wbpgnm);
+		holder.webPageImage.setBackgroundDrawable(new BitmapDrawable(temp.wbpgnm));
+		holder.webPageName.setText(temp.wbpg);
 		return row;
 	}
 	

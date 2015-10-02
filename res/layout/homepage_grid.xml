@@ -19,6 +19,6 @@
         android:layout_above="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="36dp"
-        android:src="@drawable/amazon" />
+         />
 
 </RelativeLayout>
