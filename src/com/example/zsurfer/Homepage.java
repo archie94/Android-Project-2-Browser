@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class Homepage extends Activity
 {
@@ -36,11 +35,9 @@ public class Homepage extends Activity
 
 class WebPages
 {
-	String wbpg;
 	Bitmap wbpgnm;
-	WebPages(String wbpg,Bitmap bitimg)
+	WebPages(Bitmap bitimg)
 	{
-		this.wbpg=wbpg;
 		this.wbpgnm=bitimg;
 	}
 }
@@ -57,17 +54,17 @@ class HomeAdapter extends BaseAdapter
 		this.context=context;
 		// now we create a list that will store web pages 
 		list=new ArrayList<WebPages>();
-		String pages[]={"Gmail","Google","Facebook","Twitter","Youtube","Quora","Flipkart","AmazonIndia","Wikipedia","Yahoo"};
+		//String pages[]={"Gmail","Google","Facebook","Twitter","Youtube","Quora","Flipkart","AmazonIndia","Wikipedia","Yahoo"};
 		int pageNames[]={R.drawable.gmail,R.drawable.google,R.drawable.facebook,R.drawable.twitter,R.drawable.youtube,R.drawable.quora,R.drawable.flipkart,R.drawable.amazon,R.drawable.wikipedia,R.drawable.yahoo};
-		bitimg=new Bitmap[pages.length];
+		bitimg=new Bitmap[pageNames.length];
 		for(int i=0;i<bitimg.length;i++)
 		{
 			bitimg[i]=BitmapFactory.decodeResource(context.getResources(),pageNames[i]);
-			bitimg[i]=Bitmap.createScaledBitmap(bitimg[i], 80, 80, true);
+			bitimg[i]=Bitmap.createScaledBitmap(bitimg[i], 240, 240, true);
 		}
-		for(int i=0;i<pages.length;i++)
+		for(int i=0;i<pageNames.length;i++)
 		{
-			WebPages temp=new WebPages(pages[i],bitimg[i]); // create a new web page instance with image and name 
+			WebPages temp=new WebPages(bitimg[i]); // create a new web page instance with image and name 
 			list.add(temp);// add a web page to the list 
 		}
 	}
@@ -98,11 +95,9 @@ class HomeAdapter extends BaseAdapter
 	{
 		
 		ImageView webPageImage;
-		TextView webPageName;
 		ViewHolder(View v)
 		{
 			webPageImage=(ImageView)v.findViewById(R.id.grid_imageView);
-			webPageName= (TextView)v.findViewById(R.id.grid_textView);
 		}
 	}
 	
@@ -130,7 +125,6 @@ class HomeAdapter extends BaseAdapter
 		}
 		WebPages temp = list.get(i);
 		holder.webPageImage.setBackgroundDrawable(new BitmapDrawable(temp.wbpgnm));
-		holder.webPageName.setText(temp.wbpg);
 		return row;
 	}
 	
