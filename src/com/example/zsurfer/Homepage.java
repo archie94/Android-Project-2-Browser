@@ -7,6 +7,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +18,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
-public class Homepage extends Activity implements View.OnClickListener
+public class Homepage extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener
 {
 	EditText url;
 	Button go;
@@ -34,6 +38,11 @@ public class Homepage extends Activity implements View.OnClickListener
 		
 		url=(EditText)findViewById(R.id.home_editText1);
 		go=(Button)findViewById(R.id.home_bGO);
+		
+		if(isNetworkAvailable()==false)//check if network is available 
+        {
+        	Toast.makeText(getApplicationContext(), "No Internet Connection",Toast.LENGTH_LONG).show();
+        }
 		
 		url.setOnClickListener(this);
 		go.setOnClickListener(this);
@@ -63,6 +72,22 @@ public class Homepage extends Activity implements View.OnClickListener
 			}
 			break;
 		}
+	}
+	@Override
+	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	private boolean isNetworkAvailable() 
+    {
+		// TODO Auto-generated method stub
+    	//method to check if there is Internet connection 
+    	ConnectivityManager cm=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+    	NetworkInfo isActive=cm.getActiveNetworkInfo();
+		return (isActive!=null && isActive.isConnected());
 	}
 
 	
