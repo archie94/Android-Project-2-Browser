@@ -10,4 +10,10 @@ TODO
 - Download Manager
 - Browser Feed 
 - Homepage 
+<<<<<<< HEAD
 - Sliding Drawer
+=======
+- Sliding drawer
+- Add Icon
+- 
+>>>>>>> origin/master
