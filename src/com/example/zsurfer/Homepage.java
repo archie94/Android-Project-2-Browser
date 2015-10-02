@@ -12,12 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-public class Homepage extends Activity
+public class Homepage extends Activity implements View.OnClickListener
 {
-
+	EditText url;
+	Button go;
+	String str="";
 	GridView grid;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -28,6 +32,37 @@ public class Homepage extends Activity
 		grid=(GridView)findViewById(R.id.gridView_homepage);
 		grid.setAdapter(new HomeAdapter(this));
 		
+		url=(EditText)findViewById(R.id.home_editText1);
+		go=(Button)findViewById(R.id.home_bGO);
+		
+		url.setOnClickListener(this);
+		go.setOnClickListener(this);
+		
+	}
+	@Override
+	public void onClick(View arg) 
+	{
+		// TODO Auto-generated method stub
+		switch(arg.getId())
+		{
+		case R.id.home_editText1:
+			break;
+		case R.id.home_bGO:
+			str=url.getText().toString();
+			if(str.startsWith("http"))
+			{
+				
+			}
+			else if(str.startsWith("www."))
+			{
+				str="https://"+str;
+			}
+			else
+			{
+				str="https://www.google.com/search?q="+str;
+			}
+			break;
+		}
 	}
 
 	
