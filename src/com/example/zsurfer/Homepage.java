@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Homepage extends Activity
 {
@@ -22,6 +24,7 @@ public class Homepage extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.homepage);
 		grid=(GridView)findViewById(R.id.gridView_homepage);
+		grid.setAdapter(new HomeAdapter(this));
 		
 	}
 
@@ -30,10 +33,12 @@ public class Homepage extends Activity
 
 class WebPages
 {
-	private String wbpg;
-	WebPages(String wbpg)
+	String wbpg;
+	int wbpgnm;
+	WebPages(String wbpg,int wbpgnm)
 	{
 		this.wbpg=wbpg;
+		this.wbpgnm=wbpgnm;
 	}
 }
 
@@ -46,19 +51,22 @@ class HomeAdapter extends BaseAdapter
 	HomeAdapter(Context context)
 	{
 		this.context=context;
+		// now we create a list that will store web pages 
 		list=new ArrayList<WebPages>();
 		String pages[]={"Gmail","Google","Facebook","Twitter","Youtube","Quora","Flipkart","AmazonIndia","Wikipedia","Yahoo"};
+		int pageNames[]={R.drawable.gmail,R.drawable.google,R.drawable.facebook,R.drawable.twitter,R.drawable.youtube,R.drawable.quora,R.drawable.flipkart,R.drawable.amazon,R.drawable.wikipedia,R.drawable.yahoo};
+		
 		for(int i=0;i<pages.length;i++)
 		{
-			WebPages temp=new WebPages(pages[i]);
-			list.add(temp);
+			WebPages temp=new WebPages(pages[i],pageNames[i]); // create a new web page instance with image and name 
+			list.add(temp);// add a web page to the list 
 		}
 	}
 	@Override
 	public int getCount() 
 	{
 		// TODO Auto-generated method stub
-		return list.size();
+		return list.size(); // this returns the number of web pages available 
 	}
 
 	@Override
@@ -76,24 +84,44 @@ class HomeAdapter extends BaseAdapter
 	}
 
 	// use a view holder class here for images 
+	
+	class ViewHolder 
+	{
+		
+		ImageView webPageImage;
+		TextView webPageName;
+		ViewHolder(View v)
+		{
+			webPageImage=(ImageView)v.findViewById(R.id.grid_imageView);
+			webPageName= (TextView)v.findViewById(R.id.grid_textView);
+		}
+	}
+	
+	
 	@Override
 	public View getView(int i, View view, ViewGroup viewGroup) 
 	{
 		// TODO Auto-generated method stub
+		// this method will be called every time an item is needed to be created 
+		
 		View row=view;
+		ViewHolder holder;
 		if(row==null)//creating stuff for the first time 
 		{
 			// using layout inflater is a costly operation so we use it only for the first time 
 			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			row=inflater.inflate(R.layout.homepage_grid, viewGroup,false);
-			
+			holder = new ViewHolder(row);
+			row.setTag(holder);
 		}
 		else	//recycling stuff
 		{
-			
+			holder=(ViewHolder)row.getTag();// when we are recycling we are not calling the constructor to save resources 
 		}
-		
-		return null;
+		WebPages temp = list.get(i);
+		holder.webPageImage.setImageResource(temp.wbpgnm);
+		holder.webPageName.setText(temp.wbpgnm);
+		return row;
 	}
 	
 }
