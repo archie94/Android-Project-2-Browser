@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="5dp"
+    android:weightSum="100"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <GridView
         android:id="@+id/gridView_homepage"
+        android:layout_weight="90"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="auto_fit"
@@ -14,6 +17,56 @@
         android:verticalSpacing="5dp"
         android:stretchMode="spacingWidthUniform"
          />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:layout_weight="10" >
+        
+        
+         <!--   Dummy item to prevent Edit Text  from receiving focus -->
+        <LinearLayout
+    
+    		android:focusable="true" 
+    		android:focusableInTouchMode="true"
+    		android:layout_width="0px" 
+    		android:layout_height="0px"
+    	/>
+        
+    	<EditText
+        	android:id="@+id/home_editText1"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:ems="10"
+        	android:layout_weight="95"
+        	android:hint="Search / Url"
+        	android:singleLine="true"
+        	android:selectAllOnFocus="true"
+        	android:nextFocusUp="@id/editText1" 
+        	android:nextFocusLeft="@id/editText1"
+        	android:inputType="textUri"
+        	android:imeOptions="actionSearch"
+        	 >
+			<!-- Removed <requestFocus /> -->
+        	
+   		 </EditText>
+
+    	
+    	<Button
+    	    android:id="@+id/home_bGO"
+    	    style="?android:attr/buttonStyleSmall"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:text="Go"
+    	    android:layout_weight="5" 
+    	    />
+    	
+    	
+    	
+
+    </LinearLayout>
 
 
 </LinearLayout>
