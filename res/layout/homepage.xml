@@ -6,6 +6,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:layout_weight="5" >
+
+        <Button
+            android:id="@+id/home_bHistory"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:layout_weight="50"
+            android:text="History" />
+
+        
+        <Button
+            android:id="@+id/home_bShowBkMrk"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bookmarks"
+            android:layout_weight="50" />
+    
+        
+     </LinearLayout>
+    
+    
+    
     <GridView
         android:id="@+id/gridView_homepage"
         android:layout_weight="90"
@@ -23,7 +53,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="100"
-        android:layout_weight="10" >
+        android:layout_weight="5" >
         
         
          <!--   Dummy item to prevent Edit Text  from receiving focus -->
