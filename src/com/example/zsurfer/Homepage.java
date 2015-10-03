@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -46,6 +47,7 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 		
 		url.setOnClickListener(this);
 		go.setOnClickListener(this);
+		grid.setOnItemClickListener(this);
 		
 	}
 	@Override
@@ -77,7 +79,16 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) 
 	{
 		// TODO Auto-generated method stub
-		
+		String links[]={"https://accounts.google.com",
+				"https://www.google.com","https://www.facebook.com",
+				"https://www.twitter.com","https://www.youtube.com",
+				"https://www.quora.com","https://www.flipkart.com",
+				"https://www.amazon.in","https://www.wikipedia.com",
+				"https://www.yahoo.com"
+		};
+		Intent intent =new Intent(Homepage.this,SimpleBrowser.class);
+		intent.putExtra("link", links[i]);
+		startActivity(intent);
 	}
 	
 	
