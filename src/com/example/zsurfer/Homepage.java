@@ -74,6 +74,12 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 			}
 			break;
 		}
+		if(str!="")
+		{
+			Intent i = new Intent (Homepage.this,SimpleBrowser.class);
+			i.putExtra("link", str);
+			startActivity(i);
+		}
 	}
 	@Override
 	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) 
