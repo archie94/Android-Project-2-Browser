@@ -12,3 +12,4 @@ TODO
 - Homepage 
 - Sliding Drawer
 - Add Icon
+- Optimise activities 
