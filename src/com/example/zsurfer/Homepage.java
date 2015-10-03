@@ -25,7 +25,7 @@ import android.widget.Toast;
 public class Homepage extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener
 {
 	EditText url;
-	Button go;
+	Button go,vHistory,vBookmarks;
 	String str="";
 	GridView grid;
 	@Override
@@ -39,6 +39,8 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 		
 		url=(EditText)findViewById(R.id.home_editText1);
 		go=(Button)findViewById(R.id.home_bGO);
+		vHistory=(Button)findViewById(R.id.home_bHistory);
+		vBookmarks=(Button)findViewById(R.id.home_bShowBkMrk);
 		
 		if(isNetworkAvailable()==false)//check if network is available 
         {
@@ -47,6 +49,8 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 		
 		url.setOnClickListener(this);
 		go.setOnClickListener(this);
+		vHistory.setOnClickListener(this);
+		vBookmarks.setOnClickListener(this);
 		grid.setOnItemClickListener(this);
 		
 	}
@@ -72,13 +76,22 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 			{
 				str="https://www.google.com/search?q="+str;
 			}
+			if(str!="")
+			{
+				Intent i = new Intent (Homepage.this,SimpleBrowser.class);
+				i.putExtra("link", str);
+				startActivity(i);
+			}
 			break;
-		}
-		if(str!="")
-		{
-			Intent i = new Intent (Homepage.this,SimpleBrowser.class);
-			i.putExtra("link", str);
+		case R.id.home_bHistory:
+			Intent i=new Intent("com.example.zsurfer.VIEWHISTORY");
 			startActivity(i);
+			break;
+		case R.id.home_bShowBkMrk:
+			Intent i2=new Intent("com.example.zsurfer.VIEWBOOKMARKS");
+			startActivity(i2);
+			break;
+			
 		}
 	}
 	@Override
