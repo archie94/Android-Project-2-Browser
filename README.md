@@ -13,3 +13,4 @@ TODO
 - Sliding Drawer
 - Add Icon
 - Optimise activities 
+- Customise list views for bookmarks and downloads 
