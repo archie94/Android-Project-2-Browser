@@ -418,5 +418,36 @@ import android.webkit.WebChromeClient;
 		
 		}
 	}// end of onClick()
+
+
+
+
+	@Override
+	protected void onPause() 
+	{
+		// TODO Auto-generated method stub
+		super.onPause();
+		/*  pause the web view when the activity goes 
+		 * in the background 
+		 */
+		contentView.onPause();
+	}
+
+
+
+
+	@Override
+	protected void onResume() 
+	{
+		// TODO Auto-generated method stub
+		super.onResume();
+		/* resume the web view again 
+		 * when it comes in foreground 
+		 */
+		contentView.onResume();
+	}
+	
+	
+	
 	
 }
