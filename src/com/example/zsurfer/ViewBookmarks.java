@@ -71,7 +71,7 @@ public class ViewBookmarks extends Activity
 	{
 		// TODO Auto-generated method stub
 		super.onPause();
-		finish();
+		finish();// stop this activity when it goes to background
 	}
 	
 

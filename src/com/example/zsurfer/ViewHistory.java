@@ -65,6 +65,15 @@ public class ViewHistory extends Activity
 			
 		});
 	}
+
+	@Override
+	protected void onPause() 
+	{
+		// TODO Auto-generated method stub
+		super.onPause();
+		finish();// stop this activity when it goes to background 
+	}
+	
 	
 
 }
