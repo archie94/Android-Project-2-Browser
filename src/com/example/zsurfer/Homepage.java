@@ -64,20 +64,21 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 			break;
 		case R.id.home_bGO:
 			str=url.getText().toString();
-			if(str.startsWith("http"))
+			if(str.length()>0)
 			{
+				if(str.startsWith("http"))
+				{
 				
-			}
-			else if(str.startsWith("www."))
-			{
-				str="https://"+str;
-			}
-			else
-			{
-				str="https://www.google.com/search?q="+str;
-			}
-			if(str!="")
-			{
+				}
+				else if(str.startsWith("www."))
+				{
+					str="https://"+str;
+				}
+				else
+				{
+					str="https://www.google.com/search?q="+str;
+				}
+			
 				Intent i = new Intent (Homepage.this,SimpleBrowser.class);
 				i.putExtra("link", str);
 				startActivity(i);
