@@ -1,9 +1,22 @@
 package com.example.zsurfer;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +30,7 @@ public class BrowserFeed extends Activity
 
 	ListView list ; 
 	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -28,7 +42,59 @@ public class BrowserFeed extends Activity
 		
 		
 	}
-	
+	public class FeedsAsyncTask extends AsyncTask<String,Void,Boolean>
+	{
+
+		@Override
+		protected Boolean doInBackground(String... params) 
+		{
+			// TODO Auto-generated method stub
+			// does thing in a background thread 
+			try
+			{
+				HttpClient client = new DefaultHttpClient();
+				HttpPost post = new HttpPost(params[0]);
+				HttpResponse response = client.execute(post);
+				
+				int status = response.getStatusLine().getStatusCode();
+				
+				if(status==200)
+				{
+					HttpEntity entity = response.getEntity();
+					String data = EntityUtils.toString(entity);
+					
+					JSONObject jObj = new JSONObject(data);
+					JSONArray jArray = jObj.getJSONArray(""); // pass name of object in here --- ???
+					for(int i=0;i<jArray.length();i++)
+					{
+						JSONObject jRealObj = jArray.getJSONObject(i);
+						String title = jRealObj.getString(""); // pass key here 
+					}
+				}
+			}
+			catch(ClientProtocolException e)
+			{
+				e.printStackTrace();
+			} 
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Boolean result) 
+		{
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+		}
+		
+		
+	}
 	
 
 }
