@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -27,6 +28,7 @@ public class BrowserFeed extends Activity
 		
 		
 	}
+	
 	
 
 }
@@ -57,6 +59,10 @@ class BrowserFeedAdapter extends ArrayAdapter<Feed>
 	class ViewHolder
 	{
 		TextView feedTitle;
+		public ViewHolder(View v)
+		{
+			feedTitle=(TextView)v.findViewById(R.id.bf_title);
+		}
 		
 	}
 
@@ -64,7 +70,20 @@ class BrowserFeedAdapter extends ArrayAdapter<Feed>
 	public View getView(int position, View convertView, ViewGroup parent) 
 	{
 		// TODO Auto-generated method stub
-		return super.getView(position, convertView, parent);
+		View row=convertView;
+		ViewHolder holder;
+		if(row==null)
+		{
+			LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			row=inflater.inflate(R.layout.browserfeed_row,parent,false );
+			holder = new ViewHolder(row);
+			row.setTag(holder);
+		}
+		else
+		{
+			holder=(ViewHolder)row.getTag();
+		}
+		return row;
 	}
 	
 	
