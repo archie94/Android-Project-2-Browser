@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class BrowserFeed extends Activity
 {
@@ -32,10 +33,10 @@ public class BrowserFeed extends Activity
 
 class Feed
 {
-	String title;
+	TextView title;
 	public Feed(String title)
 	{
-		this.title=title;
+		this.title.setText(title);
 	}
 }
 
@@ -49,6 +50,13 @@ class BrowserFeedAdapter extends ArrayAdapter<Feed>
 		super(context, resource, textViewResourceId, objects);
 		// TODO Auto-generated constructor stub
 		this.context=context;
+		
+	}
+	
+	
+	class ViewHolder
+	{
+		TextView feedTitle;
 		
 	}
 
