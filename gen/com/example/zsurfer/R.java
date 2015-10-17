@@ -41,7 +41,7 @@ public final class R {
     }
     public static final class id {
         public static final int WebView=0x7f080003;
-        public static final int action_settings=0x7f080015;
+        public static final int action_settings=0x7f080017;
         public static final int bBKMRK=0x7f08000a;
         public static final int bBack=0x7f080004;
         public static final int bForward=0x7f080005;
@@ -50,16 +50,18 @@ public final class R {
         public static final int bHome=0x7f080007;
         public static final int bRefresh=0x7f080006;
         public static final int bShowBkMrk=0x7f080002;
-        public static final int bkmk_dialog=0x7f08000d;
+        public static final int bf_body=0x7f08000e;
+        public static final int bf_title=0x7f08000d;
+        public static final int bkmk_dialog=0x7f08000f;
         public static final int editText1=0x7f080008;
-        public static final int gridView_homepage=0x7f080011;
-        public static final int grid_imageView=0x7f080014;
-        public static final int home_bGO=0x7f080013;
-        public static final int home_bHistory=0x7f08000f;
-        public static final int home_bShowBkMrk=0x7f080010;
-        public static final int home_editText1=0x7f080012;
+        public static final int gridView_homepage=0x7f080013;
+        public static final int grid_imageView=0x7f080016;
+        public static final int home_bGO=0x7f080015;
+        public static final int home_bHistory=0x7f080011;
+        public static final int home_bShowBkMrk=0x7f080012;
+        public static final int home_editText1=0x7f080014;
         public static final int listViewBookmarks=0x7f08000c;
-        public static final int listViewHistory=0x7f08000e;
+        public static final int listViewHistory=0x7f080010;
         public static final int mainLayout=0x7f080000;
         public static final int textView1=0x7f08000b;
     }
@@ -67,10 +69,11 @@ public final class R {
         public static final int activity_simple_browser=0x7f030000;
         public static final int bookmarks=0x7f030001;
         public static final int browserfeed=0x7f030002;
-        public static final int dialog_bkmk=0x7f030003;
-        public static final int history=0x7f030004;
-        public static final int homepage=0x7f030005;
-        public static final int homepage_grid=0x7f030006;
+        public static final int browserfeed_row=0x7f030003;
+        public static final int dialog_bkmk=0x7f030004;
+        public static final int history=0x7f030005;
+        public static final int homepage=0x7f030006;
+        public static final int homepage_grid=0x7f030007;
     }
     public static final class menu {
         public static final int simple_browser=0x7f070000;
