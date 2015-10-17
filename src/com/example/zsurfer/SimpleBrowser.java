@@ -381,10 +381,11 @@ import android.webkit.WebChromeClient;
 				contentView.goForward();
 			break;
 		case R.id.bHome:
-			//our home page is google 
+			// we load our home page 
 			try
 			{
-				contentView.loadUrl("https://www.google.com");
+				Intent i = new Intent(SimpleBrowser.this,Homepage.class);
+				startActivity(i);
 			}
 			catch(Exception e)
 			{
