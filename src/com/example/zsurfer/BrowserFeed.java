@@ -11,6 +11,8 @@ public class BrowserFeed extends Activity
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.browserfeed);
+		
 	}
 	
 

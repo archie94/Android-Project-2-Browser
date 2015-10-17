@@ -66,10 +66,11 @@ public final class R {
     public static final class layout {
         public static final int activity_simple_browser=0x7f030000;
         public static final int bookmarks=0x7f030001;
-        public static final int dialog_bkmk=0x7f030002;
-        public static final int history=0x7f030003;
-        public static final int homepage=0x7f030004;
-        public static final int homepage_grid=0x7f030005;
+        public static final int browserfeed=0x7f030002;
+        public static final int dialog_bkmk=0x7f030003;
+        public static final int history=0x7f030004;
+        public static final int homepage=0x7f030005;
+        public static final int homepage_grid=0x7f030006;
     }
     public static final class menu {
         public static final int simple_browser=0x7f070000;
