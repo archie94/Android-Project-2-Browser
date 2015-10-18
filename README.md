@@ -1,14 +1,14 @@
 # Android-Project-2-Browser
 Attempt to create a simple browser.
 
-Features available 
+###Features available 
 - browse pages
 - download files from download link
 - save and view bookmarks 
 - save and view history  
 
 
-TODO
+###TODO
 - Download Manager
 - Browser Feed 
 - Do reading from database in a separate thread 
