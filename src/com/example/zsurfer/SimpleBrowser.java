@@ -35,6 +35,7 @@ import android.webkit.WebChromeClient;
 	HistoryHandler hHandler;
 	BookmarkHandler bHandler;
 	Bitmap back,forward,refresh,home;
+	Boolean isNew=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -115,8 +116,112 @@ import android.webkit.WebChromeClient;
         }*/
         
         Bundle bundle=getIntent().getExtras();
+        
+        browserWork(bundle);
        
-        if(bundle==null)
+        /*if(bundle==null)
+        {
+        	//will load google search page as the default page 
+        	try
+        	{
+        		contentView.loadUrl("https://www.google.com");
+        		currentUrl=contentView.getUrl();
+        	}
+        	catch(Exception e)
+        	{
+        		e.printStackTrace();
+        	}
+        }
+        else
+        {
+        	// will get the address from bundle 
+        	try
+        	{
+        		contentView.loadUrl(bundle.getString("link"));
+        		currentUrl=contentView.getUrl();
+        	}
+        	catch(Exception e)
+        	{
+        		e.printStackTrace();
+        	}
+        }
+        
+        
+        
+        initialise();//initialize all other variable after completing the settings for WebView
+        
+        
+        Go.setOnClickListener(this);
+        Back.setOnClickListener(this);
+        Forward.setOnClickListener(this);
+        Refresh.setOnClickListener(this);
+        Home.setOnClickListener(this);
+        addBookmark.setOnClickListener(this);
+        vHistory.setOnClickListener(this);
+        vBookMark.setOnClickListener(this);
+        url.setOnEditorActionListener(new OnEditorActionListener() 
+        {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) 
+                {
+                    searchGoogle();
+                    handled = true;
+                }
+                return handled;
+            }
+
+			private void searchGoogle() 
+			{
+				// TODO Auto-generated method stub
+				String address=url.getText().toString();// get text to be searched from edit text
+				try
+				{
+					contentView.loadUrl("https://www.google.com/search?q="+address);
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
+        });
+        
+        
+        currentUrl=contentView.getUrl();
+        url.setText(currentUrl);
+        // set ChromeClient, and defines on ProgressChanged
+        // this updates the progress bar 
+        final Activity MyActivity = this;
+        contentView.setWebChromeClient(new WebChromeClient() 
+        {
+         public void onProgressChanged(WebView view, int progress)   
+         {
+          //Make the bar disappear after URL is loaded, and changes string to Loading...
+          MyActivity.setTitle("Surfing...");
+          MyActivity.setProgress(progress * 100); //Make the bar disappear after URL is loaded
+  
+          // Return the app name after finish loading
+             if(progress == 100)
+             {
+            	 MyActivity.setTitle(R.string.app_name);
+             }
+             
+             // get current url as the web page loads  and set the url in the edit text 
+             currentUrl=contentView.getUrl();
+     		 url.setText(currentUrl);
+     		
+         }
+        });*/
+    }
+    
+    
+    
+    
+    private void browserWork(Bundle bundle) 
+    {
+		// TODO Auto-generated method stub
+    	if(bundle==null)
         {
         	//will load google search page as the default page 
         	try
@@ -210,12 +315,13 @@ import android.webkit.WebChromeClient;
      		
          }
         });
-    }
-    
-    
-    
-    
-    @Override
+		
+	}
+
+
+
+
+	@Override
 	public void onWindowFocusChanged(boolean hasFocus) 
     {
 		// TODO Auto-generated method stub
@@ -431,6 +537,7 @@ import android.webkit.WebChromeClient;
 		/*  pause the web view when the activity goes 
 		 * in the background 
 		 */
+		isNew=false;
 		contentView.onPause();
 	}
 
@@ -446,6 +553,19 @@ import android.webkit.WebChromeClient;
 		 * when it comes in foreground 
 		 */
 		contentView.onResume();
+	}
+
+
+
+
+	@Override
+	protected void onNewIntent(Intent intent) 
+	{
+		// TODO Auto-generated method stub
+		super.onNewIntent(intent);
+		setIntent(intent);
+		Bundle bundle = getIntent().getExtras();
+		browserWork(bundle);
 	}
 	
 	
