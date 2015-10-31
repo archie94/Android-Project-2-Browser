@@ -16,3 +16,4 @@ Attempt to create a simple browser.
 - Add Icon
 - Optimise activities 
 - Customise list views for bookmarks and downloads 
+- Save web pages for off-line reading 
