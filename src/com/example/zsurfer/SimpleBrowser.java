@@ -35,7 +35,6 @@ import android.webkit.WebChromeClient;
 	HistoryHandler hHandler;
 	BookmarkHandler bHandler;
 	Bitmap back,forward,refresh,home;
-	Boolean isNew=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -537,7 +536,6 @@ import android.webkit.WebChromeClient;
 		/*  pause the web view when the activity goes 
 		 * in the background 
 		 */
-		isNew=false;
 		contentView.onPause();
 	}
 
