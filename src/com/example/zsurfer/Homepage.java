@@ -11,16 +11,20 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.TextView.OnEditorActionListener;
 
 public class Homepage extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener
 {
@@ -52,7 +56,51 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 		vHistory.setOnClickListener(this);
 		vBookmarks.setOnClickListener(this);
 		grid.setOnItemClickListener(this);
-		
+		url.setOnEditorActionListener(new OnEditorActionListener() 
+        {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) 
+                {
+                    searchGoogle();
+                    handled = true;
+                }
+                return handled;
+            }
+
+			private void searchGoogle() 
+			{
+				// TODO Auto-generated method stub
+				try
+				{
+					str=url.getText().toString();// get text to be searched from edit text
+					if(str.length()>0)
+					{
+						if(str.startsWith("http"))
+						{
+						
+						}
+						else if(str.startsWith("www."))
+						{
+							str="https://"+str;
+						}
+						else
+						{
+							str="https://www.google.com/search?q="+str;
+						}
+					
+						Intent i = new Intent (Homepage.this,SimpleBrowser.class);
+						i.putExtra("link", str);
+						startActivity(i);
+					}
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
+        });
 	}
 	@Override
 	public void onClick(View arg) 
