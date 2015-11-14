@@ -9,13 +9,4 @@ Attempt to create a simple browser.
 
 
 ###TODO
-- Download Manager
-- Browser Feed 
-- Do reading from database in a separate thread 
-- Sliding Drawer
-- Add Icon
-- Optimise activities 
-- Customise list views for bookmarks and downloads 
-- Save web pages for off-line reading 
-- Add a popup box before downloading any content
-
+ Find the list of todo for this app in the TODO text document
