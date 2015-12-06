@@ -16,15 +16,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.AdapterView;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.TextView.OnEditorActionListener;
+import android.widget.Toast;
 
 public class Homepage extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener
 {
@@ -38,6 +40,23 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.homepage);
+		
+		TabHost tabHost = (TabHost)findViewById(R.id.homepage_tabhost);
+		tabHost.setup();
+		TabSpec tabSpec = tabHost.newTabSpec("tag1");
+		tabSpec.setContent(R.id.tab1);
+		tabSpec.setIndicator("Home");
+		tabHost.addTab(tabSpec);
+		
+		tabSpec = tabHost.newTabSpec("tag2");
+		tabSpec.setContent(R.id.tab2);
+		tabSpec.setIndicator("Daily Feed");
+		tabHost.addTab(tabSpec);
+		
+		
+		
+		
+		
 		grid=(GridView)findViewById(R.id.gridView_homepage);
 		grid.setAdapter(new HomeAdapter(this));
 		
