@@ -1,8 +1,18 @@
 package com.example.zsurfer;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
-import android.app.Activity;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,6 +20,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -17,23 +29,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
-public class Homepage extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener
+public class Homepage extends ListActivity implements View.OnClickListener, AdapterView.OnItemClickListener
 {
 	EditText url;
 	Button go,vHistory,vBookmarks;
 	String str="";
 	GridView grid;
+	
+	
+	//ListView feedList;
+	List headlines;
+	List links;
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -64,6 +85,14 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 		go=(Button)findViewById(R.id.home_bGO);
 		vHistory=(Button)findViewById(R.id.home_bHistory);
 		vBookmarks=(Button)findViewById(R.id.home_bShowBkMrk);
+		
+		
+		//feedList = (ListView)findViewById(android.R.id.list);
+		
+		
+		new DisplayFeed().execute("http://feeds.pcworld.com/pcworld/latestnews");
+		
+		
 		
 		if(isNetworkAvailable()==false)//check if network is available 
         {
@@ -121,6 +150,114 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 			}
         });
 	}
+	
+	private class DisplayFeed extends AsyncTask<String,Integer,String>
+	{
+
+		@Override
+		protected String doInBackground(String... params) 
+		{
+			// TODO Auto-generated method stub
+			headlines = new ArrayList();
+	        links = new ArrayList();
+	         
+	        try {
+	            URL url = new URL(params[0]);
+	         
+	            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+	            factory.setNamespaceAware(false);
+	            XmlPullParser xpp = factory.newPullParser();
+	         
+	                // We will get the XML from an input stream
+	            xpp.setInput(url.openConnection().getInputStream(), "UTF_8");
+	         
+	                /* We will parse the XML content looking for the "<title>" tag which appears inside the "<item>" tag.
+	                 * However, we should take in consideration that the rss feed name also is enclosed in a "<title>" tag.
+	                 * As we know, every feed begins with these lines: "<channel><title>Feed_Name</title>...."
+	                 * so we should skip the "<title>" tag which is a child of "<channel>" tag,
+	                 * and take in consideration only "<title>" tag which is a child of "<item>"
+	                 *
+	                 * In order to achieve this, we will make use of a boolean variable.
+	                 */
+	            boolean insideItem = false;
+	         
+	                // Returns the type of current event: START_TAG, END_TAG, etc..
+	            int eventType = xpp.getEventType();
+	            while (eventType != XmlPullParser.END_DOCUMENT) {
+	                if (eventType == XmlPullParser.START_TAG) {
+	         
+	                    if (xpp.getName().equalsIgnoreCase("item")) {
+	                        insideItem = true;
+	                    } else if (xpp.getName().equalsIgnoreCase("title")) {
+	                        if (insideItem)
+	                            headlines.add(xpp.nextText()); //extract the headline
+	                    } else if (xpp.getName().equalsIgnoreCase("link")) {
+	                        if (insideItem)
+	                            links.add(xpp.nextText()); //extract the link of article
+	                    }
+	                }else if(eventType==XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item")){
+	                    insideItem=false;
+	                }
+	         
+	                eventType = xpp.next(); //move to next element
+	            }
+	         
+	        }
+	        catch (MalformedURLException e) 
+	        {
+	            e.printStackTrace();
+	        }
+	        catch (XmlPullParserException e) 
+	        {
+	            e.printStackTrace();
+	        }
+	        catch (IOException e) 
+	        {
+	            e.printStackTrace();
+	        }
+			return "Feed Parsed";
+		}
+		
+		@Override
+		protected void onProgressUpdate(Integer... values) 
+		{
+		  super.onProgressUpdate(values);
+		}
+
+		@Override
+		protected void onPostExecute(String result) 
+		{
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			ArrayAdapter adapter = new ArrayAdapter(Homepage.this,android.R.layout.simple_list_item_1, headlines);
+	         
+	        setListAdapter(adapter);
+	        Toast.makeText(getApplicationContext(), ""+headlines.size(),Toast.LENGTH_LONG).show();
+		}
+		
+	}
+	
+	
+	public InputStream getInputStream(URL url) 
+	{
+		   try 
+		   {
+		       return url.openConnection().getInputStream();
+		   } 
+		   catch (IOException e) 
+		   {
+		       return null;
+		   }
+	}
+	
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) 
+	{
+	   Uri uri = Uri.parse((String) links.get(position));
+	   Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+	   startActivity(intent);
+	}
+	
 	@Override
 	public void onClick(View arg) 
 	{
@@ -162,6 +299,8 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 			
 		}
 	}
+	
+	
 	@Override
 	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) 
 	{
@@ -179,6 +318,10 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 	}
 	
 	
+	
+	
+	
+	
 	private boolean isNetworkAvailable() 
     {
 		// TODO Auto-generated method stub
@@ -191,6 +334,26 @@ public class Homepage extends Activity implements View.OnClickListener, AdapterV
 	
 }
 
+
+class XmlParserBackground extends AsyncTask<String, Integer, String>
+{
+
+	@Override
+	protected String doInBackground(String... params) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------------
+
+/*
+ * The following classes will create a custom grid view 
+ */
 class WebPages
 {
 	Bitmap wbpgnm;
