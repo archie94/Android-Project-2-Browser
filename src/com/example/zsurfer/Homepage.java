@@ -183,19 +183,28 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	         
 	                // Returns the type of current event: START_TAG, END_TAG, etc..
 	            int eventType = xpp.getEventType();
-	            while (eventType != XmlPullParser.END_DOCUMENT) {
-	                if (eventType == XmlPullParser.START_TAG) {
+	            while (eventType != XmlPullParser.END_DOCUMENT) 
+	            {
+	                if (eventType == XmlPullParser.START_TAG) 
+	                {
 	         
-	                    if (xpp.getName().equalsIgnoreCase("item")) {
+	                    if (xpp.getName().equalsIgnoreCase("item")) 
+	                    {
 	                        insideItem = true;
-	                    } else if (xpp.getName().equalsIgnoreCase("title")) {
+	                    } 
+	                    else if (xpp.getName().equalsIgnoreCase("title")) 
+	                    {
 	                        if (insideItem)
 	                            headlines.add(xpp.nextText()); //extract the headline
-	                    } else if (xpp.getName().equalsIgnoreCase("link")) {
+	                    } 
+	                    else if (xpp.getName().equalsIgnoreCase("link")) 
+	                    {
 	                        if (insideItem)
 	                            links.add(xpp.nextText()); //extract the link of article
 	                    }
-	                }else if(eventType==XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item")){
+	                }
+	                else if(eventType==XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item"))
+	                {
 	                    insideItem=false;
 	                }
 	         
@@ -253,9 +262,9 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) 
 	{
-	   Uri uri = Uri.parse((String) links.get(position));
-	   Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-	   startActivity(intent);
+	    Intent i = new Intent (Homepage.this,SimpleBrowser.class);
+		i.putExtra("link", (String)links.get(position));
+		startActivity(i);
 	}
 	
 	@Override
