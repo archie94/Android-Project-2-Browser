@@ -2,16 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
 
-    <TextView
-        android:id="@+id/bf_title"
+    
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#1140f1" />
-    
-    
+        android:layout_gravity="center_vertical"
+         >
+
+        <ImageView
+            android:id="@+id/bf_imageView1"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/bf_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/bf_imageView1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Title" />
+        
+        <TextView
+            android:id="@+id/bf_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/bf_imageView1"
+            android:layout_below="@+id/bf_title"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Link" />
+
+    </RelativeLayout>
 
 </LinearLayout>

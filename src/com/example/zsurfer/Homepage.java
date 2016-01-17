@@ -48,6 +48,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	Button go,vHistory,vBookmarks,Refresh;
 	String str="";
 	GridView grid;
+	ListView lv;
 	
 	
 	//ListView feedList;
@@ -86,7 +87,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		vHistory=(Button)findViewById(R.id.home_bHistory);
 		vBookmarks=(Button)findViewById(R.id.home_bShowBkMrk);
 		Refresh = (Button)findViewById(R.id.home_refresh);
-		
+		lv = (ListView)findViewById(android.R.id.list);
 		
 		//feedList = (ListView)findViewById(android.R.id.list);
 		
@@ -109,7 +110,8 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		url.setOnEditorActionListener(new OnEditorActionListener() 
         {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) 
+            {
                 boolean handled = false;
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) 
                 {
@@ -240,9 +242,13 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		{
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			ArrayAdapter adapter = new ArrayAdapter(Homepage.this,android.R.layout.simple_list_item_1, headlines);
+			/*ArrayAdapter adapter = new ArrayAdapter(Homepage.this,android.R.layout.simple_list_item_1, headlines);
 	         
-	        setListAdapter(adapter);
+	        setListAdapter(adapter);*/
+			
+			BrowserFeed customList = new BrowserFeed(Homepage.this,headlines,links);
+			lv.setAdapter(customList);
+			
 	        Toast.makeText(getApplicationContext(), ""+headlines.size(),Toast.LENGTH_LONG).show();
 		}
 		
