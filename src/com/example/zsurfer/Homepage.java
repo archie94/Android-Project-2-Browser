@@ -11,7 +11,6 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,7 +19,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -29,7 +27,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,7 +39,9 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
-public class Homepage extends ListActivity implements View.OnClickListener, AdapterView.OnItemClickListener
+import com.example.zsurfer.BrowserFeed.CustomInterface;
+
+public class Homepage extends ListActivity implements View.OnClickListener, AdapterView.OnItemClickListener, CustomInterface
 {
 	EditText url;
 	Button go,vHistory,vBookmarks,Refresh;
@@ -247,6 +246,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	        setListAdapter(adapter);*/
 			
 			BrowserFeed customList = new BrowserFeed(Homepage.this,headlines,links);
+			customList.setInterface(Homepage.this);
 			lv.setAdapter(customList);
 			
 	        Toast.makeText(getApplicationContext(), ""+headlines.size(),Toast.LENGTH_LONG).show();
@@ -268,12 +268,15 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	}
 	
 	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) 
+	public void onCustomListClick(int position, View view) 
 	{
-	    Intent i = new Intent (Homepage.this,SimpleBrowser.class);
+		// TODO Auto-generated method stub
+		Intent i = new Intent (Homepage.this,SimpleBrowser.class);
 		i.putExtra("link", (String)links.get(position));
 		startActivity(i);
 	}
+	
+	
 	
 	@Override
 	public void onClick(View arg) 
@@ -347,6 +350,10 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
     	NetworkInfo isActive=cm.getActiveNetworkInfo();
 		return (isActive!=null && isActive.isConnected());
 	}
+
+	
+
+	
 
 	
 }
