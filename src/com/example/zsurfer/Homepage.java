@@ -45,7 +45,7 @@ import android.widget.Toast;
 public class Homepage extends ListActivity implements View.OnClickListener, AdapterView.OnItemClickListener
 {
 	EditText url;
-	Button go,vHistory,vBookmarks;
+	Button go,vHistory,vBookmarks,Refresh;
 	String str="";
 	GridView grid;
 	
@@ -85,6 +85,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		go=(Button)findViewById(R.id.home_bGO);
 		vHistory=(Button)findViewById(R.id.home_bHistory);
 		vBookmarks=(Button)findViewById(R.id.home_bShowBkMrk);
+		Refresh = (Button)findViewById(R.id.home_refresh);
 		
 		
 		//feedList = (ListView)findViewById(android.R.id.list);
@@ -104,6 +105,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		vHistory.setOnClickListener(this);
 		vBookmarks.setOnClickListener(this);
 		grid.setOnItemClickListener(this);
+		Refresh.setOnClickListener(this);
 		url.setOnEditorActionListener(new OnEditorActionListener() 
         {
             @Override
