@@ -33,7 +33,21 @@
             android:layout_toRightOf="@+id/bf_imageView1"
             android:layout_below="@+id/bf_title"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Link" />
+            android:text="Link"
+            android:singleLine="true"
+             />
+        
+        <TextView
+            android:id="@+id/bf_pubDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/bf_imageView1"
+            android:layout_below="@+id/bf_link"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Date"
+            android:singleLine="true"
+             />
 
     </RelativeLayout>
 

@@ -15,13 +15,15 @@ public class BrowserFeed extends BaseAdapter
 	private final Context context;
 	private final List headlines;
 	private final List links;
+	private final List pubDate;
 	private CustomInterface interFace;
 
-	public BrowserFeed(Context context,List headlines, List links)
+	public BrowserFeed(Context context,List headlines, List links, List pubDate)
 	{
 		this.context = context;
 		this.headlines = headlines;
 		this.links = links;
+		this.pubDate = pubDate;
 	}
 	@Override
 	public int getCount() 
@@ -52,12 +54,13 @@ public class BrowserFeed extends BaseAdapter
 	class ViewHolder
 	{
 		ImageView imageView;
-		TextView title,link;
+		TextView title,link,date;
 		public ViewHolder(View v)
 		{
 			imageView = (ImageView)v.findViewById(R.id.bf_imageView1);
 			title = (TextView)v.findViewById(R.id.bf_title);
 			link = (TextView)v.findViewById(R.id.bf_link);
+			date = (TextView)v.findViewById(R.id.bf_pubDate);
 		}
 	}
 	
@@ -86,6 +89,7 @@ public class BrowserFeed extends BaseAdapter
 		
 		viewHolder.title.setText((String)headlines.get(position));
 		viewHolder.link.setText((String) links.get(position));
+		viewHolder.date.setText((String)pubDate.get(position));
 		
 		rowView.setOnClickListener(new View.OnClickListener() 
 		{

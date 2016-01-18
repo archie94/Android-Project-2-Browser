@@ -41,7 +41,7 @@ public final class R {
     }
     public static final class id {
         public static final int WebView=0x7f080003;
-        public static final int action_settings=0x7f08001d;
+        public static final int action_settings=0x7f08001e;
         public static final int bBKMRK=0x7f08000a;
         public static final int bBack=0x7f080004;
         public static final int bForward=0x7f080005;
@@ -53,22 +53,23 @@ public final class R {
         public static final int bf_imageView1=0x7f08000e;
         public static final int bf_link=0x7f080010;
         public static final int bf_listview=0x7f08000d;
+        public static final int bf_pubDate=0x7f080011;
         public static final int bf_title=0x7f08000f;
-        public static final int bkmk_dialog=0x7f080011;
+        public static final int bkmk_dialog=0x7f080012;
         public static final int editText1=0x7f080008;
-        public static final int gridView_homepage=0x7f080017;
-        public static final int grid_imageView=0x7f08001c;
-        public static final int home_bGO=0x7f080019;
-        public static final int home_bHistory=0x7f080015;
-        public static final int home_bShowBkMrk=0x7f080016;
-        public static final int home_editText1=0x7f080018;
-        public static final int home_refresh=0x7f08001b;
-        public static final int homepage_tabhost=0x7f080013;
+        public static final int gridView_homepage=0x7f080018;
+        public static final int grid_imageView=0x7f08001d;
+        public static final int home_bGO=0x7f08001a;
+        public static final int home_bHistory=0x7f080016;
+        public static final int home_bShowBkMrk=0x7f080017;
+        public static final int home_editText1=0x7f080019;
+        public static final int home_refresh=0x7f08001c;
+        public static final int homepage_tabhost=0x7f080014;
         public static final int listViewBookmarks=0x7f08000c;
-        public static final int listViewHistory=0x7f080012;
+        public static final int listViewHistory=0x7f080013;
         public static final int mainLayout=0x7f080000;
-        public static final int tab1=0x7f080014;
-        public static final int tab2=0x7f08001a;
+        public static final int tab1=0x7f080015;
+        public static final int tab2=0x7f08001b;
         public static final int textView1=0x7f08000b;
     }
     public static final class layout {

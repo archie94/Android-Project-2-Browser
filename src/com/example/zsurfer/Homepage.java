@@ -53,6 +53,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	//ListView feedList;
 	List headlines;
 	List links;
+	List pubDate;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -163,6 +164,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 			// TODO Auto-generated method stub
 			headlines = new ArrayList();
 	        links = new ArrayList();
+	        pubDate = new ArrayList();
 	         
 	        try {
 	            URL url = new URL(params[0]);
@@ -205,6 +207,11 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	                        if (insideItem)
 	                            links.add(xpp.nextText()); //extract the link of article
 	                    }
+	                    else if(xpp.getName().equalsIgnoreCase("pubdate"))
+	                    {
+	                    	if(insideItem)
+	                    		pubDate.add(xpp.nextText());
+	                    }
 	                }
 	                else if(eventType==XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item"))
 	                {
@@ -245,7 +252,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	         
 	        setListAdapter(adapter);*/
 			
-			BrowserFeed customList = new BrowserFeed(Homepage.this,headlines,links);
+			BrowserFeed customList = new BrowserFeed(Homepage.this,headlines,links,pubDate);
 			customList.setInterface(Homepage.this);
 			lv.setAdapter(customList);
 			
