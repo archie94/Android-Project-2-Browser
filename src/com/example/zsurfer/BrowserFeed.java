@@ -16,14 +16,16 @@ public class BrowserFeed extends BaseAdapter
 	private final List headlines;
 	private final List links;
 	private final List pubDate;
+	private final List imageUrl;
 	private CustomInterface interFace;
 
-	public BrowserFeed(Context context,List headlines, List links, List pubDate)
+	public BrowserFeed(Context context,List headlines, List links, List pubDate,List imageUrl)
 	{
 		this.context = context;
 		this.headlines = headlines;
 		this.links = links;
 		this.pubDate = pubDate;
+		this.imageUrl = imageUrl;
 	}
 	@Override
 	public int getCount() 

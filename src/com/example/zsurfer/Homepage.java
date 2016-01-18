@@ -54,6 +54,12 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	List headlines;
 	List links;
 	List pubDate;
+	List imageUrl;
+	
+	String[] feedUrl = {"https://news.google.com/news?cf=all&hl=en&pz=1&ned=in&output=rss",
+			"http://feeds.pcworld.com/pcworld/latestnews",
+			"http://rss.cnn.com/rss/edition.rss",
+	};
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -92,7 +98,8 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		//feedList = (ListView)findViewById(android.R.id.list);
 		
 		
-		new DisplayFeed().execute("http://feeds.pcworld.com/pcworld/latestnews");
+		//new DisplayFeed().execute("http://feeds.pcworld.com/pcworld/latestnews");
+		new DisplayFeed().execute(feedUrl);
 		
 		
 		
@@ -165,16 +172,23 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 			headlines = new ArrayList();
 	        links = new ArrayList();
 	        pubDate = new ArrayList();
+	        imageUrl = new ArrayList();
+	        
+	        int n = params.length;
 	         
-	        try {
-	            URL url = new URL(params[0]);
+	        for(int i=0;i<n;i++)
+	        {
+	        	
+	        
+	        	try {
+	        		URL url = new URL(params[i]);
 	         
-	            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-	            factory.setNamespaceAware(false);
-	            XmlPullParser xpp = factory.newPullParser();
+	        		XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+	        		factory.setNamespaceAware(false);
+	        		XmlPullParser xpp = factory.newPullParser();
 	         
 	                // We will get the XML from an input stream
-	            xpp.setInput(url.openConnection().getInputStream(), "UTF_8");
+	        		xpp.setInput(url.openConnection().getInputStream(), "UTF_8");
 	         
 	                /* We will parse the XML content looking for the "<title>" tag which appears inside the "<item>" tag.
 	                 * However, we should take in consideration that the rss feed name also is enclosed in a "<title>" tag.
@@ -184,55 +198,57 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	                 *
 	                 * In order to achieve this, we will make use of a boolean variable.
 	                 */
-	            boolean insideItem = false;
+	        		boolean insideItem = false;
+	            
 	         
 	                // Returns the type of current event: START_TAG, END_TAG, etc..
-	            int eventType = xpp.getEventType();
-	            while (eventType != XmlPullParser.END_DOCUMENT) 
-	            {
-	                if (eventType == XmlPullParser.START_TAG) 
-	                {
+	        		int eventType = xpp.getEventType();
+	        		while (eventType != XmlPullParser.END_DOCUMENT) 
+	        		{
+	        			if (eventType == XmlPullParser.START_TAG) 
+	        			{
 	         
-	                    if (xpp.getName().equalsIgnoreCase("item")) 
-	                    {
-	                        insideItem = true;
-	                    } 
-	                    else if (xpp.getName().equalsIgnoreCase("title")) 
-	                    {
-	                        if (insideItem)
-	                            headlines.add(xpp.nextText()); //extract the headline
-	                    } 
-	                    else if (xpp.getName().equalsIgnoreCase("link")) 
-	                    {
-	                        if (insideItem)
-	                            links.add(xpp.nextText()); //extract the link of article
-	                    }
-	                    else if(xpp.getName().equalsIgnoreCase("pubdate"))
-	                    {
-	                    	if(insideItem)
-	                    		pubDate.add(xpp.nextText());
-	                    }
-	                }
-	                else if(eventType==XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item"))
-	                {
-	                    insideItem=false;
-	                }
+	        				if (xpp.getName().equalsIgnoreCase("item")) 
+	        				{
+	        					insideItem = true;
+	        				} 
+	        				else if (xpp.getName().equalsIgnoreCase("title")) 
+	        				{
+	        					if (insideItem)
+	        						headlines.add(xpp.nextText()); //extract the headline
+	        				} 
+	        				else if (xpp.getName().equalsIgnoreCase("link")) 
+	        				{
+	        					if (insideItem)
+	        						links.add(xpp.nextText()); //extract the link of article
+	        				}
+	        				else if(xpp.getName().equalsIgnoreCase("pubdate"))
+	        				{
+	        					if(insideItem)
+	        						pubDate.add(xpp.nextText());
+	        				}
+	        			}
+	        			else if(eventType==XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item"))
+	        			{
+	        				insideItem=false;
+	        			}
 	         
-	                eventType = xpp.next(); //move to next element
-	            }
+	        			eventType = xpp.next(); //move to next element
+	        		}
 	         
-	        }
-	        catch (MalformedURLException e) 
-	        {
-	            e.printStackTrace();
-	        }
-	        catch (XmlPullParserException e) 
-	        {
-	            e.printStackTrace();
-	        }
-	        catch (IOException e) 
-	        {
-	            e.printStackTrace();
+	        	}
+	        	catch (MalformedURLException e) 
+	        	{
+	        		e.printStackTrace();
+	        	}
+	        	catch (XmlPullParserException e) 
+	        	{
+	        		e.printStackTrace();
+	        	}
+	        	catch (IOException e) 
+	        	{
+	        		e.printStackTrace();
+	        	}
 	        }
 			return "Feed Parsed";
 		}
@@ -248,11 +264,8 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		{
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			/*ArrayAdapter adapter = new ArrayAdapter(Homepage.this,android.R.layout.simple_list_item_1, headlines);
-	         
-	        setListAdapter(adapter);*/
 			
-			BrowserFeed customList = new BrowserFeed(Homepage.this,headlines,links,pubDate);
+			BrowserFeed customList = new BrowserFeed(Homepage.this,headlines,links,pubDate, imageUrl);
 			customList.setInterface(Homepage.this);
 			lv.setAdapter(customList);
 			
