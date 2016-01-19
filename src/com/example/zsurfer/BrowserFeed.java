@@ -1,8 +1,16 @@
 package com.example.zsurfer;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,9 +97,15 @@ public class BrowserFeed extends BaseAdapter
 		}
 		
 		
+		
 		viewHolder.title.setText((String)headlines.get(position));
 		viewHolder.link.setText((String) links.get(position));
 		viewHolder.date.setText((String)pubDate.get(position));
+		if(imageUrl.get(position)!=null)
+		{
+			Bitmap bitmap = downloadImage((String)imageUrl.get(position));
+			viewHolder.imageView.setImageBitmap(bitmap);
+		}
 		
 		
 		
@@ -112,6 +126,54 @@ public class BrowserFeed extends BaseAdapter
 		return rowView;
 	}
 	
+	
+	private Bitmap downloadImage(String url)
+	{
+		//  Download the feed image as bitmap 
+		Bitmap bitmap = null;
+		InputStream inputStream = null;
+		BitmapFactory.Options  bmOption = new BitmapFactory.Options();
+		bmOption.inSampleSize = 1;
+		
+		try
+		{
+			inputStream = getHttpConnection(url);
+			bitmap = BitmapFactory.decodeStream(inputStream, null, bmOption);
+			inputStream.close();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		return bitmap;
+	}
+	
+	
+	private InputStream getHttpConnection(String url) throws IOException 
+	{
+		// establish http connection and and return the input stream 
+		InputStream inputStream = null;
+		try 
+		{
+			URL Url = new URL(url);
+			HttpURLConnection httpConnection = (HttpURLConnection)Url.openConnection();
+			httpConnection.setRequestMethod("GET");
+			httpConnection.connect();
+			if (httpConnection.getResponseCode() == HttpURLConnection.HTTP_OK) 
+			{
+				inputStream = httpConnection.getInputStream();
+            }
+			
+		} 
+		catch (MalformedURLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return inputStream;
+	}
+
 	public interface CustomInterface
 	{
 		public void onCustomListClick(int position, View view);

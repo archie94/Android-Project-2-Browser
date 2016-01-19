@@ -161,7 +161,10 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 			}
         });
 	}
-	
+
+
+
+
 	private class DisplayFeed extends AsyncTask<String,Integer,String>
 	{
 
@@ -393,17 +396,6 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 }
 
 
-class XmlParserBackground extends AsyncTask<String, Integer, String>
-{
-
-	@Override
-	protected String doInBackground(String... params) 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-}
 
 
 
