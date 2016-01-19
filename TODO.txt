@@ -1,9 +1,9 @@
 Features which are needed to be implemented 
 
 - Download Manager : A separate download manager to keep track of downloads and open them on click 
-- Browser Feed : A personalised news feed containing headlines from different websites or blogs , add provision for adding more rss feed sites
+- Browser Feed :  add provision for adding more rss feed sites , randomise the feed 
 - Do reading from database in a separate thread 
-- Sliding Drawer
+- Sliding Drawer ---- Do later / Optional 
 - Add Icon
 - Optimise activities 
 - Customise list views for bookmarks and downloads 
