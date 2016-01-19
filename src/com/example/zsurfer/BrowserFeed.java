@@ -93,6 +93,8 @@ public class BrowserFeed extends BaseAdapter
 		viewHolder.link.setText((String) links.get(position));
 		viewHolder.date.setText((String)pubDate.get(position));
 		
+		
+		
 		rowView.setOnClickListener(new View.OnClickListener() 
 		{
 			

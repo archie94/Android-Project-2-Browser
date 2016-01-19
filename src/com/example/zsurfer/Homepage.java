@@ -199,6 +199,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	                 * In order to achieve this, we will make use of a boolean variable.
 	                 */
 	        		boolean insideItem = false;
+	        		boolean insideImage = false;
 	            
 	         
 	                // Returns the type of current event: START_TAG, END_TAG, etc..
@@ -227,10 +228,23 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	        					if(insideItem)
 	        						pubDate.add(xpp.nextText());
 	        				}
+	        				else if(xpp.getName().equalsIgnoreCase("image"))
+	        				{
+	        					insideImage = true;
+	        				}
+	        				else if(xpp.getName().equalsIgnoreCase("url"))
+	        				{
+	        					if(insideImage)
+	        						imageUrl.add(xpp.nextText());
+	        				}
 	        			}
 	        			else if(eventType==XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item"))
 	        			{
 	        				insideItem=false;
+	        			}
+	        			else if(eventType == XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("image"))
+	        			{
+	        				insideImage = false;
 	        			}
 	         
 	        			eventType = xpp.next(); //move to next element
