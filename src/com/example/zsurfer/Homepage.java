@@ -209,6 +209,8 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	        		int eventType = xpp.getEventType();
 	        		while (eventType != XmlPullParser.END_DOCUMENT) 
 	        		{
+	        			boolean isImageAvailable = false;
+	        			
 	        			if (eventType == XmlPullParser.START_TAG) 
 	        			{
 	         
@@ -233,22 +235,30 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	        				}
 	        				else if(xpp.getName().equalsIgnoreCase("image"))
 	        				{
-	        					insideImage = true;
+	        					if(insideItem)
+	        						insideImage = true;
 	        				}
 	        				else if(xpp.getName().equalsIgnoreCase("url"))
 	        				{
 	        					if(insideImage)
+	        					{
 	        						imageUrl.add(xpp.nextText());
+	        						isImageAvailable = true;
+	        					}
 	        				}
 	        			}
 	        			else if(eventType==XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item"))
 	        			{
 	        				insideItem=false;
+	        				if(isImageAvailable == false && insideItem == false)
+		        				imageUrl.add("");
 	        			}
 	        			else if(eventType == XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("image"))
 	        			{
 	        				insideImage = false;
 	        			}
+	        			
+	        			
 	         
 	        			eventType = xpp.next(); //move to next element
 	        		}
@@ -286,7 +296,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 			customList.setInterface(Homepage.this);
 			lv.setAdapter(customList);
 			
-	        Toast.makeText(getApplicationContext(), ""+headlines.size(),Toast.LENGTH_LONG).show();
+	        Toast.makeText(getApplicationContext(), ""+headlines.size()+" "+imageUrl.size(),Toast.LENGTH_LONG).show();
 		}
 		
 	}

@@ -101,7 +101,8 @@ public class BrowserFeed extends BaseAdapter
 		viewHolder.title.setText((String)headlines.get(position));
 		viewHolder.link.setText((String) links.get(position));
 		viewHolder.date.setText((String)pubDate.get(position));
-		if(imageUrl.get(position)!=null)
+		String s = (String)imageUrl.get(position);
+		if(s.length()>0)
 		{
 			Bitmap bitmap = downloadImage((String)imageUrl.get(position));
 			viewHolder.imageView.setImageBitmap(bitmap);
