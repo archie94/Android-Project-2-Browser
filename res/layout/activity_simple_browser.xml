@@ -20,7 +20,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-			android:layout_weight="50"
+			android:layout_weight="35"
             android:text="History" />
 
         
@@ -30,7 +30,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bookmarks"
-            android:layout_weight="50" />
+            android:layout_weight="35" />
+        
+        <Button
+            android:id="@+id/bOptions"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Options"
+            android:layout_weight="30" />
     
         
      </LinearLayout>

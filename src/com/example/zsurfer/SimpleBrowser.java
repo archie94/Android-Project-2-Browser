@@ -1,9 +1,5 @@
 package com.example.zsurfer;
 
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
-import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -12,26 +8,31 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.webkit.DownloadListener;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
-import android.webkit.WebChromeClient;
 
 @SuppressLint("SetJavaScriptEnabled") public class SimpleBrowser extends Activity implements View.OnClickListener
 {
 	WebView contentView;
 	EditText url;
 	String currentUrl;
-	Button Go,Back,Forward,Refresh,Home,addBookmark,vHistory,vBookMark;
+	Button Go,Back,Forward,Refresh,Home,addBookmark,vHistory,vBookMark, Options;
 	HistoryHandler hHandler;
 	BookmarkHandler bHandler;
 	Bitmap back,forward,refresh,home;
@@ -118,100 +119,7 @@ import android.webkit.WebChromeClient;
         
         browserWork(bundle);
        
-        /*if(bundle==null)
-        {
-        	//will load google search page as the default page 
-        	try
-        	{
-        		contentView.loadUrl("https://www.google.com");
-        		currentUrl=contentView.getUrl();
-        	}
-        	catch(Exception e)
-        	{
-        		e.printStackTrace();
-        	}
-        }
-        else
-        {
-        	// will get the address from bundle 
-        	try
-        	{
-        		contentView.loadUrl(bundle.getString("link"));
-        		currentUrl=contentView.getUrl();
-        	}
-        	catch(Exception e)
-        	{
-        		e.printStackTrace();
-        	}
-        }
         
-        
-        
-        initialise();//initialize all other variable after completing the settings for WebView
-        
-        
-        Go.setOnClickListener(this);
-        Back.setOnClickListener(this);
-        Forward.setOnClickListener(this);
-        Refresh.setOnClickListener(this);
-        Home.setOnClickListener(this);
-        addBookmark.setOnClickListener(this);
-        vHistory.setOnClickListener(this);
-        vBookMark.setOnClickListener(this);
-        url.setOnEditorActionListener(new OnEditorActionListener() 
-        {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                boolean handled = false;
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) 
-                {
-                    searchGoogle();
-                    handled = true;
-                }
-                return handled;
-            }
-
-			private void searchGoogle() 
-			{
-				// TODO Auto-generated method stub
-				String address=url.getText().toString();// get text to be searched from edit text
-				try
-				{
-					contentView.loadUrl("https://www.google.com/search?q="+address);
-				}
-				catch(Exception e)
-				{
-					e.printStackTrace();
-				}
-			}
-        });
-        
-        
-        currentUrl=contentView.getUrl();
-        url.setText(currentUrl);
-        // set ChromeClient, and defines on ProgressChanged
-        // this updates the progress bar 
-        final Activity MyActivity = this;
-        contentView.setWebChromeClient(new WebChromeClient() 
-        {
-         public void onProgressChanged(WebView view, int progress)   
-         {
-          //Make the bar disappear after URL is loaded, and changes string to Loading...
-          MyActivity.setTitle("Surfing...");
-          MyActivity.setProgress(progress * 100); //Make the bar disappear after URL is loaded
-  
-          // Return the app name after finish loading
-             if(progress == 100)
-             {
-            	 MyActivity.setTitle(R.string.app_name);
-             }
-             
-             // get current url as the web page loads  and set the url in the edit text 
-             currentUrl=contentView.getUrl();
-     		 url.setText(currentUrl);
-     		
-         }
-        });*/
     }
     
     
@@ -260,6 +168,7 @@ import android.webkit.WebChromeClient;
         addBookmark.setOnClickListener(this);
         vHistory.setOnClickListener(this);
         vBookMark.setOnClickListener(this);
+        Options.setOnClickListener(this);
         url.setOnEditorActionListener(new OnEditorActionListener() 
         {
             @Override
@@ -390,9 +299,8 @@ import android.webkit.WebChromeClient;
 		hHandler=new HistoryHandler(this,null,null,1);
 		vHistory=(Button)findViewById(R.id.bHistory);
 		vBookMark=(Button)findViewById(R.id.bShowBkMrk);
+		Options = (Button)findViewById(R.id.bOptions);
 		bHandler=new BookmarkHandler(this,null,null,1);
-		
-		
 	}
 
 
@@ -519,6 +427,11 @@ import android.webkit.WebChromeClient;
 			Intent i2=new Intent("com.example.zsurfer.VIEWBOOKMARKS");
 			startActivity(i2);
 			
+			break;
+		case R.id.bOptions:
+			PopupMenu popup = new PopupMenu(SimpleBrowser.this,Options);
+			popup.getMenuInflater().inflate(R.layout.browser_options, popup.getMenu());
+			popup.show();
 			break;
 			
 		
