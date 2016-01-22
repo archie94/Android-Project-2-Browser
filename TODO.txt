@@ -1,7 +1,7 @@
 Features which are needed to be implemented 
 
 - Download Manager : A separate download manager to keep track of downloads and open them on click 
-- Browser Feed :  add provision for adding more rss feed sites , randomise the feed 
+- Browser Feed :  add provision for adding more rss feed sites , randomise the feed , show unlimited feeds
 - Do reading from database in a separate thread 
 - Sliding Drawer ---- Do later / Optional 
 - Add Icon
