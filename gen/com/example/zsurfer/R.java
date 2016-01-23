@@ -41,7 +41,7 @@ public final class R {
     }
     public static final class id {
         public static final int WebView=0x7f080004;
-        public static final int action_settings=0x7f080028;
+        public static final int action_settings=0x7f080029;
         public static final int bBKMRK=0x7f08000b;
         public static final int bBack=0x7f080005;
         public static final int bForward=0x7f080006;
@@ -75,6 +75,7 @@ public final class R {
         public static final int options_PageInfo=0x7f080013;
         public static final int options_SavePage=0x7f080011;
         public static final int options_SharePage=0x7f080010;
+        public static final int pageinformation_buttonOK=0x7f080028;
         public static final int pageinformation_textView1=0x7f080025;
         public static final int pageinformation_textView2=0x7f080027;
         public static final int pageinformation_textView3=0x7f080026;

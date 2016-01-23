@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#2b2a29"
     android:padding="10dp"
      >
 
@@ -13,6 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="Page Information"
+        android:textColor="#ffffff"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -22,7 +24,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="#ffffff" />
 
     <TextView
         android:id="@+id/pageinformation_textView2"
@@ -30,7 +33,16 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/pageinformation_textView3"
         android:layout_centerHorizontal="true"
-        android:text="Page Name"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="Address"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/pageinformation_buttonOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="OK" />
     
 </RelativeLayout>
