@@ -41,7 +41,7 @@ public final class R {
     }
     public static final class id {
         public static final int WebView=0x7f080004;
-        public static final int action_settings=0x7f080025;
+        public static final int action_settings=0x7f080028;
         public static final int bBKMRK=0x7f08000b;
         public static final int bBack=0x7f080005;
         public static final int bForward=0x7f080006;
@@ -75,6 +75,9 @@ public final class R {
         public static final int options_PageInfo=0x7f080013;
         public static final int options_SavePage=0x7f080011;
         public static final int options_SharePage=0x7f080010;
+        public static final int pageinformation_textView1=0x7f080025;
+        public static final int pageinformation_textView2=0x7f080027;
+        public static final int pageinformation_textView3=0x7f080026;
         public static final int tab1=0x7f08001c;
         public static final int tab2=0x7f080022;
         public static final int textView1=0x7f08000c;
@@ -89,6 +92,7 @@ public final class R {
         public static final int history=0x7f030006;
         public static final int homepage=0x7f030007;
         public static final int homepage_grid=0x7f030008;
+        public static final int pageinformation=0x7f030009;
     }
     public static final class menu {
         public static final int simple_browser=0x7f070000;
@@ -125,5 +129,6 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f060001;
+        public static final int AppTheme_CustomTheme=0x7f060002;
     }
 }

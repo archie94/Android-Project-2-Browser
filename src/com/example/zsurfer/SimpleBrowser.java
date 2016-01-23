@@ -8,11 +8,13 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.pdf.PdfDocument.PageInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
@@ -431,6 +433,44 @@ import android.widget.Toast;
 		case R.id.bOptions:
 			PopupMenu popup = new PopupMenu(SimpleBrowser.this,Options);
 			popup.getMenuInflater().inflate(R.layout.browser_options, popup.getMenu());
+			
+			popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() 
+			{
+				
+				@Override
+				public boolean onMenuItemClick(MenuItem item) 
+				{
+					// TODO Auto-generated method stub
+					if(item.getTitle().equals("Bookmarks"))
+					{
+						Intent i2=new Intent("com.example.zsurfer.VIEWBOOKMARKS");
+						startActivity(i2);
+					}
+					else if(item.getTitle().equals("History"))
+					{
+						Intent i=new Intent("com.example.zsurfer.VIEWHISTORY");
+						startActivity(i);
+					}
+					else if(item.getTitle().equals("Share Page"))
+					{
+						
+					}
+					else if(item.getTitle().equals("Save Page"))
+					{
+						
+					}
+					else if(item.getTitle().equals("Find In Page"))
+					{
+						
+					}
+					else if(item.getTitle().equals("Page Info"))
+					{
+						startActivity(new Intent(SimpleBrowser.this,PageInformation.class));
+					}
+					return false;
+				}
+			});
+			
 			popup.show();
 			break;
 			

@@ -77,6 +77,12 @@
             </intent-filter>
         </activity>
         
+        <activity 
+            android:name="com.example.zsurfer.PageInformation"
+            android:theme="@style/AppTheme.CustomTheme"
+            >
+            
+        </activity>
         
         
     </application>
