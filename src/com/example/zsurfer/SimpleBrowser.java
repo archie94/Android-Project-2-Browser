@@ -443,13 +443,11 @@ import android.widget.Toast;
 					// TODO Auto-generated method stub
 					if(item.getTitle().equals("Bookmarks"))
 					{
-						Intent i2=new Intent("com.example.zsurfer.VIEWBOOKMARKS");
-						startActivity(i2);
+						startActivity(new Intent("com.example.zsurfer.VIEWBOOKMARKS"));
 					}
 					else if(item.getTitle().equals("History"))
 					{
-						Intent i=new Intent("com.example.zsurfer.VIEWHISTORY");
-						startActivity(i);
+						startActivity(new Intent("com.example.zsurfer.VIEWHISTORY"));
 					}
 					else if(item.getTitle().equals("Share Page"))
 					{
@@ -465,7 +463,7 @@ import android.widget.Toast;
 					}
 					else if(item.getTitle().equals("Page Info"))
 					{
-						startActivity(new Intent(SimpleBrowser.this,PageInformation.class));
+						startActivity(new Intent(SimpleBrowser.this,PageInformation.class).putExtra("pgaddr", url.getText().toString()));
 					}
 					return false;
 				}
