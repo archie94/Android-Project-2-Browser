@@ -34,10 +34,10 @@ import android.widget.Toast;
 	WebView contentView;
 	EditText url;
 	String currentUrl;
-	Button Go,Back,Forward,Refresh,Home,addBookmark,vHistory,vBookMark, Options;
+	Button Go,Back,Forward,Refresh,Home,addBookmark, Options;
 	HistoryHandler hHandler;
 	BookmarkHandler bHandler;
-	Bitmap back,forward,refresh,home;
+	
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -168,8 +168,6 @@ import android.widget.Toast;
         Refresh.setOnClickListener(this);
         Home.setOnClickListener(this);
         addBookmark.setOnClickListener(this);
-        vHistory.setOnClickListener(this);
-        vBookMark.setOnClickListener(this);
         Options.setOnClickListener(this);
         url.setOnEditorActionListener(new OnEditorActionListener() 
         {
@@ -245,6 +243,7 @@ import android.widget.Toast;
 		 * scale the bitmap according to 
 		 * our height and width 
 		 */
+		Bitmap back,forward,refresh,home,go;
 		
 		back=BitmapFactory.decodeResource(getResources(), R.drawable.back);
 		back=Bitmap.createScaledBitmap(back, width, height, true);
@@ -265,6 +264,11 @@ import android.widget.Toast;
 		home=Bitmap.createScaledBitmap(home, width, height, true);
 		Resources r4=getResources();
 		Home.setBackground(new BitmapDrawable(r4,home));
+		
+		go=BitmapFactory.decodeResource(getResources(), R.drawable.go);
+		go=Bitmap.createScaledBitmap(go, width, height, true);
+		Resources r5=getResources();
+		Go.setBackground(new BitmapDrawable(r5,go));
 		
 		
 	}
@@ -299,8 +303,6 @@ import android.widget.Toast;
 		Home=(Button)findViewById(R.id.bHome);
 		addBookmark=(Button)findViewById(R.id.bBKMRK);
 		hHandler=new HistoryHandler(this,null,null,1);
-		vHistory=(Button)findViewById(R.id.bHistory);
-		vBookMark=(Button)findViewById(R.id.bShowBkMrk);
 		Options = (Button)findViewById(R.id.bOptions);
 		bHandler=new BookmarkHandler(this,null,null,1);
 	}
@@ -417,17 +419,6 @@ import android.widget.Toast;
 			bHandler.addDB(b);
 			Toast.makeText(getApplicationContext(), "Bookmark  added ",Toast.LENGTH_LONG).show();
 			
-			
-			break;
-		case R.id.bHistory:
-			Intent i=new Intent("com.example.zsurfer.VIEWHISTORY");
-			startActivity(i);
-			
-			break;
-			
-		case R.id.bShowBkMrk:
-			Intent i2=new Intent("com.example.zsurfer.VIEWBOOKMARKS");
-			startActivity(i2);
 			
 			break;
 		case R.id.bOptions:

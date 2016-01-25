@@ -1,95 +1,19 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:id="@+id/mainLayout"
     android:padding="5dp"
     android:weightSum="100" >
-    
-
-   
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="100"
-        android:layout_weight="5" >
-
-        <Button
-            android:id="@+id/bHistory"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-			android:layout_weight="35"
-            android:text="History" />
-
-        
-        <Button
-            android:id="@+id/bShowBkMrk"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bookmarks"
-            android:layout_weight="35" />
-        
-        <Button
-            android:id="@+id/bOptions"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Options"
-            android:layout_weight="30" />
-    
-        
-     </LinearLayout>
 
     <WebView
         android:id="@+id/WebView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_above="@+id/bBack"
         android:layout_weight="80" />
     
     
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="100"
-        android:layout_weight="10" >
-
-        <Button
-            android:id="@+id/bBack"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-			android:layout_weight="25"
-            android:text="" />
-
-        
-        <Button
-            android:id="@+id/bForward"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_weight="25" />
-        <Button
-            android:id="@+id/bRefresh"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_weight="25" />
-        <Button
-            android:id="@+id/bHome"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_weight="25" />
-        
-        
-    </LinearLayout>
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -107,43 +31,95 @@
     		android:layout_width="0px" 
     		android:layout_height="0px"
     	/>
-        
-    	<EditText
-        	android:id="@+id/editText1"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:ems="10"
-        	android:layout_weight="95"
-        	android:hint="Search / Url"
-        	android:singleLine="true"
-        	android:selectAllOnFocus="true"
-        	android:nextFocusUp="@id/editText1" 
-        	android:nextFocusLeft="@id/editText1"
-        	android:inputType="textUri"
-        	android:imeOptions="actionSearch"
-        	 >
-			<!-- Removed <requestFocus /> -->
-        	
-   		 </EditText>
-
-    	
-    	<Button
-    	    android:id="@+id/bGO"
-    	    style="?android:attr/buttonStyleSmall"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:text="Go"
-    	    android:layout_weight="5" />
-    	<Button
-    	    android:id="@+id/bBKMRK"
-    	    style="?android:attr/buttonStyleSmall"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:text="BkMrk"
-    	    android:layout_weight="10" />
     	
     	
 
     </LinearLayout>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/bRefresh"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/WebView"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="25" />
+
+        <Button
+            android:id="@+id/bForward"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/editText1"
+            android:layout_toRightOf="@+id/bRefresh"
+            android:layout_weight="25" />
+
+        <Button
+            android:id="@+id/bBack"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBaseline="@+id/bForward"
+            android:layout_alignBottom="@+id/bForward"
+            android:layout_toLeftOf="@+id/bRefresh"
+            android:layout_weight="25" />
+
+        <Button
+            android:id="@+id/bBKMRK"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignLeft="@+id/WebView"
+            android:layout_below="@+id/WebView"
+            android:layout_weight="10"
+            android:text="BkMrk" />
+
+        <Button
+            android:id="@+id/bHome"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/bGO"
+            android:layout_alignParentRight="true"
+            android:layout_weight="25" />
+
+        <Button
+            android:id="@+id/bOptions"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/bHome"
+            android:layout_weight="30"
+            android:text="Options" />
+
+        <Button
+            android:id="@+id/bGO"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/bOptions"
+            android:layout_weight="5" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/bBKMRK"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/bGO"
+            android:layout_weight="95"
+            android:ems="10"
+            android:hint="Search / Url"
+            android:imeOptions="actionSearch"
+            android:inputType="textUri"
+            android:nextFocusLeft="@id/editText1"
+            android:nextFocusUp="@id/editText1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true" >
+
+            <requestFocus />
+        </EditText>
+
+</RelativeLayout>
