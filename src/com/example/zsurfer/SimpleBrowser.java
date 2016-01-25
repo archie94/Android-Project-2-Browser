@@ -243,7 +243,7 @@ import android.widget.Toast;
 		 * scale the bitmap according to 
 		 * our height and width 
 		 */
-		Bitmap back,forward,refresh,home,go;
+		Bitmap back,forward,refresh,home,go,option,bookmark;
 		
 		back=BitmapFactory.decodeResource(getResources(), R.drawable.back);
 		back=Bitmap.createScaledBitmap(back, width, height, true);
@@ -269,6 +269,16 @@ import android.widget.Toast;
 		go=Bitmap.createScaledBitmap(go, width, height, true);
 		Resources r5=getResources();
 		Go.setBackground(new BitmapDrawable(r5,go));
+		
+		option=BitmapFactory.decodeResource(getResources(), R.drawable.option);
+		go=Bitmap.createScaledBitmap(option, width, height, true);
+		Resources r6=getResources();
+		Options.setBackground(new BitmapDrawable(r6,option));
+		
+		bookmark=BitmapFactory.decodeResource(getResources(), R.drawable.bookmark);
+		go=Bitmap.createScaledBitmap(bookmark, width, height, true);
+		Resources r7=getResources();
+		addBookmark.setBackground(new BitmapDrawable(r7,bookmark));
 		
 		
 	}

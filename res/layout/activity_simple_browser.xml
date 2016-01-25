@@ -15,26 +15,7 @@
     
     
     
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="100"
-        android:layout_weight="10" >
-        
-        
-         <!--   Dummy item to prevent Edit Text  from receiving focus -->
-        <LinearLayout
     
-    		android:focusable="true" 
-    		android:focusableInTouchMode="true"
-    		android:layout_width="0px" 
-    		android:layout_height="0px"
-    	/>
-    	
-    	
-
-    </LinearLayout>
 
         <Button
             android:id="@+id/bRefresh"
@@ -72,7 +53,7 @@
             android:layout_alignLeft="@+id/WebView"
             android:layout_below="@+id/WebView"
             android:layout_weight="10"
-            android:text="BkMrk" />
+            />
 
         <Button
             android:id="@+id/bHome"
@@ -91,7 +72,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignRight="@+id/bHome"
             android:layout_weight="30"
-            android:text="Options" />
+            />
 
         <Button
             android:id="@+id/bGO"
@@ -102,6 +83,15 @@
             android:layout_toLeftOf="@+id/bOptions"
             android:layout_weight="5" />
 
+        
+         <!--   Dummy item to prevent Edit Text  from receiving focus -->
+        <LinearLayout
+    
+    		android:focusable="true" 
+    		android:focusableInTouchMode="true"
+    		android:layout_width="0px" 
+    		android:layout_height="0px"
+    	/>
         <EditText
             android:id="@+id/editText1"
             android:layout_width="wrap_content"
@@ -118,8 +108,6 @@
             android:nextFocusUp="@id/editText1"
             android:selectAllOnFocus="true"
             android:singleLine="true" >
-
-            <requestFocus />
         </EditText>
 
 </RelativeLayout>
