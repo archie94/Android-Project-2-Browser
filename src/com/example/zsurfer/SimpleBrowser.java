@@ -452,7 +452,11 @@ import android.widget.Toast;
 					}
 					else if(item.getTitle().equals("Share Page"))
 					{
-						
+						Intent i = new Intent();
+						i.setAction(Intent.ACTION_SEND);
+						i.putExtra(Intent.EXTRA_TEXT, url.getText().toString());
+						i.setType("text/plain");
+						startActivity(Intent.createChooser(i, "Share Page using"));
 					}
 					else if(item.getTitle().equals("Save Page"))
 					{
