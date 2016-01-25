@@ -23,8 +23,18 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.example.zsurfer.SIMPLEBROWSER" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter >
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW"></action>
+            	<category android:name="android.intent.category.DEFAULT"></category>
+            	<category android:name="android.intent.category.BROWSABLE"></category>
+            	<data android:scheme="http"></data>
+            	<data android:pathPattern=".*"></data>
             </intent-filter>
         </activity>
         <activity
