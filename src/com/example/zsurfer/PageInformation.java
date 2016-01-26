@@ -33,7 +33,7 @@ public class PageInformation extends Activity implements View.OnClickListener
 		width = dm.widthPixels;
 		height = dm.heightPixels;
 		
-		getWindow().setLayout((int)(width*0.8), (int)(height*0.5));
+		getWindow().setLayout((int)(width*0.8), (int)(height*0.4));
 		
 		ok.setOnClickListener(this);
 	}
