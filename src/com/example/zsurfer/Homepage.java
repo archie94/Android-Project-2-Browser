@@ -14,6 +14,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -396,6 +397,21 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
     	ConnectivityManager cm=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
     	NetworkInfo isActive=cm.getActiveNetworkInfo();
 		return (isActive!=null && isActive.isConnected());
+	}
+
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) 
+	{
+		// TODO Auto-generated method stub
+		super.onWindowFocusChanged(hasFocus);
+		int height = go.getHeight();
+		int width = go.getWidth();
+		Bitmap bitmap;
+		
+		bitmap=BitmapFactory.decodeResource(getResources(), R.drawable.go);
+		bitmap=Bitmap.createScaledBitmap(bitmap, width, height, true);
+		Resources r=getResources();
+		go.setBackground(new BitmapDrawable(r,bitmap));
 	}
 
 	
