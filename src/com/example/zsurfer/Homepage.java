@@ -60,7 +60,8 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	String[] feedUrl = {"https://news.google.com/news?cf=all&hl=en&pz=1&ned=in&output=rss",
 			"http://feeds.pcworld.com/pcworld/latestnews",
 			"http://rss.cnn.com/rss/edition.rss",
-			"http://www.javaworld.com/index.rss"
+			"http://www.javaworld.com/index.rss",
+			"http://www.espncricinfo.com/rss/content/story/feeds/0.xml"
 	};
 	
 	@SuppressWarnings("unchecked")

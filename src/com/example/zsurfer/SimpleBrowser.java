@@ -20,6 +20,7 @@ import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -56,6 +57,11 @@ import android.widget.Toast;
         contentView.getSettings().setJavaScriptEnabled(true);//enables javascript in our browser
         contentView.getSettings().setLoadWithOverviewMode(true);//web page completely zoomed down
         contentView.getSettings().setUseWideViewPort(true);//
+        contentView.getSettings().setAppCacheMaxSize(5 * 1024 * 1024);
+        contentView.getSettings().setAppCachePath(getApplicationContext().getCacheDir().getAbsolutePath());
+        contentView.getSettings().setAllowFileAccess(true);
+        contentView.getSettings().setAppCacheEnabled(true);
+        contentView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         
         //overrides a method so that a link in any web page does not load up in default browser
         contentView.setWebViewClient(new ourViewClient());
@@ -111,6 +117,7 @@ import android.widget.Toast;
         if(isNetworkAvailable()==false)//check if network is available 
         {
         	Toast.makeText(getApplicationContext(), "No Internet Connection",Toast.LENGTH_LONG).show();
+        	contentView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
         }
         /*else
         {
