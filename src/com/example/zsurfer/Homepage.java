@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,7 +49,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	Button go,vHistory,vBookmarks,Refresh;
 	String str="";
 	GridView grid;
-	ListView lv;
+	ListView lv,repoList;
 	
 	
 	//ListView feedList;
@@ -64,6 +65,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 			"http://www.espncricinfo.com/rss/content/story/feeds/0.xml",
 			"http://www.goal.com/en-india/feeds/news?fmt=rss&ICID=HP"
 	};
+	String[] urlNames = {"Google News","PC World","CNN World","JavaWorld","ESPN Cricinfo","Goal.com India"};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -102,13 +104,14 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		vBookmarks=(Button)findViewById(R.id.home_bShowBkMrk);
 		Refresh = (Button)findViewById(R.id.home_refresh);
 		lv = (ListView)findViewById(android.R.id.list);
-		
+		repoList = (ListView)findViewById(R.id.home_repoList);
 		//feedList = (ListView)findViewById(android.R.id.list);
 		
 		
 		//new DisplayFeed().execute("http://feeds.pcworld.com/pcworld/latestnews");
 		new DisplayFeed().execute(feedUrl);
 		
+		repoList.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,urlNames));
 		
 		
 		if(isNetworkAvailable()==false)//check if network is available 
@@ -171,6 +174,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	}
 
 
+	
 
 
 	private class DisplayFeed extends AsyncTask<String,Integer,String>
