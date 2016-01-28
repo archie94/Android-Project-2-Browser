@@ -61,10 +61,10 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 			"http://feeds.pcworld.com/pcworld/latestnews",
 			"http://rss.cnn.com/rss/edition.rss",
 			"http://www.javaworld.com/index.rss",
-			"http://www.espncricinfo.com/rss/content/story/feeds/0.xml"
+			"http://www.espncricinfo.com/rss/content/story/feeds/0.xml",
+			"http://www.goal.com/en-india/feeds/news?fmt=rss&ICID=HP"
 	};
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -82,6 +82,11 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		tabSpec = tabHost.newTabSpec("tag2");
 		tabSpec.setContent(R.id.tab2);
 		tabSpec.setIndicator("Daily Feed");
+		tabHost.addTab(tabSpec);
+		
+		tabSpec = tabHost.newTabSpec("tag3");
+		tabSpec.setContent(R.id.tab3);
+		tabSpec.setIndicator("Repositories");
 		tabHost.addTab(tabSpec);
 		
 		

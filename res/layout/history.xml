@@ -8,8 +8,8 @@
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="History"
         android:gravity="center_horizontal"
+        android:text="History"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ListView

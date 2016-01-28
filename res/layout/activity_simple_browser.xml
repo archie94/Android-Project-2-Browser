@@ -20,8 +20,8 @@
         <Button
             android:id="@+id/bRefresh"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_below="@+id/WebView"
             android:layout_centerHorizontal="true"
             android:layout_weight="25" />
@@ -29,8 +29,8 @@
         <Button
             android:id="@+id/bForward"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_above="@+id/editText1"
             android:layout_toRightOf="@+id/bRefresh"
             android:layout_weight="25" />
@@ -38,8 +38,8 @@
         <Button
             android:id="@+id/bBack"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignBaseline="@+id/bForward"
             android:layout_alignBottom="@+id/bForward"
             android:layout_toLeftOf="@+id/bRefresh"
@@ -48,8 +48,8 @@
         <Button
             android:id="@+id/bBKMRK"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignLeft="@+id/WebView"
             android:layout_below="@+id/WebView"
             android:layout_weight="10"
@@ -58,8 +58,8 @@
         <Button
             android:id="@+id/bHome"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_above="@+id/bGO"
             android:layout_alignParentRight="true"
             android:layout_weight="25" />

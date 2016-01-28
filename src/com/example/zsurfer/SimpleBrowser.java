@@ -57,7 +57,7 @@ import android.widget.Toast;
         contentView.getSettings().setJavaScriptEnabled(true);//enables javascript in our browser
         contentView.getSettings().setLoadWithOverviewMode(true);//web page completely zoomed down
         contentView.getSettings().setUseWideViewPort(true);//
-        contentView.getSettings().setAppCacheMaxSize(5 * 1024 * 1024);
+        contentView.getSettings().setAppCacheMaxSize(8 * 1024 * 1024); // 8 MB for cache 
         contentView.getSettings().setAppCachePath(getApplicationContext().getCacheDir().getAbsolutePath());
         contentView.getSettings().setAllowFileAccess(true);
         contentView.getSettings().setAppCacheEnabled(true);

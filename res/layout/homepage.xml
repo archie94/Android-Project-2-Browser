@@ -127,14 +127,14 @@
 
 			</LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:padding="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="100"
-                     >
+            <LinearLayout
+                android:id="@+id/tab2"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="100"
+                >
     				
     				
     	
@@ -157,7 +157,39 @@
 					
                     
                     
-                </LinearLayout>
+           </LinearLayout>
+                
+           <LinearLayout
+                android:id="@+id/tab3"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="100"
+                >
+    				
+    				
+    	
+               <ListView
+					android:id="@+id/home_repoList"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="95"
+					 >
+		       </ListView>
+					
+               <Button 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Set"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_weight="5"
+                    android:id="@+id/home_set"
+                    />
+					
+                    
+                    
+           </LinearLayout>
 
                 
             </FrameLayout>
