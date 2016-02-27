@@ -425,12 +425,12 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		Resources r=getResources();
 		go.setBackground(new BitmapDrawable(r,bitmap));
 		
-		height = set.getHeight();
+		/*height = set.getHeight();
 		width = set.getWidth();
 		bitmap=BitmapFactory.decodeResource(getResources(), R.drawable.set);
 		bitmap=Bitmap.createScaledBitmap(bitmap, width, height, true);
 		r=getResources();
-		set.setBackground(new BitmapDrawable(r,bitmap));
+		set.setBackground(new BitmapDrawable(r,bitmap));*/
 	}
 
 	

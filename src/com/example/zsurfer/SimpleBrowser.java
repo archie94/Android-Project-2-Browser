@@ -29,7 +29,11 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
-
+/**
+ * Class defines the main browsing activity 
+ * @author Arka
+ * @version 26 February 2016
+ */
 @SuppressLint("SetJavaScriptEnabled") public class SimpleBrowser extends Activity implements View.OnClickListener
 {
 	WebView contentView;
@@ -102,7 +106,7 @@ import android.widget.Toast;
         	
         });
         
-      //enable downloading files through web view in my browser
+        //enable downloading files through web view in my browser
         contentView.setDownloadListener(new DownloadListener()
         {
         	public void onDownloadStart(String url, String userAgent,String contentDisposition, String mimetype,long contentLength)
@@ -113,16 +117,15 @@ import android.widget.Toast;
         	}
         });
         
-        
-        if(isNetworkAvailable()==false)//check if network is available 
+        /*
+         * Check if network is available
+         * If not available display a proper Toast
+         */
+        if(isNetworkAvailable()==false) 
         {
         	Toast.makeText(getApplicationContext(), "No Internet Connection",Toast.LENGTH_LONG).show();
         	contentView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
         }
-        /*else
-        {
-        	Toast.makeText(getApplicationContext(), "Internet Connection",Toast.LENGTH_LONG).show();
-        }*/
         
         Bundle bundle=getIntent().getExtras();
         
@@ -131,9 +134,11 @@ import android.widget.Toast;
         
     }
     
-    
-    
-    
+    /**
+     * Load web page from bundle 
+     * If bundle is null load google search page
+     * @param bundle
+     */
     private void browserWork(Bundle bundle) 
     {
 		// TODO Auto-generated method stub
@@ -164,10 +169,7 @@ import android.widget.Toast;
         	}
         }
         
-        
-        
         initialise();//initialize all other variable after completing the settings for WebView
-        
         
         Go.setOnClickListener(this);
         Back.setOnClickListener(this);
@@ -207,8 +209,10 @@ import android.widget.Toast;
         
         currentUrl=contentView.getUrl();
         url.setText(currentUrl);
-        // set ChromeClient, and defines on ProgressChanged
-        // this updates the progress bar 
+        /*
+         * set ChromeClient, and defines on ProgressChanged 
+         * this updates the progress bar 
+         */
         final Activity MyActivity = this;
         contentView.setWebChromeClient(new WebChromeClient() 
         {
@@ -232,16 +236,15 @@ import android.widget.Toast;
         });
 		
 	}
-
-
-
-
+    
+    /**
+     * Add background to buttons here  
+     */
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) 
     {
 		// TODO Auto-generated method stub
-		super.onWindowFocusChanged(hasFocus);
-		// will add the background to our buttons here  
+		super.onWindowFocusChanged(hasFocus); 
 		
 		int height=Back.getHeight(); // store height of each button 
 		int width=Back.getWidth(); // store width of each button 
@@ -290,28 +293,22 @@ import android.widget.Toast;
 		
 	}
 
-
-
-
+	/**
+	 * check if there is Internet connection
+	 */
 	private boolean isNetworkAvailable() 
-    {
-		// TODO Auto-generated method stub
-    	//method to check if there is Internet connection 
+    { 
     	ConnectivityManager cm=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
     	NetworkInfo isActive=cm.getActiveNetworkInfo();
 		return (isActive!=null && isActive.isConnected());
 	}
     
-    
-
-
+    /**
+     * Initialize all buttons edit texts etc  ...
+     * note web view is defined earlier 
+     */
 	private void initialise() 
 	{
-		// TODO Auto-generated method stub
-		// Initialize all buttons edit texts etc  ... 
-		//note web view is defined earlier 
-		
-		
 		url=(EditText)findViewById(R.id.editText1);
 		Go=(Button)findViewById(R.id.bGO);
 		Back=(Button)findViewById(R.id.bBack);
@@ -324,27 +321,23 @@ import android.widget.Toast;
 		bHandler=new BookmarkHandler(this,null,null,1);
 	}
 
-
-	
-	
-	
+	/**
+	 * On pressing the back button reload the previous page
+	 */
 	@Override
 	public boolean onKeyUp(int keyCode, KeyEvent event) 
 	{
-		// TODO Auto-generated method stub
 		if(keyCode==KeyEvent.KEYCODE_BACK && contentView.canGoBack())
-		{
-			//On pressing the back button reload the previous page 
+		{ 
 			contentView.goBack();
 			return true;
 		}
 		return super.onKeyUp(keyCode, event); // if no previous page close application 
 	}
 
-
-	
-	
-	
+	/**
+	 * Define actions of buttons here 
+	 */
 	@Override
 	public void onClick(View arg0) 
 	{
@@ -502,9 +495,6 @@ import android.widget.Toast;
 		contentView.onPause();
 	}
 
-
-
-
 	@Override
 	protected void onResume() 
 	{
@@ -516,9 +506,9 @@ import android.widget.Toast;
 		contentView.onResume();
 	}
 
-
-
-
+	/**
+	 * Replace the current intent of this activity with the pre-existing intent  
+	 */
 	@Override
 	protected void onNewIntent(Intent intent) 
 	{
@@ -528,8 +518,5 @@ import android.widget.Toast;
 		Bundle bundle = getIntent().getExtras();
 		browserWork(bundle);
 	}
-	
-	
-	
 	
 }

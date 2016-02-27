@@ -17,7 +17,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+/**
+ * Class to provide a custom list for browser feed
+ * @author Arka
+ * @version 26 February 2016
+ */
 public class BrowserFeed extends BaseAdapter
 {
 	private final Context context;
@@ -27,6 +31,14 @@ public class BrowserFeed extends BaseAdapter
 	private final List imageUrl;
 	private CustomInterface interFace;
 
+	/**
+	 * Constructor method
+	 * @param context
+	 * @param headlines
+	 * @param links
+	 * @param pubDate
+	 * @param imageUrl
+	 */
 	public BrowserFeed(Context context,List headlines, List links, List pubDate,List imageUrl)
 	{
 		this.context = context;
@@ -175,6 +187,11 @@ public class BrowserFeed extends BaseAdapter
 		return inputStream;
 	}
 
+	/**
+	 * Interface for implementing actions on clicking the browser feeds
+	 * @author Arka
+	 * @version 27 February 2016
+	 */
 	public interface CustomInterface
 	{
 		public void onCustomListClick(int position, View view);
