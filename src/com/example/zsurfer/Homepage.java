@@ -46,7 +46,7 @@ import com.example.zsurfer.BrowserFeed.CustomInterface;
 public class Homepage extends ListActivity implements View.OnClickListener, AdapterView.OnItemClickListener, CustomInterface
 {
 	EditText url;
-	Button go,vHistory,vBookmarks,Refresh;
+	Button go,vHistory,vBookmarks,Refresh,set;
 	String str="";
 	GridView grid;
 	ListView lv,repoList;
@@ -103,6 +103,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		vHistory=(Button)findViewById(R.id.home_bHistory);
 		vBookmarks=(Button)findViewById(R.id.home_bShowBkMrk);
 		Refresh = (Button)findViewById(R.id.home_refresh);
+		set = (Button)findViewById(R.id.home_set);
 		lv = (ListView)findViewById(android.R.id.list);
 		repoList = (ListView)findViewById(R.id.home_repoList);
 		//feedList = (ListView)findViewById(android.R.id.list);
@@ -423,6 +424,13 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		bitmap=Bitmap.createScaledBitmap(bitmap, width, height, true);
 		Resources r=getResources();
 		go.setBackground(new BitmapDrawable(r,bitmap));
+		
+		height = set.getHeight();
+		width = set.getWidth();
+		bitmap=BitmapFactory.decodeResource(getResources(), R.drawable.set);
+		bitmap=Bitmap.createScaledBitmap(bitmap, width, height, true);
+		r=getResources();
+		set.setBackground(new BitmapDrawable(r,bitmap));
 	}
 
 	

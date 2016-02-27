@@ -38,10 +38,11 @@ public final class R {
         public static final int option=0x7f02000e;
         public static final int quora=0x7f02000f;
         public static final int refresh=0x7f020010;
-        public static final int twitter=0x7f020011;
-        public static final int wikipedia=0x7f020012;
-        public static final int yahoo=0x7f020013;
-        public static final int youtube=0x7f020014;
+        public static final int set=0x7f020011;
+        public static final int twitter=0x7f020012;
+        public static final int wikipedia=0x7f020013;
+        public static final int yahoo=0x7f020014;
+        public static final int youtube=0x7f020015;
     }
     public static final class id {
         public static final int WebView=0x7f080001;
