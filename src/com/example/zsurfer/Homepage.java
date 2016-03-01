@@ -42,7 +42,11 @@ import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 import com.example.zsurfer.BrowserFeed.CustomInterface;
-
+/**
+ * Class defines the home page activity of browser
+ * @author Arka
+ * @version 1 March 2016
+ */
 public class Homepage extends ListActivity implements View.OnClickListener, AdapterView.OnItemClickListener, CustomInterface
 {
 	EditText url;
@@ -50,9 +54,6 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	String str="";
 	GridView grid;
 	ListView lv,repoList;
-	
-	
-	//ListView feedList;
 	List headlines;
 	List links;
 	List pubDate;
@@ -311,7 +312,9 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 			
 	        Toast.makeText(getApplicationContext(), ""+headlines.size()+" "+imageUrl.size(),Toast.LENGTH_LONG).show();
 		}
-		
+		/* 
+		 * End of class description for DisplayFeed
+		 */
 	}
 	
 	
@@ -326,22 +329,25 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		       return null;
 		   }
 	}
-	
+	/**
+	 * Overridden method of CustomInterface interface
+	 * defines the action when feed item is clicked 
+	 */
 	@Override
 	public void onCustomListClick(int position, View view) 
 	{
-		// TODO Auto-generated method stub
 		Intent i = new Intent (Homepage.this,SimpleBrowser.class);
 		i.putExtra("link", (String)links.get(position));
 		startActivity(i);
 	}
-	
-	
-	
+	/**
+	 * Overridden method of View.OnClickListener
+	 * @see onClick() from View.OnClickListener
+	 * Defines the action when any button in home page is clicked
+	 */
 	@Override
 	public void onClick(View arg) 
 	{
-		// TODO Auto-generated method stub
 		switch(arg.getId())
 		{
 		case R.id.home_editText1:
@@ -379,8 +385,11 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 			
 		}
 	}
-	
-	
+	/**
+	 * Overridden method of AdapterView.OnItemClickListener
+	 * @see onItemClick() from AdapterView.OnItemClickListener
+	 * Defines the action when any shortcut from the home page is clicked
+	 */
 	@Override
 	public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) 
 	{
@@ -396,16 +405,12 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		intent.putExtra("link", links[i]);
 		startActivity(intent);
 	}
-	
-	
-	
-	
-	
-	
+	/**
+	 * Check if there is Internet connection 
+	 * @return true if network is available, false otherwise 
+	 */
 	private boolean isNetworkAvailable() 
     {
-		// TODO Auto-generated method stub
-    	//method to check if there is Internet connection 
     	ConnectivityManager cm=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
     	NetworkInfo isActive=cm.getActiveNetworkInfo();
 		return (isActive!=null && isActive.isConnected());

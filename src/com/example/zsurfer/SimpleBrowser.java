@@ -50,7 +50,7 @@ import android.widget.Toast;
         super.onCreate(savedInstanceState);
         // Add progress bar support 
         this.getWindow().requestFeature(Window.FEATURE_PROGRESS);
-        // Set xml for the content view
+
         setContentView(R.layout.activity_simple_browser);
         
         // make progress bar visible
@@ -396,14 +396,20 @@ import android.widget.Toast;
 			}
 			break;
 		case R.id.bBack:
-			// go back a web page 
-			if(contentView.canGoBack())// check if we can go back 
+		   /* 
+		    * go back a web page
+			* after checking if we can go back
+			*/
+			if(contentView.canGoBack()) 
 			{
 				contentView.goBack();
 			}
 			break;
 		case R.id.bForward:
-			// go forward a web page 
+			/*
+			 * go forward a web page
+			 * after checking if we can go forward
+			 */
 			if(contentView.canGoForward())//check if we can go forward 
 				contentView.goForward();
 			break;
@@ -424,12 +430,12 @@ import android.widget.Toast;
 			contentView.reload();
 			break;
 		case R.id.bBKMRK:
-			
+			/*
+			 * add the current web page as a bookmark 
+			 */
 			BookMarks b=new BookMarks(contentView.getUrl());
 			bHandler.addDB(b);
 			Toast.makeText(getApplicationContext(), "Bookmark  added ",Toast.LENGTH_LONG).show();
-			
-			
 			break;
 		case R.id.bOptions:
 			PopupMenu popup = new PopupMenu(SimpleBrowser.this,Options);
