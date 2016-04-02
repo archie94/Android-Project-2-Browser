@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/libs/itextpdf-5.5.9.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="af7e24e11af3aeb7f25dfe342b050dd1618f2a54">
+        <dex dex="/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/pre-dexed/debug/itextpdf-5.5.9-c31dec0af5c80bcef4bdd87455f3a8341ed0dd49.jar" />
+    </item>
+    <item
+        jar="/home/arka/Android/Sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-9ecb31b54356df7eb6282015aa1db811c97a2670.jar" />
+    </item>
+
+</items>

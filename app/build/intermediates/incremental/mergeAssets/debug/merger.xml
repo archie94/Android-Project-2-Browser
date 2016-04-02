@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="F:\software\files\android-studio\ZSurfer\app\src\main\assets"/></dataSet><dataSet config="debug"><source path="F:\software\files\android-studio\ZSurfer\app\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/assets"/></dataSet><dataSet config="debug"><source path="/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/debug/assets"/></dataSet></merger>

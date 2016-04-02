@@ -91,11 +91,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		tabSpec.setContent(R.id.tab3);
 		tabSpec.setIndicator("Repositories");
 		tabHost.addTab(tabSpec);
-		
-		
-		
-		
-		
+
 		grid=(GridView)findViewById(R.id.gridView_homepage);
 		grid.setAdapter(new HomeAdapter(this));
 		
@@ -174,10 +170,6 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 			}
         });
 	}
-
-
-	
-
 
 	private class DisplayFeed extends AsyncTask<String,Integer,String>
 	{
@@ -437,17 +429,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		r=getResources();
 		set.setBackground(new BitmapDrawable(r,bitmap));*/
 	}
-
-	
-
-	
-
-	
 }
-
-
-
-
 
 //---------------------------------------------------------------------------------------------------------------------------
 

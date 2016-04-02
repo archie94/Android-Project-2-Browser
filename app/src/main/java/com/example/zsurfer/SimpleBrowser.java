@@ -7,12 +7,17 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Picture;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.pdf.PdfDocument.PageInfo;
+import android.graphics.drawable.PictureDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +34,20 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
+
+import com.itextpdf.text.*;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+import static android.provider.DocumentsContract.*;
+
 /**
  * Class defines the main browsing activity 
  * @author Arka
@@ -36,13 +55,14 @@ import android.widget.Toast;
  */
 @SuppressLint("SetJavaScriptEnabled") public class SimpleBrowser extends Activity implements View.OnClickListener
 {
-	WebView contentView;
+	WebView webView;
 	EditText url;
 	String currentUrl;
 	Button Go,Back,Forward,Refresh,Home,addBookmark, Options;
 	HistoryHandler hHandler;
 	BookmarkHandler bHandler;
-	
+
+	final Bitmap[] webViewBitmap = new Bitmap[1];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -55,67 +75,61 @@ import android.widget.Toast;
         
         // make progress bar visible
         getWindow().setFeatureInt(Window.FEATURE_PROGRESS, Window.PROGRESS_VISIBILITY_ON);
-        contentView=(WebView)findViewById(R.id.WebView);
-        
-        
-        contentView.getSettings().setJavaScriptEnabled(true);//enables javascript in our browser
-        contentView.getSettings().setLoadWithOverviewMode(true);//web page completely zoomed down
-        contentView.getSettings().setUseWideViewPort(true);//
-        contentView.getSettings().setAppCacheMaxSize(8 * 1024 * 1024); // 8 MB for cache 
-        contentView.getSettings().setAppCachePath(getApplicationContext().getCacheDir().getAbsolutePath());
-        contentView.getSettings().setAllowFileAccess(true);
-        contentView.getSettings().setAppCacheEnabled(true);
-        contentView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+		webView=(WebView)findViewById(R.id.WebView);
+
+
+		webView.getSettings().setJavaScriptEnabled(true);//enables javascript in our browser
+		webView.getSettings().setLoadWithOverviewMode(true);//web page completely zoomed down
+		webView.getSettings().setUseWideViewPort(true);//
+		webView.getSettings().setAppCacheMaxSize(8 * 1024 * 1024); // 8 MB for cache
+		webView.getSettings().setAppCachePath(getApplicationContext().getCacheDir().getAbsolutePath());
+		webView.getSettings().setAllowFileAccess(true);
+		webView.getSettings().setAppCacheEnabled(true);
+		webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         
         //overrides a method so that a link in any web page does not load up in default browser
-        contentView.setWebViewClient(new ourViewClient());
-        contentView.setWebViewClient(new WebViewClient()
-        {
-        	boolean willSave=true; 
+		webView.setWebViewClient(new ourViewClient());
+		webView.setWebViewClient(new WebViewClient() {
+			boolean willSave = true;
 
 			@Override
-			public void onPageFinished(WebView view, String url) 
-			{
+			public void onPageFinished(WebView view, String url) {
 				// TODO Auto-generated method stub
 				super.onPageFinished(view, url);
 				// add to history when page has finished loading and page has loaded successfully 
 				addToHistory();
-				
+				webViewBitmap[0] = pictureDrawable2Bitmap();
 			}
 
-			private void addToHistory() 
-			{
+			private void addToHistory() {
 				// TODO Auto-generated method stub
-				if(willSave==true)
-				{
-					History h=new History(contentView.getUrl());
+				if (willSave == true) {
+					History h = new History(webView.getUrl());
 					hHandler.addHistory(h);
-					Toast.makeText(getApplicationContext(), "added ",Toast.LENGTH_LONG).show();
+					Log.d("SimpleBrowser : ", "Added to history" + h.toString());
 				}
 			}
 
 			@Override
-			public void onReceivedError(WebView view, int errorCode,String description, String failingUrl) 
-			{
+			public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
 				// TODO Auto-generated method stub
 				super.onReceivedError(view, errorCode, description, failingUrl);
-				Toast.makeText(getApplicationContext(), "Failed to load page",Toast.LENGTH_LONG).show();
-				willSave=false;
+				Log.d("SimpleBrowser : ", "Failed to load page");
+				willSave = false;
 				addToHistory();
 			}
-        	
-        });
+
+
+		});
         
         //enable downloading files through web view in my browser
-        contentView.setDownloadListener(new DownloadListener()
-        {
-        	public void onDownloadStart(String url, String userAgent,String contentDisposition, String mimetype,long contentLength)
-        	{
-        		Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
-        	}
-        });
+		webView.setDownloadListener(new DownloadListener() {
+			public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse(url));
+				startActivity(i);
+			}
+		});
         
         /*
          * Check if network is available
@@ -124,7 +138,7 @@ import android.widget.Toast;
         if(isNetworkAvailable()==false) 
         {
         	Toast.makeText(getApplicationContext(), "No Internet Connection",Toast.LENGTH_LONG).show();
-        	contentView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
+			webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
         }
         
         Bundle bundle=getIntent().getExtras();
@@ -133,8 +147,53 @@ import android.widget.Toast;
        
         
     }
-    
-    /**
+
+	/**
+	 * Create a bitmap of the snapshot of webView
+	 * @return : bitmap of snapshot
+	 */
+	private Bitmap pictureDrawable2Bitmap() {
+		webView.measure(View.MeasureSpec.makeMeasureSpec(
+						View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED),
+				View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+		webView.layout(0, 0, webView.getMeasuredWidth(),
+				webView.getMeasuredHeight());
+		webView.setDrawingCacheEnabled(true);
+		webView.buildDrawingCache();
+		Bitmap bm = Bitmap.createBitmap(webView.getMeasuredWidth(),
+				webView.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+
+		Canvas bigcanvas = new Canvas(bm);
+		Paint paint = new Paint();
+		int iHeight = bm.getHeight();
+		bigcanvas.drawBitmap(bm, 0, iHeight, paint);
+		webView.draw(bigcanvas);
+		return bm;
+	}
+
+	private void createWebViewPDF(String pdfName) throws IOException, DocumentException {
+		File pdfDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
+									"/ZsurferPDF");
+		if( !pdfDirectory.exists()) { // create directory if it does not exist
+			if ( pdfDirectory.mkdir()) {
+				Log.d("SimpleBrowser : ", "PDF storage directory created");
+			}
+		}
+		String pdfPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ZsurferPDF";
+		com.itextpdf.text.Document document = new Document();
+		PdfWriter.getInstance(document, new FileOutputStream(pdfPath + "/" + pdfName + ".pdf"));
+		document.open();
+
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		webViewBitmap[0].compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+		byte[] bytes = byteArrayOutputStream.toByteArray();
+		Image image = Image.getInstance(bytes);
+		image.scaleToFit(PageSize.A4.getHeight(), PageSize.A4.getWidth());
+		document.add(image);
+
+		document.close();
+	}
+	/**
      * Load web page from bundle 
      * If bundle is null load google search page
      * @param bundle
@@ -147,8 +206,8 @@ import android.widget.Toast;
         	//will load google search page as the default page 
         	try
         	{
-        		contentView.loadUrl("https://www.google.com");
-        		currentUrl=contentView.getUrl();
+				webView.loadUrl("https://www.google.com");
+        		currentUrl=webView.getUrl();
         	}
         	catch(Exception e)
         	{
@@ -160,8 +219,8 @@ import android.widget.Toast;
         	// will get the address from bundle 
         	try
         	{
-        		contentView.loadUrl(bundle.getString("link"));
-        		currentUrl=contentView.getUrl();
+				webView.loadUrl(bundle.getString("link"));
+        		currentUrl=webView.getUrl();
         	}
         	catch(Exception e)
         	{
@@ -197,7 +256,7 @@ import android.widget.Toast;
 				String address=url.getText().toString();// get text to be searched from edit text
 				try
 				{
-					contentView.loadUrl("https://www.google.com/search?q="+address);
+					webView.loadUrl("https://www.google.com/search?q="+address);
 				}
 				catch(Exception e)
 				{
@@ -207,14 +266,14 @@ import android.widget.Toast;
         });
         
         
-        currentUrl=contentView.getUrl();
+        currentUrl=webView.getUrl();
         url.setText(currentUrl);
         /*
          * set ChromeClient, and defines on ProgressChanged 
          * this updates the progress bar 
          */
         final Activity MyActivity = this;
-        contentView.setWebChromeClient(new WebChromeClient() 
+		webView.setWebChromeClient(new WebChromeClient()
         {
          public void onProgressChanged(WebView view, int progress)   
          {
@@ -229,7 +288,7 @@ import android.widget.Toast;
              }
              
              // get current url as the web page loads  and set the url in the edit text 
-             currentUrl=contentView.getUrl();
+             currentUrl=webView.getUrl();
      		 url.setText(currentUrl);
      		
          }
@@ -281,16 +340,14 @@ import android.widget.Toast;
 		Go.setBackground(new BitmapDrawable(r5,go));
 		
 		option=BitmapFactory.decodeResource(getResources(), R.drawable.option);
-		go=Bitmap.createScaledBitmap(option, width, height, true);
+		option=Bitmap.createScaledBitmap(option, width, height, true);
 		Resources r6=getResources();
 		Options.setBackground(new BitmapDrawable(r6,option));
 		
 		bookmark=BitmapFactory.decodeResource(getResources(), R.drawable.bookmark);
-		go=Bitmap.createScaledBitmap(bookmark, width, height, true);
+		bookmark=Bitmap.createScaledBitmap(bookmark, width, height, true);
 		Resources r7=getResources();
 		addBookmark.setBackground(new BitmapDrawable(r7,bookmark));
-		
-		
 	}
 
 	/**
@@ -327,9 +384,9 @@ import android.widget.Toast;
 	@Override
 	public boolean onKeyUp(int keyCode, KeyEvent event) 
 	{
-		if(keyCode==KeyEvent.KEYCODE_BACK && contentView.canGoBack())
-		{ 
-			contentView.goBack();
+		if(keyCode==KeyEvent.KEYCODE_BACK && webView.canGoBack())
+		{
+			webView.goBack();
 			return true;
 		}
 		return super.onKeyUp(keyCode, event); // if no previous page close application 
@@ -352,7 +409,7 @@ import android.widget.Toast;
 				//load the web page as given
 				try
 				{
-					contentView.loadUrl(address);
+					webView.loadUrl(address);
 				}
 				catch(Exception e)
 				{
@@ -363,7 +420,7 @@ import android.widget.Toast;
 			{
 				try
 				{
-					contentView.loadUrl("https://"+address);
+					webView.loadUrl("https://"+address);
 				}
 				catch(Exception e)
 				{
@@ -374,7 +431,7 @@ import android.widget.Toast;
 					// if we cannot load page then try searching 
 					try
 					{
-						contentView.loadUrl("https://www.google.com/search?q="+address);
+						webView.loadUrl("https://www.google.com/search?q="+address);
 					}
 					catch(Exception e2)
 					{
@@ -387,7 +444,7 @@ import android.widget.Toast;
 				// treat the string as a text to be searched 
 				try
 				{
-					contentView.loadUrl("https://www.google.com/search?q="+address);
+					webView.loadUrl("https://www.google.com/search?q="+address);
 				}
 				catch(Exception e)
 				{
@@ -400,9 +457,9 @@ import android.widget.Toast;
 		    * go back a web page
 			* after checking if we can go back
 			*/
-			if(contentView.canGoBack()) 
+			if(webView.canGoBack())
 			{
-				contentView.goBack();
+				webView.goBack();
 			}
 			break;
 		case R.id.bForward:
@@ -410,8 +467,8 @@ import android.widget.Toast;
 			 * go forward a web page
 			 * after checking if we can go forward
 			 */
-			if(contentView.canGoForward())//check if we can go forward 
-				contentView.goForward();
+			if(webView.canGoForward())//check if we can go forward
+				webView.goForward();
 			break;
 		case R.id.bHome:
 			// we load our home page 
@@ -427,13 +484,13 @@ import android.widget.Toast;
 			break;
 		case R.id.bRefresh:
 			//refresh the page 
-			contentView.reload();
+			webView.reload();
 			break;
 		case R.id.bBKMRK:
 			/*
 			 * add the current web page as a bookmark 
 			 */
-			BookMarks b=new BookMarks(contentView.getUrl());
+			BookMarks b=new BookMarks(webView.getUrl());
 			bHandler.addDB(b);
 			Toast.makeText(getApplicationContext(), "Bookmark  added ",Toast.LENGTH_LONG).show();
 			break;
@@ -466,7 +523,13 @@ import android.widget.Toast;
 					}
 					else if(item.getTitle().equals("Save Page"))
 					{
-						
+						try {
+							createWebViewPDF("save");
+						} catch (IOException e) {
+							e.printStackTrace();
+						} catch (DocumentException e) {
+							e.printStackTrace();
+						}
 					}
 					else if(item.getTitle().equals("Find In Page"))
 					{
@@ -498,7 +561,7 @@ import android.widget.Toast;
 		/*  pause the web view when the activity goes 
 		 * in the background 
 		 */
-		contentView.onPause();
+		webView.onPause();
 	}
 
 	@Override
@@ -509,7 +572,7 @@ import android.widget.Toast;
 		/* resume the web view again 
 		 * when it comes in foreground 
 		 */
-		contentView.onResume();
+		webView.onResume();
 	}
 
 	/**
