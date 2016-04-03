@@ -9,9 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Picture;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.PictureDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -41,12 +39,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-
-import static android.provider.DocumentsContract.*;
 
 /**
  * Class defines the main browsing activity 
@@ -55,7 +49,7 @@ import static android.provider.DocumentsContract.*;
  */
 @SuppressLint("SetJavaScriptEnabled") public class SimpleBrowser extends Activity implements View.OnClickListener
 {
-	WebView webView;
+	CustomisedWebView webView;
 	EditText url;
 	String currentUrl;
 	Button Go,Back,Forward,Refresh,Home,addBookmark, Options;
@@ -75,7 +69,7 @@ import static android.provider.DocumentsContract.*;
         
         // make progress bar visible
         getWindow().setFeatureInt(Window.FEATURE_PROGRESS, Window.PROGRESS_VISIBILITY_ON);
-		webView=(WebView)findViewById(R.id.WebView);
+		webView=(CustomisedWebView)findViewById(R.id.WebView);
 
 
 		webView.getSettings().setJavaScriptEnabled(true);//enables javascript in our browser
@@ -98,7 +92,7 @@ import static android.provider.DocumentsContract.*;
 				super.onPageFinished(view, url);
 				// add to history when page has finished loading and page has loaded successfully 
 				addToHistory();
-				webViewBitmap[0] = pictureDrawable2Bitmap();
+				webViewBitmap[0] = createWebViewToBitmap();
 			}
 
 			private void addToHistory() {
@@ -130,7 +124,14 @@ import static android.provider.DocumentsContract.*;
 				startActivity(i);
 			}
 		});
-        
+
+		webView.setOnScrollChangedCallback(new CustomisedWebView.OnScrollChangedCallback() {
+			@Override
+			public void onScroll(int l, int t) {
+				enableNavigationBar();
+			}
+		});
+
         /*
          * Check if network is available
          * If not available display a proper Toast
@@ -149,28 +150,76 @@ import static android.provider.DocumentsContract.*;
     }
 
 	/**
+	 * Enable the navigation bar
+	 */
+	private void enableNavigationBar() {
+		url.setVisibility(View.VISIBLE);
+		Go.setVisibility(View.VISIBLE);
+		Back.setVisibility(View.VISIBLE);
+		Forward.setVisibility(View.VISIBLE);
+		Refresh.setVisibility(View.VISIBLE);
+		Home.setVisibility(View.VISIBLE);
+		addBookmark.setVisibility(View.VISIBLE);
+		Options.setVisibility(View.VISIBLE);
+		disableNavigationBar();
+	}
+
+	/**
+	 * Disable the navigation bar
+	 */
+	private void disableNavigationBar() {
+		url.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				url.setVisibility(View.GONE);
+				Go.setVisibility(View.GONE);
+				Back.setVisibility(View.GONE);
+				Forward.setVisibility(View.GONE);
+				Refresh.setVisibility(View.GONE);
+				Home.setVisibility(View.GONE);
+				addBookmark.setVisibility(View.GONE);
+				Options.setVisibility(View.GONE);
+			}
+		}, 3000);
+	}
+
+	/**
+	 * Calculates the Letter Size Paper's Height depending on the LetterSize Dimensions and Given width.
+	 * @param width
+	 * @return
+	 */
+	private int getLetterSizeHeight(int width) {
+		return (int)((float) (11*width)/8.5);
+	}
+
+	/**
 	 * Create a bitmap of the snapshot of webView
 	 * @return : bitmap of snapshot
 	 */
-	private Bitmap pictureDrawable2Bitmap() {
+	private Bitmap createWebViewToBitmap() {
 		webView.measure(View.MeasureSpec.makeMeasureSpec(
 						View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED),
 				View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-		webView.layout(0, 0, webView.getMeasuredWidth(),
-				webView.getMeasuredHeight());
+		webView.layout(0, 0, webView.getMeasuredWidth(), webView.getMeasuredHeight());
 		webView.setDrawingCacheEnabled(true);
 		webView.buildDrawingCache();
-		Bitmap bm = Bitmap.createBitmap(webView.getMeasuredWidth(),
+		Bitmap bitmap = Bitmap.createBitmap(webView.getMeasuredWidth(),
 				webView.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
 
-		Canvas bigcanvas = new Canvas(bm);
+		Canvas canvas = new Canvas(bitmap);
 		Paint paint = new Paint();
-		int iHeight = bm.getHeight();
-		bigcanvas.drawBitmap(bm, 0, iHeight, paint);
-		webView.draw(bigcanvas);
-		return bm;
+		int iHeight = bitmap.getHeight();
+		canvas.drawBitmap(bitmap, 0, iHeight, paint);
+		webView.draw(canvas);
+		return bitmap;
 	}
 
+	/**
+	 * Create PDF of the webview
+	 * @param pdfName : The name of PDF file
+	 * @throws IOException
+	 * @throws DocumentException
+	 */
 	private void createWebViewPDF(String pdfName) throws IOException, DocumentException {
 		File pdfDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
 									"/ZsurferPDF");
@@ -192,7 +241,9 @@ import static android.provider.DocumentsContract.*;
 		document.add(image);
 
 		document.close();
+		Toast.makeText(this, "Saved as PDF", Toast.LENGTH_SHORT).show();
 	}
+
 	/**
      * Load web page from bundle 
      * If bundle is null load google search page
@@ -347,7 +398,9 @@ import static android.provider.DocumentsContract.*;
 		bookmark=BitmapFactory.decodeResource(getResources(), R.drawable.bookmark);
 		bookmark=Bitmap.createScaledBitmap(bookmark, width, height, true);
 		Resources r7=getResources();
-		addBookmark.setBackground(new BitmapDrawable(r7,bookmark));
+		addBookmark.setBackground(new BitmapDrawable(r7, bookmark));
+
+		disableNavigationBar();
 	}
 
 	/**
@@ -524,7 +577,7 @@ import static android.provider.DocumentsContract.*;
 					else if(item.getTitle().equals("Save Page"))
 					{
 						try {
-							createWebViewPDF("save");
+							createWebViewPDF(webView.getTitle());
 						} catch (IOException e) {
 							e.printStackTrace();
 						} catch (DocumentException e) {
@@ -533,7 +586,7 @@ import static android.provider.DocumentsContract.*;
 					}
 					else if(item.getTitle().equals("Find In Page"))
 					{
-						
+
 					}
 					else if(item.getTitle().equals("Page Info"))
 					{
