@@ -26,6 +26,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
@@ -41,26 +42,27 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.*;
 
 /**
  * Class defines the main browsing activity 
  * @author Arka
  * @version 26 February 2016
  */
-@SuppressLint("SetJavaScriptEnabled") public class SimpleBrowser extends Activity implements View.OnClickListener
-{
+@SuppressLint("SetJavaScriptEnabled") public class SimpleBrowser extends Activity implements View.OnClickListener {
 	CustomisedWebView webView;
-	EditText url;
+	AutoCompleteTextView url;
 	String currentUrl;
 	Button Go,Back,Forward,Refresh,Home,addBookmark, Options;
 	HistoryHandler hHandler;
 	BookmarkHandler bHandler;
+	java.util.List<String> autocompleteHints;
 
 	final Bitmap[] webViewBitmap = new Bitmap[1];
+	private boolean isNavigationBarOpen = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) 
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Add progress bar support 
         this.getWindow().requestFeature(Window.FEATURE_PROGRESS);
@@ -128,7 +130,11 @@ import java.io.IOException;
 		webView.setOnScrollChangedCallback(new CustomisedWebView.OnScrollChangedCallback() {
 			@Override
 			public void onScroll(int l, int t) {
-				enableNavigationBar();
+				if ( !isNavigationBarOpen) {
+					enableNavigationBar();
+				}else {
+					disableNavigationBar();
+				}
 			}
 		});
 
@@ -136,8 +142,7 @@ import java.io.IOException;
          * Check if network is available
          * If not available display a proper Toast
          */
-        if(isNetworkAvailable()==false) 
-        {
+        if(isNetworkAvailable()==false) {
         	Toast.makeText(getApplicationContext(), "No Internet Connection",Toast.LENGTH_LONG).show();
 			webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
         }
@@ -145,14 +150,14 @@ import java.io.IOException;
         Bundle bundle=getIntent().getExtras();
         
         browserWork(bundle);
-       
-        
     }
 
 	/**
 	 * Enable the navigation bar
 	 */
 	private void enableNavigationBar() {
+		isNavigationBarOpen = true;
+		// enable navigation bar
 		url.setVisibility(View.VISIBLE);
 		Go.setVisibility(View.VISIBLE);
 		Back.setVisibility(View.VISIBLE);
@@ -161,26 +166,22 @@ import java.io.IOException;
 		Home.setVisibility(View.VISIBLE);
 		addBookmark.setVisibility(View.VISIBLE);
 		Options.setVisibility(View.VISIBLE);
-		disableNavigationBar();
 	}
 
 	/**
 	 * Disable the navigation bar
 	 */
 	private void disableNavigationBar() {
-		url.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				url.setVisibility(View.GONE);
-				Go.setVisibility(View.GONE);
-				Back.setVisibility(View.GONE);
-				Forward.setVisibility(View.GONE);
-				Refresh.setVisibility(View.GONE);
-				Home.setVisibility(View.GONE);
-				addBookmark.setVisibility(View.GONE);
-				Options.setVisibility(View.GONE);
-			}
-		}, 3000);
+		isNavigationBarOpen = false;
+		// disable navigation bar
+		url.setVisibility(View.GONE);
+		Go.setVisibility(View.GONE);
+		Back.setVisibility(View.GONE);
+		Forward.setVisibility(View.GONE);
+		Refresh.setVisibility(View.GONE);
+		Home.setVisibility(View.GONE);
+		addBookmark.setVisibility(View.GONE);
+		Options.setVisibility(View.GONE);
 	}
 
 	/**
@@ -228,6 +229,7 @@ import java.io.IOException;
 				Log.d("SimpleBrowser : ", "PDF storage directory created");
 			}
 		}
+
 		String pdfPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ZsurferPDF";
 		com.itextpdf.text.Document document = new Document();
 		PdfWriter.getInstance(document, new FileOutputStream(pdfPath + "/" + pdfName + ".pdf"));
@@ -249,32 +251,21 @@ import java.io.IOException;
      * If bundle is null load google search page
      * @param bundle
      */
-    private void browserWork(Bundle bundle) 
-    {
-		// TODO Auto-generated method stub
-    	if(bundle==null)
-        {
+    private void browserWork(Bundle bundle) {
+    	if(bundle==null) {
         	//will load google search page as the default page 
-        	try
-        	{
+        	try {
 				webView.loadUrl("https://www.google.com");
         		currentUrl=webView.getUrl();
-        	}
-        	catch(Exception e)
-        	{
+        	} catch(Exception e) {
         		e.printStackTrace();
         	}
-        }
-        else
-        {
+        } else {
         	// will get the address from bundle 
-        	try
-        	{
+        	try {
 				webView.loadUrl(bundle.getString("link"));
         		currentUrl=webView.getUrl();
-        	}
-        	catch(Exception e)
-        	{
+        	} catch(Exception e) {
         		e.printStackTrace();
         	}
         }
@@ -288,29 +279,23 @@ import java.io.IOException;
         Home.setOnClickListener(this);
         addBookmark.setOnClickListener(this);
         Options.setOnClickListener(this);
-        url.setOnEditorActionListener(new OnEditorActionListener() 
-        {
+        url.setOnEditorActionListener(new OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 boolean handled = false;
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) 
-                {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     searchGoogle();
                     handled = true;
                 }
                 return handled;
             }
 
-			private void searchGoogle() 
-			{
+			private void searchGoogle() {
 				// TODO Auto-generated method stub
 				String address=url.getText().toString();// get text to be searched from edit text
-				try
-				{
+				try {
 					webView.loadUrl("https://www.google.com/search?q="+address);
-				}
-				catch(Exception e)
-				{
+				} catch(Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -333,8 +318,7 @@ import java.io.IOException;
           MyActivity.setProgress(progress * 100); //Make the bar disappear after URL is loaded
   
           // Return the app name after finish loading
-             if(progress == 100)
-             {
+             if(progress == 100) {
             	 MyActivity.setTitle(R.string.app_name);
              }
              
@@ -344,17 +328,14 @@ import java.io.IOException;
      		
          }
         });
-		
 	}
     
     /**
      * Add background to buttons here  
      */
 	@Override
-	public void onWindowFocusChanged(boolean hasFocus) 
-    {
-		// TODO Auto-generated method stub
-		super.onWindowFocusChanged(hasFocus); 
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
 		
 		int height=Back.getHeight(); // store height of each button 
 		int width=Back.getWidth(); // store width of each button 
@@ -394,20 +375,19 @@ import java.io.IOException;
 		option=Bitmap.createScaledBitmap(option, width, height, true);
 		Resources r6=getResources();
 		Options.setBackground(new BitmapDrawable(r6,option));
-		
+
 		bookmark=BitmapFactory.decodeResource(getResources(), R.drawable.bookmark);
 		bookmark=Bitmap.createScaledBitmap(bookmark, width, height, true);
 		Resources r7=getResources();
 		addBookmark.setBackground(new BitmapDrawable(r7, bookmark));
 
-		disableNavigationBar();
+		enableNavigationBar();
 	}
 
 	/**
 	 * check if there is Internet connection
 	 */
-	private boolean isNetworkAvailable() 
-    { 
+	private boolean isNetworkAvailable() {
     	ConnectivityManager cm=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
     	NetworkInfo isActive=cm.getActiveNetworkInfo();
 		return (isActive!=null && isActive.isConnected());
@@ -417,9 +397,8 @@ import java.io.IOException;
      * Initialize all buttons edit texts etc  ...
      * note web view is defined earlier 
      */
-	private void initialise() 
-	{
-		url=(EditText)findViewById(R.id.editText1);
+	private void initialise() {
+		url=(AutoCompleteTextView)findViewById(R.id.editText1);
 		Go=(Button)findViewById(R.id.bGO);
 		Back=(Button)findViewById(R.id.bBack);
 		Forward=(Button)findViewById(R.id.bForward);
@@ -435,10 +414,8 @@ import java.io.IOException;
 	 * On pressing the back button reload the previous page
 	 */
 	@Override
-	public boolean onKeyUp(int keyCode, KeyEvent event) 
-	{
-		if(keyCode==KeyEvent.KEYCODE_BACK && webView.canGoBack())
-		{
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		if(keyCode==KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
 			webView.goBack();
 			return true;
 		}
@@ -449,58 +426,38 @@ import java.io.IOException;
 	 * Define actions of buttons here 
 	 */
 	@Override
-	public void onClick(View arg0) 
-	{
-		// TODO Auto-generated method stub
-		
-		switch(arg0.getId())
-		{
+	public void onClick(View arg0) {
+
+		switch(arg0.getId()) {
+
 		case R.id.bGO:
 			String address=url.getText().toString();
-			if(address.startsWith("http"))
-			{
+
+			if(address.startsWith("http")) {
 				//load the web page as given
-				try
-				{
+				try {
 					webView.loadUrl(address);
-				}
-				catch(Exception e)
-				{
+				} catch(Exception e) {
 					e.printStackTrace();
 				}
-			}
-			else if(address.startsWith("www."))
-			{
-				try
-				{
+			} else if(address.startsWith("www.")) {
+				try {
 					webView.loadUrl("https://"+address);
-				}
-				catch(Exception e)
-				{
+				} catch(Exception e) {
 					//e.printStackTrace();
-				}
-				finally
-				{
+				} finally {
 					// if we cannot load page then try searching 
-					try
-					{
+					try {
 						webView.loadUrl("https://www.google.com/search?q="+address);
-					}
-					catch(Exception e2)
-					{
+					} catch(Exception e2) {
 						e2.printStackTrace();
 					}
 				}
-			}
-			else
-			{
+			} else {
 				// treat the string as a text to be searched 
-				try
-				{
+				try {
 					webView.loadUrl("https://www.google.com/search?q="+address);
-				}
-				catch(Exception e)
-				{
+				} catch(Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -510,8 +467,7 @@ import java.io.IOException;
 		    * go back a web page
 			* after checking if we can go back
 			*/
-			if(webView.canGoBack())
-			{
+			if(webView.canGoBack()) {
 				webView.goBack();
 			}
 			break;
@@ -520,18 +476,16 @@ import java.io.IOException;
 			 * go forward a web page
 			 * after checking if we can go forward
 			 */
-			if(webView.canGoForward())//check if we can go forward
+			if(webView.canGoForward()) {
 				webView.goForward();
+			}
 			break;
 		case R.id.bHome:
 			// we load our home page 
-			try
-			{
+			try {
 				Intent i = new Intent(SimpleBrowser.this,Homepage.class);
 				startActivity(i);
-			}
-			catch(Exception e)
-			{
+			} catch(Exception e) {
 				e.printStackTrace();
 			}
 			break;
@@ -558,24 +512,17 @@ import java.io.IOException;
 				public boolean onMenuItemClick(MenuItem item) 
 				{
 					// TODO Auto-generated method stub
-					if(item.getTitle().equals("Bookmarks"))
-					{
+					if(item.getTitle().equals("Bookmarks")) {
 						startActivity(new Intent("com.example.zsurfer.VIEWBOOKMARKS"));
-					}
-					else if(item.getTitle().equals("History"))
-					{
+					} else if(item.getTitle().equals("History")) {
 						startActivity(new Intent("com.example.zsurfer.VIEWHISTORY"));
-					}
-					else if(item.getTitle().equals("Share Page"))
-					{
+					} else if(item.getTitle().equals("Share Page")) {
 						Intent i = new Intent();
 						i.setAction(Intent.ACTION_SEND);
 						i.putExtra(Intent.EXTRA_TEXT, url.getText().toString());
 						i.setType("text/plain");
 						startActivity(Intent.createChooser(i, "Share Page using"));
-					}
-					else if(item.getTitle().equals("Save Page"))
-					{
+					} else if(item.getTitle().equals("Save Page")) {
 						try {
 							createWebViewPDF(webView.getTitle());
 						} catch (IOException e) {
@@ -583,13 +530,9 @@ import java.io.IOException;
 						} catch (DocumentException e) {
 							e.printStackTrace();
 						}
-					}
-					else if(item.getTitle().equals("Find In Page"))
-					{
+					} else if(item.getTitle().equals("Find In Page")) {
 
-					}
-					else if(item.getTitle().equals("Page Info"))
-					{
+					} else if(item.getTitle().equals("Page Info")) {
 						startActivity(new Intent(SimpleBrowser.this,PageInformation.class).putExtra("pgaddr", url.getText().toString()));
 					}
 					return false;
@@ -598,8 +541,7 @@ import java.io.IOException;
 			
 			popup.show();
 			break;
-			
-		
+
 		}
 	}// end of onClick()
 
@@ -607,8 +549,7 @@ import java.io.IOException;
 
 
 	@Override
-	protected void onPause() 
-	{
+	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
 		/*  pause the web view when the activity goes 
@@ -618,8 +559,7 @@ import java.io.IOException;
 	}
 
 	@Override
-	protected void onResume() 
-	{
+	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 		/* resume the web view again 
@@ -632,8 +572,7 @@ import java.io.IOException;
 	 * Replace the current intent of this activity with the pre-existing intent  
 	 */
 	@Override
-	protected void onNewIntent(Intent intent) 
-	{
+	protected void onNewIntent(Intent intent) {
 		// TODO Auto-generated method stub
 		super.onNewIntent(intent);
 		setIntent(intent);

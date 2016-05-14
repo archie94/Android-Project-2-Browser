@@ -7,6 +7,8 @@ ADDED from /home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/ma
 		INJECTED from /home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/AndroidManifest.xml
 	android:versionName
 		ADDED from /home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/AndroidManifest.xml:5:5-30
+		INJECTED from /home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/AndroidManifest.xml
+		INJECTED from /home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/AndroidManifest.xml
 	android:versionCode
 		ADDED from /home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/AndroidManifest.xml:4:5-28
 		INJECTED from /home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/AndroidManifest.xml

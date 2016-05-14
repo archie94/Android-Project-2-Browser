@@ -45,6 +45,7 @@
             android:layout_toLeftOf="@+id/bRefresh"
             android:layout_weight="25" />
 
+
         <Button
             android:id="@+id/bBKMRK"
             style="?android:attr/buttonStyleSmall"
@@ -92,7 +93,7 @@
     		android:layout_width="0px" 
     		android:layout_height="0px"
     	/>
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/editText1"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -108,6 +109,6 @@
             android:nextFocusUp="@id/editText1"
             android:selectAllOnFocus="true"
             android:singleLine="true" >
-        </EditText>
+        </AutoCompleteTextView>
 
 </RelativeLayout>

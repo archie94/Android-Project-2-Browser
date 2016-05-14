@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/res/merged/debug/layout/dialog_bkmk.xml",
+        "source": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/res/layout/dialog_bkmk.xml"
+    },
+    {
+        "merged": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/res/merged/debug/layout/pageinformation.xml",
+        "source": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/res/layout/pageinformation.xml"
+    },
+    {
+        "merged": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/res/merged/debug/layout/activity_simple_browser.xml",
+        "source": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/res/layout/activity_simple_browser.xml"
+    },
+    {
+        "merged": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/res/merged/debug/layout/bookmarks.xml",
+        "source": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/res/layout/bookmarks.xml"
+    },
+    {
+        "merged": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/res/merged/debug/layout/browserfeed_row.xml",
+        "source": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/res/layout/browserfeed_row.xml"
+    },
+    {
+        "merged": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/res/merged/debug/layout/history.xml",
+        "source": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/res/layout/history.xml"
+    },
+    {
+        "merged": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/res/merged/debug/layout/homepage.xml",
+        "source": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/res/layout/homepage.xml"
+    },
+    {
+        "merged": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/res/merged/debug/layout/browser_options.xml",
+        "source": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/res/layout/browser_options.xml"
+    },
+    {
+        "merged": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/res/merged/debug/layout/homepage_grid.xml",
+        "source": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/res/layout/homepage_grid.xml"
+    },
+    {
+        "merged": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/res/merged/debug/layout/browserfeed.xml",
+        "source": "/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/src/main/res/layout/browserfeed.xml"
+    }
+]
