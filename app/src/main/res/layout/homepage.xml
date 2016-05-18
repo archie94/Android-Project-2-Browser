@@ -118,9 +118,6 @@
     	    				android:layout_height="wrap_content"
     	    				android:layout_weight="5" 
     	    			/>
-    	
-    	
-    	
 
     				</LinearLayout>
 
@@ -135,9 +132,7 @@
                 android:orientation="vertical"
                 android:weightSum="100"
                 >
-    				
-    				
-    	
+
                     <ListView
 						android:id="@android:id/list"
 						android:layout_width="fill_parent"
@@ -154,9 +149,7 @@
                         android:layout_weight="5"
                         android:id="@+id/home_refresh"
                         />
-					
-                    
-                    
+
            </LinearLayout>
                 
            <LinearLayout
@@ -167,29 +160,34 @@
                 android:orientation="vertical"
                 android:weightSum="100"
                 >
-    				
-    				
-    	
+
                <ListView
 					android:id="@+id/home_repoList"
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
-					android:layout_weight="95"
+					android:layout_weight="90"
 					 >
 		       </ListView>
 					
                <Button 
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:text="Set"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add more"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_weight="5"
-                    android:id="@+id/home_set"
+                    android:id="@+id/home_add_more_repo"
                     />
-					
-                    
-                    
-           </LinearLayout>
+
+			   <Button
+				   android:layout_width="match_parent"
+				   android:layout_height="wrap_content"
+				   android:text="Manage repositories"
+				   style="?android:attr/buttonStyleSmall"
+				   android:layout_weight="5"
+				   android:id="@+id/home_manage_repo"
+				   />
+
+		   </LinearLayout>
 
                 
             </FrameLayout>

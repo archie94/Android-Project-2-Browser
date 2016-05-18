@@ -3,13 +3,15 @@ Attempt to create a simple browser.
 
 ##Features available
 
-browse pages
+- browse pages
 
-download files from download link
+- download files from download link
 
-save and view bookmarks
+- save and view bookmarks
 
-save and view history
+- save and view history
+
+- Recent news feed 
 
 ##TODO
 

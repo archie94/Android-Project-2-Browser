@@ -50,7 +50,7 @@ import com.example.zsurfer.BrowserFeed.CustomInterface;
 public class Homepage extends ListActivity implements View.OnClickListener, AdapterView.OnItemClickListener, CustomInterface
 {
 	EditText url;
-	Button go,vHistory,vBookmarks,Refresh,set;
+	Button go,vHistory,vBookmarks,Refresh,addMoreRepo;
 	String str="";
 	GridView grid;
 	ListView lv,repoList;
@@ -59,7 +59,8 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 	List pubDate;
 	List imageUrl;
 	
-	String[] feedUrl = {"https://news.google.com/news?cf=all&hl=en&pz=1&ned=in&output=rss",
+	String[] feedUrl = {
+			"https://news.google.com/news?cf=all&hl=en&pz=1&ned=in&output=rss",
 			"http://feeds.pcworld.com/pcworld/latestnews",
 			"http://rss.cnn.com/rss/edition.rss",
 			"http://www.javaworld.com/index.rss",
@@ -100,7 +101,7 @@ public class Homepage extends ListActivity implements View.OnClickListener, Adap
 		vHistory=(Button)findViewById(R.id.home_bHistory);
 		vBookmarks=(Button)findViewById(R.id.home_bShowBkMrk);
 		Refresh = (Button)findViewById(R.id.home_refresh);
-		set = (Button)findViewById(R.id.home_set);
+		addMoreRepo = (Button)findViewById(R.id.home_add_more_repo);
 		lv = (ListView)findViewById(android.R.id.list);
 		repoList = (ListView)findViewById(R.id.home_repoList);
 		//feedList = (ListView)findViewById(android.R.id.list);

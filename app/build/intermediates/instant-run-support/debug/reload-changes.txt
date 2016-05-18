@@ -1,0 +1,8 @@
+CHANGED,/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$override.class
+CHANGED,/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$2$override.class
+CHANGED,/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$3$override.class
+CHANGED,/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$6$override.class
+CHANGED,/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class
+CHANGED,/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$5$override.class
+CHANGED,/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$4$override.class
+CHANGED,/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$1$override.class

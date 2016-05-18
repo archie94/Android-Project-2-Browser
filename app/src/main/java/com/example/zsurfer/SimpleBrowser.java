@@ -18,6 +18,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
@@ -127,14 +128,22 @@ import java.util.*;
 			}
 		});
 
+		// disable the navigation bar while scrolling
 		webView.setOnScrollChangedCallback(new CustomisedWebView.OnScrollChangedCallback() {
 			@Override
 			public void onScroll(int l, int t) {
-				if ( !isNavigationBarOpen) {
+				disableNavigationBar();
+			}
+		});
+
+		// enable the navigation bar when a tap is detected on webview 
+		webView.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if(event.getAction() == MotionEvent.ACTION_DOWN) {
 					enableNavigationBar();
-				}else {
-					disableNavigationBar();
 				}
+				return false;
 			}
 		});
 
@@ -151,6 +160,7 @@ import java.util.*;
         
         browserWork(bundle);
     }
+
 
 	/**
 	 * Enable the navigation bar
