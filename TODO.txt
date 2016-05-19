@@ -1,0 +1,5 @@
+List of TODO :
+- Implement a download manager 
+- Make provision to add repositories
+- Improve Bookmarks and History layout
+- Implement multiple tabs

@@ -1,6 +1,11 @@
 #Android-Project-2-Browser
 Attempt to create a simple browser.
 
+#Screenshots
+![alt tag](https://github.com/archie94/Android-Project-2-Browser/blob/master/Screenshots/first.png)
+![alt tag](https://github.com/archie94/Android-Project-2-Browser/blob/master/Screenshots/second.png)
+![alt tag](https://github.com/archie94/Android-Project-2-Browser/blob/master/Screenshots/third.png)
+
 ##Features available
 
 - browse pages
