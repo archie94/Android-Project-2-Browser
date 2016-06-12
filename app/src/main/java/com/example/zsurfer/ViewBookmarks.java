@@ -8,17 +8,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class ViewBookmarks extends Activity
-{
+public class ViewBookmarks extends Activity {
 	
 	BookmarkHandler bHandler;
 	ListView l;
 	String bookmarks[];
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) 
-	{
-		// TODO Auto-generated method stub
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bookmarks);
 		
@@ -56,7 +53,6 @@ public class ViewBookmarks extends Activity
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) 
 			{
-				// TODO Auto-generated method stub
 				String msg=bookmarks[position];
 				Intent intent=new Intent(ViewBookmarks.this,SimpleBrowser.class);
 				intent.putExtra("link", msg);
@@ -67,18 +63,8 @@ public class ViewBookmarks extends Activity
 	}
 
 	@Override
-	protected void onPause() 
-	{
-		// TODO Auto-generated method stub
+	protected void onPause() {
 		super.onPause();
 		finish();// stop this activity when it goes to background
 	}
-	
-
-	
-
-	
-	
-	
-
 }

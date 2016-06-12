@@ -136,7 +136,7 @@ import java.util.*;
 			}
 		});
 
-		// enable the navigation bar when a tap is detected on webview 
+		// enable the navigation bar when a tap is detected on webview
 		webView.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
