@@ -4,29 +4,37 @@
     api-level="17"
     density="mdpi"
     format="7"
-    timestamp="15713006675357" >
+    timestamp="48682076020612"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="218" />
+        duration="209" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="407" />
     <task
         name="instant-run-transform"
-        duration="40" />
+        duration="9" />
     <task
         name="verifier"
-        duration="2" />
+        duration="1" />
 
     <artifact
-        location="/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
+        location="/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/reload-dex/debug/classes.dex"
+        type="RELOAD_DEX" />
 
-    <build timestamp="15713006675357" >
+    <build timestamp="48320505820896" >
         <artifact
             location="/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="48682076020612"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/reload-dex/debug/classes.dex"
+            type="RELOAD_DEX" />
     </build>
 
 </instant-run>

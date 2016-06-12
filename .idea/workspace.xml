@@ -20,12 +20,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0a8b51b-a5de-469b-bd7d-39d0368403f8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/reload-changes.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$1$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$2$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$3$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$4$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$5$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$6$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/zsurfer/SimpleBrowser$override.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/BookmarkHandler.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/BookmarkHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/CustomisedWebView.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/CustomisedWebView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser$7.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/SimpleBrowser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/ViewBookmarks$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/ViewBookmarks$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/ViewBookmarks.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/example/zsurfer/ViewBookmarks.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/BookmarkHandler.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/BookmarkHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/CustomisedWebView.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/CustomisedWebView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser$7.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/SimpleBrowser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/ViewBookmarks$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/ViewBookmarks$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/ViewBookmarks.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/example/zsurfer/ViewBookmarks.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_f6bb45bfa068ac679b82ab35d84c75867dca6b07.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_f6bb45bfa068ac679b82ab35d84c75867dca6b07.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/instant-run_04af3352726f3ae4a81a284645cdc9a8a70aed9c.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/instant-run_04af3352726f3ae4a81a284645cdc9a8a70aed9c.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/itextpdf-5.5.9_c31dec0af5c80bcef4bdd87455f3a8341ed0dd49.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/itextpdf-5.5.9_c31dec0af5c80bcef4bdd87455f3a8341ed0dd49.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/main_c38cdddd86259627a64e342681418c64f07eb96d.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/main_c38cdddd86259627a64e342681418c64f07eb96d.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0_9ecb31b54356df7eb6282015aa1db811c97a2670.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0_9ecb31b54356df7eb6282015aa1db811c97a2670.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug-androidTest.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/BookmarkHandler.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/BookmarkHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/CustomisedWebView.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/CustomisedWebView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser$7.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/ViewBookmarks$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/ViewBookmarks$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/ViewBookmarks.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/ViewBookmarks.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/BookmarkHandler.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/BookmarkHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/restart-dex/debug/build-info.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/CustomisedWebView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/CustomisedWebView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/SimpleBrowser.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/SimpleBrowser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/ViewBookmarks.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/ViewBookmarks.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <ignored path="Android-Project-2-Browser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,9 +128,12 @@
       <file leaf-file-name="SimpleBrowser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/SimpleBrowser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.1847825">
-              <caret line="209" column="19" selection-start-line="209" selection-start-column="19" selection-end-line="209" selection-end-column="19" />
-              <folding />
+            <state vertical-scroll-proportion="9.342391">
+              <caret line="608" column="0" selection-start-line="608" selection-start-column="0" selection-end-line="608" selection-end-column="0" />
+              <folding>
+                <element signature="e#4870#5082#0" expanded="true" />
+                <element signature="e#5081#5082#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1574,13 +1633,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/CustomisedWebView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_simple_browser.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/Homepage.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/homepage.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/SimpleBrowser.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/ViewBookmarks.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/BookmarkHandler.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/CustomisedWebView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/SimpleBrowser.java" />
       </list>
     </option>
   </component>
@@ -1818,8 +1877,45 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
       <envs />
       <method />
     </configuration>
@@ -1845,6 +1941,34 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
@@ -1932,9 +2056,9 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5069444" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50687283" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928944" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281787" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2003,7 +2127,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="248" column="9" selection-start-line="248" selection-start-column="9" selection-end-line="248" selection-end-column="9" />
-          <folding />
+          <folding>
+            <element signature="e#4870#5082#0" expanded="true" />
+            <element signature="e#5081#5082#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2046,7 +2173,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#4870#5082#0" expanded="true" />
+            <element signature="e#5081#5082#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2089,7 +2219,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="496" column="14" selection-start-line="496" selection-start-column="14" selection-end-line="496" selection-end-column="14" />
-          <folding />
+          <folding>
+            <element signature="e#4870#5082#0" expanded="true" />
+            <element signature="e#5081#5082#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2113,7 +2246,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#4870#5082#0" expanded="true" />
+            <element signature="e#5081#5082#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2137,7 +2273,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#4870#5082#0" expanded="true" />
+            <element signature="e#5081#5082#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2161,7 +2300,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#4870#5082#0" expanded="true" />
+            <element signature="e#5081#5082#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2199,7 +2341,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="182" column="8" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
-          <folding />
+          <folding>
+            <element signature="e#4870#5082#0" expanded="true" />
+            <element signature="e#5081#5082#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2374,9 +2519,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/zsurfer/SimpleBrowser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.1847825">
-          <caret line="209" column="19" selection-start-line="209" selection-start-column="19" selection-end-line="209" selection-end-column="19" />
-          <folding />
+        <state vertical-scroll-proportion="9.342391">
+          <caret line="608" column="0" selection-start-line="608" selection-start-column="0" selection-end-line="608" selection-end-column="0" />
+          <folding>
+            <element signature="e#4870#5082#0" expanded="true" />
+            <element signature="e#5081#5082#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

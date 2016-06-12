@@ -2,6 +2,8 @@ package com.example.zsurfer;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.webkit.WebView;
 
 /**
@@ -9,6 +11,8 @@ import android.webkit.WebView;
  */
 public class CustomisedWebView extends WebView {
     private OnScrollChangedCallback onScrollChangedCallback;
+    private GestureDetector gestureDetector;
+
     public CustomisedWebView(Context context) {
         super(context);
     }
@@ -35,6 +39,15 @@ public class CustomisedWebView extends WebView {
 
     public void setOnScrollChangedCallback( OnScrollChangedCallback onScrollChangedCallback) {
         this.onScrollChangedCallback = onScrollChangedCallback;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        return gestureDetector.onTouchEvent(ev) || super.onTouchEvent(ev);
+    }
+
+    public void setGestureDetector(GestureDetector gestureDetector) {
+        this.gestureDetector = gestureDetector;
     }
 
     public static interface OnScrollChangedCallback {
