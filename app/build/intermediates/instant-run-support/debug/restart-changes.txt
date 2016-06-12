@@ -1,1 +1,0 @@
-CHANGED,/home/arka/AndroidStudioProjects/Android-Project-2-Browser/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/zsurfer/SimpleBrowser$CustomeGestureDetector.class
